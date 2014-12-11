@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html>
+<html lang="ru">
+    <head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+        <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        <%: Styles.Render("~/Content/css") %>
+        <%: Scripts.Render("~/bundles/modernizr") %>
+        <%: Scripts.Render("~/Content/js.js") %>
+    </head>
+    <body>
+        <header></header>
+        <div class="left-menu">
+            <h3 class="left-menu-title">УДК:</h3>
+            <ul class="left-menu-items">
+                <li class="left-menu-items-item">
+                    <%: Html.ActionLink("Основные таблицы", "Index", "Home") %>
+                </li>
+                <li class="left-menu-items-item">
+                    <%: Html.ActionLink("Общие определители", "Index", "CommonDeterminant") %>
+                    <ul class="left-menu-items-item-subitems">
+                        <li class="left-menu-items-item-subitems-subitem">
+                            <%: Html.ActionLink("языка", "Language", "CommonDeterminant") %>
+                        </li>
+                        <li class="left-menu-items-item-subitems-subitem">
+                            <%: Html.ActionLink("формы документа", "FormDocument", "CommonDeterminant") %>
+                        </li>
+                        <li class="left-menu-items-item-subitems-subitem">
+                            <%: Html.ActionLink("места", "Place", "CommonDeterminant") %>
+                        </li>
+                        <li class="left-menu-items-item-subitems-subitem">
+                            <%: Html.ActionLink("рас, народов, этнических групп и национальностей", "Nation", "CommonDeterminant") %>
+                        </li>
+                        <li class="left-menu-items-item-subitems-subitem left-menu-items-item-subitems-subitem-last">
+                            <%: Html.ActionLink("времени", "Time", "CommonDeterminant") %>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <form id="Form1" class="UDC-constructor" runat="server">
+                <asp:Label ID="Label1" runat="server" Text="Конструктор УДК:"></asp:Label>
+                <asp:TextBox ID="TextBox1" runat="server" Enabled="True" ReadOnly="False"></asp:TextBox>
+            </form>
+        </div>
+        <div class="content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+
+        <%: Scripts.Render("~/bundles/jquery") %>
+        <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
+    </body>
+</html>

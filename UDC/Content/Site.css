@@ -1,0 +1,231 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #000;
+    font-size: 80%;
+    font-family: Verdana, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f4f4;
+}
+
+a {
+    color: #00118C;
+    text-decoration: none;
+}
+
+a:active, a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: red;
+}
+
+header, footer, hgroup,
+nav, section {
+    /*display: block;*/
+}
+
+mark {
+    background-color: #a6dbed;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+    padding: 2px;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+h5 a:link, h5 a:visited, h5 a:active {
+    padding: 0;
+    text-decoration: none;
+}
+
+/* Шапка */
+
+header {
+    width: 100%;
+    height: 16px;
+    background-color: #6D75B8;
+}
+
+/**/
+
+/* Левое меню */
+
+.left-menu {
+    width: 20%;
+    height: 900px;
+    border-right: 1px solid #00118C;
+    float: left;
+}
+
+.left-menu-title {
+    display: block;
+    width: 80%;
+    font-weight: normal;
+    padding: 2px;
+    margin-left: 15px;
+    border-bottom: 1px solid #00118C;
+}
+
+.left-menu-items {
+    display: block;
+}
+
+.left-menu-items-item {
+    display: block;
+    width: 80%;
+    padding: 2px;
+    margin-left: 15px;
+    list-style: none;
+    border-bottom: 1px solid #00118C;
+}
+
+.left-menu-items-item-subitems {
+    display: block;
+    padding-left: 20px;
+}
+
+.left-menu-items-item-subitems-subitem {
+    display: block;
+    list-style: none;
+    border-bottom: 1px solid #00118C;
+}
+
+.left-menu-items-item-subitems-subitem-last {
+    border-bottom: none;
+}
+
+/**/
+
+/* Конструктор УДК: */
+
+.UDC-constructor {
+    padding: 5px;
+    padding-left: 2px;
+    margin-left: 15px;
+}
+
+/**/
+
+/* Контент */
+
+.content {
+    padding-left: 20%;
+}
+
+/**/
+
+/* Основные таблицы (страница Index) */
+
+.main-table-items {
+    display: block;
+    color: #00118C;
+    list-style: none;
+}
+
+.main-table-items-item {
+    display: block;
+
+}
+
+.main-table-items-item-add {
+    cursor: pointer;
+}
+
+.main-table-items-subitems {
+    display: none;
+    padding-left: 30px;
+    list-style: none;
+}
+
+.main-table-items-item-text {
+    cursor: pointer;
+}
+
+.main-table-items-item-text:hover, .main-table-items-item-text:active {
+    color: red;
+    text-decoration: underline;
+}
+
+/**/
+
+/* Общие определители языка */
+
+.language-table-items {
+    display: block;
+    color: #00118C;
+    list-style: none;
+}
+
+.language-table-items-item {
+    display: block;
+
+}
+
+.language-table-items-item-add {
+    cursor: pointer;
+}
+
+.language-table-items-subitems {
+    display: none;
+    padding-left: 30px;
+    list-style: none;
+}
+
+.language-table-items-item-text {
+    cursor: pointer;
+}
+
+.language-table-items-item-text:hover, .language-table-items-item-text:active {
+    color: red;
+    text-decoration: underline;
+}
+
+/**/
