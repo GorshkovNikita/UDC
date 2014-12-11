@@ -43,6 +43,10 @@
             <form id="Form1" class="UDC-constructor" runat="server">
                 <asp:Label ID="Label1" runat="server" Text="Конструктор УДК:"></asp:Label>
                 <asp:TextBox ID="TextBox1" runat="server" Enabled="True" ReadOnly="False"></asp:TextBox>
+                <div class="constructor">
+                    <span class="main-table"></span>
+                    <span class="language"></span>
+                </div>
             </form>
         </div>
         <div class="content">
