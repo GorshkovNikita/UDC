@@ -43,7 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -156,19 +159,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommonDeterminantController.cs" />
+    <Compile Include="Controllers\CurrentIndexController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CurrentIndexLtS.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrentIndexLtS.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +234,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Models\CurrentIndexLtS.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>CurrentIndexLtS.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -250,6 +260,7 @@
     <Content Include="Views\CommonDeterminant\Nation.aspx" />
     <Content Include="Views\CommonDeterminant\Place.aspx" />
     <Content Include="Views\CommonDeterminant\Time.aspx" />
+    <Content Include="Views\Shared\IndexConstructor.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -272,17 +283,6 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Views\Account\_ChangePasswordPartial.aspx" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.aspx" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.aspx" />
-    <Content Include="Views\Account\_SetPasswordPartial.aspx" />
-    <Content Include="Views\Account\Login.aspx" />
-    <Content Include="Views\Account\Manage.aspx" />
-    <Content Include="Views\Account\Register.aspx" />
-    <Content Include="Views\Account\ExternalLoginFailure.aspx" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.aspx" />
-    <Content Include="Views\Home\About.aspx" />
-    <Content Include="Views\Home\Contact.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\_LoginPartial.aspx" />
@@ -291,9 +291,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\CurrentIndexLtS.dbml.layout">
+      <DependentUpon>CurrentIndexLtS.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -311,7 +321,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>58648</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:51128/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
