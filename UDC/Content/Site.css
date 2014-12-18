@@ -143,17 +143,16 @@ header {
 }
 
 .constructor {
-    
+
 }
 
 /**/
 
 /* Конструктор УДК: */
 
-.UDC-constructor {
-    padding: 5px;
-    padding-left: 2px;
-    margin-left: 15px;
+.label-constructor {
+    float: left;
+    padding-left: 15px;
 }
 
 /**/

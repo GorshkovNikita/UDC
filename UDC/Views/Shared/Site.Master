@@ -42,13 +42,10 @@
                     </ul>
                 </li>
             </ul>
-            <form id="Form1" class="UDC-constructor" runat="server">
-                <asp:Label ID="Label1" runat="server" Text="Конструктор УДК:"></asp:Label>
-                <asp:TextBox ID="TextBox1" runat="server" Enabled="True" ReadOnly="False"></asp:TextBox>
-                <div class="constructor">
-                    <%: Html.Partial("IndexConstructor") %>
-                </div>
-            </form>
+            <span class="label-constructor">Конструктор УДК:&nbsp;</span>
+            <div class="constructor">
+                <%: Html.Partial("IndexConstructor") %>
+            </div>
         </div>
         <div class="content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
