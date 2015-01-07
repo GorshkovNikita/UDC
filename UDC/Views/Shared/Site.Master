@@ -46,12 +46,19 @@
             <div class="constructor">
                 <%: Html.Partial("IndexConstructor") %>
             </div>
+            <div class="search-form">
+                <form method="get" action="../Home/Search">
+                    Поиск по индексу:
+                    <input id="index-search-text" type="text" /><br />
+                    Поиск по названию:
+                    <input id="name-search-text" type="text" /><br />
+                    <input id="search" type="submit" value="Поиск" />
+                </form>
+            </div>
         </div>
         <div class="content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-
-        
         <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
     </body>
 </html>

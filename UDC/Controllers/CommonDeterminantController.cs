@@ -43,24 +43,5 @@ namespace UDC.Controllers
         {
             return View(_db.CurrentIndex.ToList());
         }
-
-        public void Update(string languageIndex)
-        {
-            if (Request.IsAjaxRequest())
-            {
-                _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET LanguageID = {0} WHERE id = 1", languageIndex);
-                _db.SubmitChanges();
-            }
-        }
-
-        public string Select(int limit)
-        {
-            if (Request.IsAjaxRequest())
-            {
-                List<string> lst = _db.ExecuteQuery<string>("SELECT TOP " + limit + " LanguageID FROM dbo.CurrentIndex").ToList();
-                return lst[0];
-            }
-            return null;
-        }
     }
 }

@@ -17,34 +17,14 @@ namespace UDC.Controllers
             return View(_db.CurrentIndex.ToList());
         }
 
-        public ActionResult About()
+        public ActionResult Search()
         {
-            return View();
+            return View(_db.CurrentIndex.ToList());
         }
 
-        public ActionResult Contact()
+        public ActionResult MoreInfo()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public void Update(string mainIndex)
-        {
-            if (Request.IsAjaxRequest())
-            {
-                _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = 1", mainIndex);
-                _db.SubmitChanges();
-            }
-        }
-
-        public string Select(int limit)
-        {
-            if (Request.IsAjaxRequest())
-            {
-                List<string> lst = _db.ExecuteQuery<string>("SELECT TOP " + limit + "MainTableID FROM dbo.CurrentIndex").ToList();
-                return lst[0];
-            }
-            return null;
+            return View(_db.CurrentIndex.ToList());
         }
     }
 }
