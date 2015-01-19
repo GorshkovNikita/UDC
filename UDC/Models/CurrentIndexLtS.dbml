@@ -10,6 +10,9 @@
       <Column Name="PlaceID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="NationID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PropertyID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SignBetween" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="FirstBracket" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="SecondBracket" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

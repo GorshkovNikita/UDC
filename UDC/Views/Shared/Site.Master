@@ -42,9 +42,27 @@
                     </ul>
                 </li>
             </ul>
-            <span class="label-constructor">Конструктор УДК:&nbsp;</span>
+            <span class="label-constructor">Конструктор УДК:&nbsp;</span><br />
             <div class="constructor">
-                <%: Html.Partial("IndexConstructor") %>
+                <div class="udc-constructor-textbox">
+                <form class="udc-check" method="post" action="http://localhost:51128/Ajax/UDCCreate">
+                    <div style="display: none" id="udc-text"></div>
+                    <input id="udc" name="stringUDC" type="text" /><br />
+                    <div class="buttons">
+                        <input type="button" class="plus-button" value="+" onclick="compositeIndexPlus(this)" />
+                        <input type="button" class="colon-button" value=":" onclick="compositeIndexColon(this)" />
+                        <input type="button" class="double-colon-button" value="::" onclick="compositeIndexDoubleColon(this)" />
+                    </div>
+                    <input id="udc-check-submit" type="submit" value="Построение УДК" />
+                </form>
+            </div>
+                <br />
+                
+                <br />
+                <span style="padding-left: 15px"></span>Текущая часть индекса:<span class="current-part-index"></span>
+                <span class="current-part-index-plus" onclick="curPartIndexIncrement(this)">+</span><span class="current-part-index-minus" onclick="curPartIndexDecrement(this)">-</span>
+                <br />
+                <span class="clear-constructor" onclick="ClearConstructor()">Очистить конструктор</span>
             </div>
             <div class="search-form">
                 <form method="get" action="../Home/Search">

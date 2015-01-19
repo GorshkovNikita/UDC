@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<UDC.Models.CurrentIndex>>" %>
 
     <% foreach (var item in Model) { %>
+        <%: Html.DisplayFor(modelItem => item.id) %> часть индекса: <br />
         <span class="constructor-main-table-id" id="main-table-id-<%: Html.DisplayFor(modelItem => item.id) %>"><%: Html.DisplayFor(modelItem => item.MainTableID) %></span
         ><span class="constructor-language-id" id="language-id-<%: Html.DisplayFor(modelItem => item.id) %>"><%: Html.DisplayFor(modelItem => item.LanguageID) %></span
         ><span class="constructor-form-id" id="form-id-<%: Html.DisplayFor(modelItem => item.id) %>"><%: Html.DisplayFor(modelItem => item.FormID) %></span

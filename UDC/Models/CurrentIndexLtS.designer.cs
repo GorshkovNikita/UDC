@@ -96,6 +96,12 @@ namespace UDC.Models
 		
 		private string _PropertyID;
 		
+		private string _SignBetween;
+		
+		private string _FirstBracket;
+		
+		private string _SecondBracket;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -116,6 +122,12 @@ namespace UDC.Models
     partial void OnNationIDChanged();
     partial void OnPropertyIDChanging(string value);
     partial void OnPropertyIDChanged();
+    partial void OnSignBetweenChanging(string value);
+    partial void OnSignBetweenChanged();
+    partial void OnFirstBracketChanging(string value);
+    partial void OnFirstBracketChanged();
+    partial void OnSecondBracketChanging(string value);
+    partial void OnSecondBracketChanged();
     #endregion
 		
 		public CurrentIndex()
@@ -279,6 +291,66 @@ namespace UDC.Models
 					this._PropertyID = value;
 					this.SendPropertyChanged("PropertyID");
 					this.OnPropertyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignBetween", DbType="NVarChar(5)")]
+		public string SignBetween
+		{
+			get
+			{
+				return this._SignBetween;
+			}
+			set
+			{
+				if ((this._SignBetween != value))
+				{
+					this.OnSignBetweenChanging(value);
+					this.SendPropertyChanging();
+					this._SignBetween = value;
+					this.SendPropertyChanged("SignBetween");
+					this.OnSignBetweenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstBracket", DbType="NVarChar(40) NOT NULL", CanBeNull=false)]
+		public string FirstBracket
+		{
+			get
+			{
+				return this._FirstBracket;
+			}
+			set
+			{
+				if ((this._FirstBracket != value))
+				{
+					this.OnFirstBracketChanging(value);
+					this.SendPropertyChanging();
+					this._FirstBracket = value;
+					this.SendPropertyChanged("FirstBracket");
+					this.OnFirstBracketChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SecondBracket", DbType="NVarChar(40) NOT NULL", CanBeNull=false)]
+		public string SecondBracket
+		{
+			get
+			{
+				return this._SecondBracket;
+			}
+			set
+			{
+				if ((this._SecondBracket != value))
+				{
+					this.OnSecondBracketChanging(value);
+					this.SendPropertyChanging();
+					this._SecondBracket = value;
+					this.SendPropertyChanged("SecondBracket");
+					this.OnSecondBracketChanged();
 				}
 			}
 		}

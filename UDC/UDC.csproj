@@ -162,11 +162,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Extensions\ExtensionFunctions.cs" />
+    <Compile Include="Extensions\UDCIndex.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\CommonDeterminantController.cs" />
     <Compile Include="Controllers\CurrentIndexController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\UDCPart.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,9 +264,11 @@
     <Content Include="Views\CommonDeterminant\Nation.aspx" />
     <Content Include="Views\CommonDeterminant\Place.aspx" />
     <Content Include="Views\CommonDeterminant\Time.aspx" />
+    <Content Include="Views\Home\CreatedIndex.aspx" />
     <Content Include="Views\Home\MoreInfo.aspx" />
     <Content Include="Views\Home\Search.aspx" />
     <Content Include="Views\Shared\IndexConstructor.ascx" />
+    <Content Include="Views\Shared\UDCTree.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
