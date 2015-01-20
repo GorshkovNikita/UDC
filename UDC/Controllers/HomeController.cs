@@ -28,6 +28,11 @@ namespace UDC.Controllers
             return View(_db.CurrentIndex.ToList());
         }
 
+        public ActionResult SpecificDeterminants()
+        {
+            return View(_db.CurrentIndex.ToList());
+        }
+
         public ActionResult CreatedIndex()
         {
             UDCIndex udc = AjaxController.UDC;
@@ -44,6 +49,21 @@ namespace UDC.Controllers
                 for (Int32 m = 0; m < udc.GetUdcParts()[i].GetPartsOfPlaceIndex().Count; m++)
                 {
                     ViewData["placeIndex" + i + "Part" + m] = udc.GetUdcParts()[i].GetPartsOfPlaceIndex()[m];
+                }
+                ViewData["timeIndexCountParts" + i] = udc.GetUdcParts()[i].GetPartsOfTimeIndex().Count;
+                for (Int32 m = 0; m < udc.GetUdcParts()[i].GetPartsOfTimeIndex().Count; m++)
+                {
+                    ViewData["timeIndex" + i + "Part" + m] = udc.GetUdcParts()[i].GetPartsOfTimeIndex()[m];
+                }
+                ViewData["nationIndexCountParts" + i] = udc.GetUdcParts()[i].GetPartsOfNationIndex().Count;
+                for (Int32 m = 0; m < udc.GetUdcParts()[i].GetPartsOfNationIndex().Count; m++)
+                {
+                    ViewData["nationIndex" + i + "Part" + m] = udc.GetUdcParts()[i].GetPartsOfNationIndex()[m];
+                }
+                ViewData["formIndexCountParts" + i] = udc.GetUdcParts()[i].GetPartsOfFormIndex().Count;
+                for (Int32 m = 0; m < udc.GetUdcParts()[i].GetPartsOfFormIndex().Count; m++)
+                {
+                    ViewData["formIndex" + i + "Part" + m] = udc.GetUdcParts()[i].GetPartsOfFormIndex()[m];
                 }
                 ViewData["languageIndexCountParts" + i] = udc.GetUdcParts()[i].GetPartsOfLanguageIndex().Count;
                 for (Int32 k = 0; k < udc.GetUdcParts()[i].GetPartsOfLanguageIndex().Count; k++)

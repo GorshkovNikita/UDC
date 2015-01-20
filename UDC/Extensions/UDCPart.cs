@@ -290,6 +290,121 @@ namespace UDC.Extensions
             String parsingString = _timeIndex;
             Char currentSymbol;
             String currentString = "";
+            String beforeSlash = "";
+            Boolean firstQuote = false;
+            while (parsingString.Length != 0)
+            {
+                currentSymbol = parsingString[0];
+                parsingString = parsingString.Remove(0, 1);
+                if (currentSymbol == '"' && !firstQuote)
+                {
+                    firstQuote = true;
+                }
+                else if (currentSymbol == '"' && firstQuote)
+                {
+                    if (beforeSlash != "")
+                    {
+                        if (!beforeSlash.Contains('.'))
+                        {
+                            Int32 low = Convert.ToInt32(beforeSlash);
+                            Int32 high = Convert.ToInt32(currentString);
+                            Int32 i = low;
+                            while (i <= high)
+                            {
+                                if (beforeSlash[0] == '0' && currentString[0] == '0')
+                                    _partsOfTimeIndex.Add('0' + Convert.ToString(i));
+                                else
+                                    _partsOfTimeIndex.Add(Convert.ToString(i));
+                                i++;
+                            }
+                            beforeSlash = "";
+                        }
+                        else
+                        {
+                            int idx = beforeSlash.LastIndexOf('.');
+                            String firstPartBeforeSlash = beforeSlash.Remove(idx + 1);
+                            String lastPartBeforeSlash = beforeSlash.Remove(0, idx + 1);
+                            Int32 low = Convert.ToInt32(lastPartBeforeSlash);
+                            if (currentString.Contains('.'))
+                                currentString = currentString.Remove(currentString.IndexOf('.'), 1);
+                            Int32 high = Convert.ToInt32(currentString);
+                            Int32 i = low;
+                            while (i <= high)
+                            {
+                                currentString = String.Concat(firstPartBeforeSlash, i);
+                                if (currentString[0] == '0')
+                                    _partsOfTimeIndex.Add('0' + currentString);
+                                else
+                                    _partsOfTimeIndex.Add(currentString);
+                                i++;
+                            }
+                            beforeSlash = "";
+                        }
+                    }
+                    else
+                    {
+                        _partsOfTimeIndex.Add(currentString);
+                    }
+                    firstQuote = false;
+                    currentString = "";
+                }
+                else if (currentSymbol == '+')
+                {
+                    if (beforeSlash != "")
+                    {
+                        if (!beforeSlash.Contains('.'))
+                        {
+                            Int32 low = Convert.ToInt32(beforeSlash);
+                            Int32 high = Convert.ToInt32(currentString);
+                            Int32 i = low;
+                            while (i <= high)
+                            {
+                                if (currentString[0] == '0' && beforeSlash[0] == '0')
+                                    _partsOfTimeIndex.Add('0' + currentString);
+                                else
+                                    _partsOfTimeIndex.Add(currentString);
+                                i++;
+                            }
+                            beforeSlash = "";
+                        }
+                        else
+                        {
+                            int idx = beforeSlash.LastIndexOf('.');
+                            String firstPartBeforeSlash = beforeSlash.Remove(idx + 1);
+                            String lastPartBeforeSlash = beforeSlash.Remove(0, idx + 1);
+                            Int32 low = Convert.ToInt32(lastPartBeforeSlash);
+                            if (currentString.Contains('.'))
+                                currentString = currentString.Remove(currentString.IndexOf('.'), 1);
+                            Int32 high = Convert.ToInt32(currentString);
+                            Int32 i = low;
+                            while (i <= high)
+                            {
+                                currentString = String.Concat(firstPartBeforeSlash, i);
+                                if (currentString[0] == '0')
+                                    _partsOfTimeIndex.Add('0' + currentString);
+                                else
+                                    _partsOfTimeIndex.Add(currentString);
+                                i++;
+                            }
+                            beforeSlash = "";
+                        }
+                    }
+                    else
+                    {
+                        _partsOfTimeIndex.Add(currentString);
+                    }
+                    currentString = "";
+                }
+                else if (currentSymbol == '/')
+                {
+                    beforeSlash = currentString;
+                    currentString = "";
+                }
+                else
+                {
+                    currentString = String.Concat(currentString, currentSymbol);
+                }
+            }
         }
 
         public void NationIndexParse()
@@ -297,6 +412,33 @@ namespace UDC.Extensions
             String parsingString = _nationIndex;
             Char currentSymbol;
             String currentString = "";
+            while (parsingString.Length != 0)
+            {
+                currentSymbol = parsingString[0];
+                parsingString = parsingString.Remove(0, 1);
+                if (currentSymbol == '(')
+                {
+
+                }
+                else if (currentSymbol == ')')
+                {
+                    _partsOfNationIndex.Add(currentString);
+                    currentString = "";
+                }
+                else if (currentSymbol == '=')
+                {
+                    if (currentString != "")
+                    {
+                        _partsOfNationIndex.Add(currentString);
+                        currentString = "";
+                    }
+                    currentString = String.Concat(currentString, currentSymbol);
+                }
+                else
+                {
+                    currentString = String.Concat(currentString, currentSymbol);
+                }
+            }
         }
 
         public void FormIndexParse()
@@ -304,6 +446,30 @@ namespace UDC.Extensions
             String parsingString = _formIndex;
             Char currentSymbol;
             String currentString = "";
+            while (parsingString.Length != 0)
+            {
+                currentSymbol = parsingString[0];
+                parsingString = parsingString.Remove(0, 1);
+                if (currentSymbol == '(')
+                {
+
+                }
+                else if (currentSymbol == ')')
+                {
+                    
+                    _partsOfFormIndex.Add(currentString);
+                    currentString = "";
+                }
+                else if (currentSymbol == '+')
+                {
+                    _partsOfFormIndex.Add(currentString);
+                    currentString = "";
+                }
+                else
+                {
+                    currentString = String.Concat(currentString, currentSymbol);
+                }
+            }
         }
 
         public void MainIndexAdd(String str)

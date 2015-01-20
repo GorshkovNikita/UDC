@@ -135,7 +135,38 @@ namespace UDC.Controllers
                         _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + firstPartLst + "." + lastPartLst + "/." + lastPartMainIndex + "]", currentPartIndex);
                     }
                     _db.SubmitChanges();
-                    //}
+                }
+            }
+        }
+
+        [HttpPost]
+        public void UpdateMainIndexSpecDet(String specDetIndex)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                List<String> lst = _db.ExecuteQuery<String>("SELECT MainTableID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                if ((lst[0] != "") && !(lst[0].Contains("[")) && !(lst[0].Contains("+")) && !(lst[0].Contains("/")))
+                {
+                    //if (!(lst[0].Contains(".")))
+                    //{
+                        _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + specDetIndex, currentPartIndex);
+                    /*}
+                    else
+                    {
+                        int idx = lst[0].LastIndexOf('.');
+                        String firstPartLst = lst[0].Remove(idx);
+                        String lastPartLst = lst[0].Remove(0, idx + 1);
+                        String lastPartMainIndex = specDetIndex.Remove(0, idx + 1);
+                        _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", firstPartLst + "." + lastPartLst + "/." + lastPartMainIndex, currentPartIndex);
+                    }*/
+                    _db.SubmitChanges();
+                }
+                else if (lst[0] != "")
+                {
+                    List<String> partOfMainIndex = ExtensionFunctions.MainIndexParse(lst[0]);
+                    lst[0] = lst[0].Remove(lst[0].LastIndexOf('+') + 1);
+                    _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + partOfMainIndex[partOfMainIndex.Count - 1] + specDetIndex + ']', currentPartIndex);
+                    _db.SubmitChanges();
                 }
             }
         }
@@ -250,6 +281,125 @@ namespace UDC.Controllers
         }
 
         [HttpPost]
+        public void UpdateTimeIndex(String timeIndex)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", timeIndex, currentPartIndex);
+                _db.SubmitChanges();
+            }
+        }
+
+        [HttpPost]
+        public void UpdateTimeIndexPlus(String timeIndex)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                List<String> lst = _db.ExecuteQuery<String>("SELECT TimeID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                if (lst[0] != "")
+                {
+                    timeIndex = ExtensionFunctions.DeleteBrackets(timeIndex);
+                    lst[0] = lst[0].Remove(lst[0].LastIndexOf('"'), 1);
+                    lst[0] += '+' + timeIndex;
+                    _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", lst[0] + '"', currentPartIndex);
+                    _db.SubmitChanges();
+                }
+                else
+                {
+                    _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", timeIndex, currentPartIndex);
+                    _db.SubmitChanges();
+                }
+            }
+        }
+
+        [HttpPost]
+        public void UpdateTimeIndexSlash(String timeIndex)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                String lastPart;
+                List<String> lst = _db.ExecuteQuery<String>("SELECT TimeID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                if (lst[0].Length > 0)
+                {
+                    timeIndex = ExtensionFunctions.DeleteBrackets(timeIndex);
+                    lst[0] = lst[0].Remove(lst[0].LastIndexOf('"'), 1);
+                    if (lst[0].Contains('+'))
+                    {
+                        lastPart = lst[0].Remove(0, lst[0].LastIndexOf('+') + 1);
+                        lst[0] = lst[0].Remove(lst[0].LastIndexOf(lastPart), lastPart.Length);
+                    }
+                    else
+                    {
+                        lastPart = lst[0].Remove(0, lst[0].IndexOf('"') + 1);
+                        lst[0] = lst[0].Remove(lst[0].LastIndexOf(lastPart), lastPart.Length);
+                    }
+                    if (!lastPart.Contains('/'))
+                    {
+                        if (!(lastPart.Contains(".")))
+                        {
+                            if ((lastPart.Length == timeIndex.Length) && (Convert.ToInt32(lastPart) < Convert.ToInt32(timeIndex)))
+                                _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", lst[0] + lastPart + "/" + timeIndex + '"', currentPartIndex);
+                        }
+                        else
+                        {
+                            int idx = lastPart.LastIndexOf('.');
+                            String firstPart = lastPart.Remove(idx + 1);
+                            String secondPart = lastPart.Remove(0, idx + 1);
+                            String lastPartPlaceIndex = timeIndex.Remove(0, idx + 1);
+                            if ((secondPart.Length == lastPartPlaceIndex.Length) && (Convert.ToInt32(secondPart) < Convert.ToInt32(lastPartPlaceIndex)))
+                            {
+                                _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + firstPart + secondPart + "/." + lastPartPlaceIndex + '"', currentPartIndex);
+                            }
+                        }
+                        _db.SubmitChanges();
+                    }
+                }
+            }
+        }
+
+        [HttpPost]
+        public void UpdateNationIndex(String nationIndex)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", nationIndex, currentPartIndex);
+                _db.SubmitChanges();
+            }
+        }
+
+        [HttpPost]
+        public void UpdateNationIndexPlus(String nationIndex)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                List<String> lst = _db.ExecuteQuery<String>("SELECT NationID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                if (lst[0] != "")
+                {
+                    nationIndex = ExtensionFunctions.DeleteBrackets(nationIndex);
+                    lst[0] = lst[0].Remove(lst[0].LastIndexOf(')'), 1);
+                    lst[0] += nationIndex;
+                    _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", lst[0] + ')', currentPartIndex);
+                    _db.SubmitChanges();
+                }
+                else
+                {
+                    _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", nationIndex, currentPartIndex);
+                    _db.SubmitChanges();
+                }
+            }
+        }
+
+        [HttpPost]
+        public void UpdateFormIndex(String formIndex)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET FormID = {0} WHERE id = {1}", formIndex, currentPartIndex);
+                _db.SubmitChanges();
+            }
+        }
+
+        [HttpPost]
         public void UpdateSign(String between)
         {
             if (Request.IsAjaxRequest())
@@ -353,15 +503,6 @@ namespace UDC.Controllers
                             else if (currentSymbol == ']')
                             {
                                 countCloseBrackets++;
-                            }
-                            // встречаем +
-                            else if (currentSymbol == '+')
-                            {
-
-                            }
-                            else if (currentSymbol == '/')
-                            {
-
                             }
                             else if (currentSymbol == '(')
                             {
@@ -479,11 +620,6 @@ namespace UDC.Controllers
                                     lastSpecSymbol = '=';
                                 }
                             }
-                            // встречаем обычный символ
-                            else
-                            {
-
-                            }
                             // добавляем в строку текущий индекс
                             if ((countOpenBrackets != countCloseBrackets))
                                 if (currentSymbol != ')')
@@ -555,11 +691,6 @@ namespace UDC.Controllers
                     else if (currentSymbol == ']')
                     {
                         countCloseBrackets++;
-                    }
-                    // встречаем +
-                    else if (currentSymbol == '+')
-                    {
-
                     }
                     else if (currentSymbol == '(')
                     {
@@ -675,11 +806,6 @@ namespace UDC.Controllers
                             }
                             lastSpecSymbol = '=';
                         }
-                    }
-                    // встречаем обычный символ
-                    else
-                    {
-
                     }
                     // добавляем в строку текущий индекс
                     if (currentSymbol != ')')

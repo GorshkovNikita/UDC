@@ -267,6 +267,7 @@
     <Content Include="Views\Home\CreatedIndex.aspx" />
     <Content Include="Views\Home\MoreInfo.aspx" />
     <Content Include="Views\Home\Search.aspx" />
+    <Content Include="Views\Home\SpecificDeterminants.aspx" />
     <Content Include="Views\Shared\IndexConstructor.ascx" />
     <Content Include="Views\Shared\UDCTree.ascx" />
     <Content Include="Web.config" />

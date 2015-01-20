@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td style="padding: 2px;">(038)</td>
-            <td style="padding: 2px;">Философия. Психология</td>
+            <td style="padding: 2px;">Словари. Языковые словари. Специальные и технические словари</td>
             <td style="padding: 2px;">Общий определитель формы документа</td>
             <td style="padding: 2px;">
                 <h5>Родители:</h5>

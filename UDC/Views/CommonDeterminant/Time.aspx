@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Основные таблицы</h3>
+    <h3>Общие определители времени</h3>
     <ul class="main-table-items">
         <li class="main-table-items-item">
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
@@ -28,7 +28,7 @@
                             <span class="main-table-items-item-text"><span class="main-table-id">"01"</span> 2 век</span>
                             <span class="main-table-items-item-add add-index-button" onclick="addTimeIndex(this)">Добавить в индекс</span>
                             <span class="main-table-items-item-add add-index-button" onclick="addTimeIndexPlus(this)">+</span>
-                                            <span class="main-table-items-item-add add-index-button" onclick="addTimeIndexSlash(this)">/</span>
+                            <span class="main-table-items-item-add add-index-button" onclick="addTimeIndexSlash(this)">/</span>
                             <span class="more-info"><%: Html.ActionLink("Подробнее", "MoreInfo", "Home") %></span>
                             <ul class="main-table-items-subitems">
                                 <li class="main-table-subitems-subitem">

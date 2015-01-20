@@ -22,6 +22,13 @@ function addMainIndexSlash(elem) {
     updateIndex();
 }
 
+// добавление специального определителя
+function addMainIndexSpecDet(elem) {
+    node = $(elem).prevAll()[0].children[0];
+    $.post("http://localhost:51128/Ajax/UpdateMainIndexSpecDet", { specDetIndex: $(node).html() });
+    updateIndex();
+}
+
 // добавление языкового определителя
 function addLanguageIndex(elem) {
     node = $(elem).prevAll()[0].children[0];
@@ -38,6 +45,7 @@ function addNewLanguageIndex(elem) {
     updateIndex();
 }
 
+// добавление языка перевода
 function addLanguageTranslate(elem) {
     node = $(elem).prevAll()[2].children[0];
     currentPartIndex = $('.current-part-index')[0];
@@ -66,6 +74,54 @@ function addPlaceIndexSlash(elem) {
     node = $(elem).prevAll()[2].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdatePlaceIndexSlash", { placeIndex: $(node).html() });
+    updateIndex();
+}
+
+// добавлние общего определителя времени
+function addTimeIndex(elem) {
+    node = $(elem).prevAll()[0].children[0];
+    currentPartIndex = $('.current-part-index')[0];
+    $.post("http://localhost:51128/Ajax/UpdateTimeIndex", { timeIndex: $(node).html() });
+    updateIndex();
+}
+
+// добавление нового общего определителя времени (+)
+function addTimeIndexPlus(elem) {
+    node = $(elem).prevAll()[1].children[0];
+    currentPartIndex = $('.current-part-index')[0];
+    $.post("http://localhost:51128/Ajax/UpdateTimeIndexPlus", { timeIndex: $(node).html() });
+    updateIndex();
+}
+
+// добавление интервала общего определителя времени (/)
+function addTimeIndexSlash(elem) {
+    node = $(elem).prevAll()[2].children[0];
+    currentPartIndex = $('.current-part-index')[0];
+    $.post("http://localhost:51128/Ajax/UpdateTimeIndexSlash", { timeIndex: $(node).html() });
+    updateIndex();
+}
+
+// добавлние общего определителя нации
+function addNationIndex(elem) {
+    node = $(elem).prevAll()[0].children[0];
+    currentPartIndex = $('.current-part-index')[0];
+    $.post("http://localhost:51128/Ajax/UpdateNationIndex", { nationIndex: $(node).html() });
+    updateIndex();
+}
+
+// добавление нового общего определителя нации (+)
+function addNationIndexPlus(elem) {
+    node = $(elem).prevAll()[1].children[0];
+    currentPartIndex = $('.current-part-index')[0];
+    $.post("http://localhost:51128/Ajax/UpdateNationIndexPlus", { nationIndex: $(node).html() });
+    updateIndex();
+}
+
+// добавление общего определителя формы документа
+function addFormIndex(elem) {
+    node = $(elem).prevAll()[0].children[0];
+    currentPartIndex = $('.current-part-index')[0];
+    $.post("http://localhost:51128/Ajax/UpdateFormIndex", { formIndex: $(node).html() });
     updateIndex();
 }
 
@@ -110,7 +166,14 @@ function curPartIndexDecrement(elem) {
 
 // показать узел дерева
 function show(elem) {
-    node = $(elem).nextAll()[5];
+    if (window.location.href == "http://localhost:51128/CommonDeterminant/FormDocument")
+        node = $(elem).nextAll()[3];
+    else if (window.location.href == "http://localhost:51128/CommonDeterminant/Nation")
+        node = $(elem).nextAll()[4];
+    else if (window.location.href == "http://localhost:51128/Home/SpecificDeterminants")
+        node = $(elem).nextAll()[3];
+    else
+        node = $(elem).nextAll()[5];
     if ($(node).css("display") == "none")
         node.style.display = "block";
     else

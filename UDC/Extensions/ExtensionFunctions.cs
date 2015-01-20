@@ -128,6 +128,14 @@ namespace UDC.Extensions
                 input = input.Remove(input.IndexOf(')'), 1);
                 return input;
             }
+            else if (input.Contains('"'))
+            {
+                while (input.Contains('"'))
+                {
+                    input = input.Remove(input.IndexOf('"'), 1);
+                }
+                return input;
+            }
             else
             {
                 return input;

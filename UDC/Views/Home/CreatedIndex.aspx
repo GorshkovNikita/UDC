@@ -22,6 +22,24 @@
             
             <span style="-webkit-padding-start: 15px"><%= ViewData["placeIndex" + i + "Part" + m] %></span><br />
         <% } %>
+        <% if ((Int32)ViewData["timeIndexCountParts" + i] != 0) { %>
+             <h6 style="-webkit-padding-start: 15px">Общие определители времени:</h6>
+        <% } %>
+        <% for (Int32 m = 0; m < (Int32)ViewData["timeIndexCountParts" + i]; m++) { %>
+            <span style="-webkit-padding-start: 15px"><%= ViewData["timeIndex" + i + "Part" + m] %></span><br />
+        <% } %>
+        <% if ((Int32)ViewData["nationIndexCountParts" + i] != 0) { %>
+             <h6 style="-webkit-padding-start: 15px">Общие определители нации:</h6>
+        <% } %>
+        <% for (Int32 m = 0; m < (Int32)ViewData["nationIndexCountParts" + i]; m++) { %>
+            <span style="-webkit-padding-start: 15px"><%= ViewData["nationIndex" + i + "Part" + m] %></span><br />
+        <% } %>
+        <% if ((Int32)ViewData["formIndexCountParts" + i] != 0) { %>
+             <h6 style="-webkit-padding-start: 15px">Общие определители формы документа:</h6>
+        <% } %>
+        <% for (Int32 m = 0; m < (Int32)ViewData["formIndexCountParts" + i]; m++) { %>
+            <span style="-webkit-padding-start: 15px"><%= ViewData["formIndex" + i + "Part" + m] %></span><br />
+        <% } %>
         <% if ((Int32)ViewData["languageIndexCountParts" + i] != 0) { %>
              <h6 style="-webkit-padding-start: 15px">Общие определители языка:</h6>
         <% } %>

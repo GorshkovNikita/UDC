@@ -41,6 +41,9 @@
                         </li>
                     </ul>
                 </li>
+                <li class="left-menu-items-item">
+                    <%: Html.ActionLink("Специальные определители", "SpecificDeterminants", "Home") %>
+                </li>
             </ul>
             <span class="label-constructor">Конструктор УДК:&nbsp;</span><br />
             <div class="constructor">
