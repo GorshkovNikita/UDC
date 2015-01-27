@@ -455,8 +455,10 @@ namespace UDC.Controllers
         }
 
         [HttpPost]
-        public ActionResult UDCCreate(String stringUDC)
+        public ActionResult UDCCreate(String stringUDC, String tree, String db)
         {
+            Boolean treeBool = Convert.ToBoolean(tree);
+            Boolean dbBool = Convert.ToBoolean(db);
             List<Int32> count = _db.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
             UDCIndex udc = new UDCIndex(count[0]);
             Char currentSymbol; // текущий символ строки УДК
@@ -838,10 +840,14 @@ namespace UDC.Controllers
                 }
                 udc.AddPartIndex(part);
             }
-            udc.AddUDCInDataBase();
+            if (dbBool)
+                udc.AddUDCInDataBase();
             udc.Parse();
             UDC = udc;
-            return RedirectToAction("CreatedIndex", "Home");
+            if (treeBool)
+                return RedirectToAction("CreatedIndex", "Home");
+            else
+                return RedirectToAction("MoreInfo", "Home");
         }
     }
 }

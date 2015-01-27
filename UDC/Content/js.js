@@ -1,6 +1,6 @@
 ﻿// добавление основного индекса
 function addMainIndex(elem) {
-    node = $(elem).prevAll()[0].children[0];
+    node = $(elem).prevAll()[0].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateMainIndex", { mainIndex: $(node).html() });
     updateIndex();
@@ -8,7 +8,7 @@ function addMainIndex(elem) {
 
 // + к основному индексу
 function addMainIndexPlus(elem) {
-    node = $(elem).prevAll()[1].children[0];
+    node = $(elem).prevAll()[1].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateMainIndexPlus", { mainIndex: $(node).html() });
     updateIndex();
@@ -16,7 +16,7 @@ function addMainIndexPlus(elem) {
 
 // / к основному индексу
 function addMainIndexSlash(elem) {
-    node = $(elem).prevAll()[2].children[0];
+    node = $(elem).prevAll()[2].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateMainIndexSlash", { mainIndex: $(node).html() });
     updateIndex();
@@ -24,14 +24,14 @@ function addMainIndexSlash(elem) {
 
 // добавление специального определителя
 function addMainIndexSpecDet(elem) {
-    node = $(elem).prevAll()[0].children[0];
+    node = $(elem).prevAll()[0].children[0].children[0];
     $.post("http://localhost:51128/Ajax/UpdateMainIndexSpecDet", { specDetIndex: $(node).html() });
     updateIndex();
 }
 
 // добавление языкового определителя
 function addLanguageIndex(elem) {
-    node = $(elem).prevAll()[0].children[0];
+    node = $(elem).prevAll()[0].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateLanguage", { languageIndex: $(node).html() });
     updateIndex();
@@ -39,7 +39,7 @@ function addLanguageIndex(elem) {
 
 // добавление еще одного языкового индекса
 function addNewLanguageIndex(elem) {
-    node = $(elem).prevAll()[1].children[0];
+    node = $(elem).prevAll()[1].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateLanguagePlus", { languageIndex: $(node).html() });
     updateIndex();
@@ -47,7 +47,7 @@ function addNewLanguageIndex(elem) {
 
 // добавление языка перевода
 function addLanguageTranslate(elem) {
-    node = $(elem).prevAll()[2].children[0];
+    node = $(elem).prevAll()[2].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateLanguageTranslate", { languageIndex: $(node).html() });
     updateIndex();
@@ -55,7 +55,7 @@ function addLanguageTranslate(elem) {
 
 // добавлние общего определителя места
 function addPlaceIndex(elem) {
-    node = $(elem).prevAll()[0].children[0];
+    node = $(elem).prevAll()[0].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdatePlaceIndex", { placeIndex: $(node).html() });
     updateIndex();
@@ -63,7 +63,7 @@ function addPlaceIndex(elem) {
 
 // добавление нового общего определителя места (+)
 function addPlaceIndexPlus(elem) {
-    node = $(elem).prevAll()[1].children[0];
+    node = $(elem).prevAll()[1].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdatePlaceIndexPlus", { placeIndex: $(node).html() });
     updateIndex();
@@ -71,7 +71,7 @@ function addPlaceIndexPlus(elem) {
 
 // добавление интервала общего определителя места (/)
 function addPlaceIndexSlash(elem) {
-    node = $(elem).prevAll()[2].children[0];
+    node = $(elem).prevAll()[2].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdatePlaceIndexSlash", { placeIndex: $(node).html() });
     updateIndex();
@@ -79,7 +79,7 @@ function addPlaceIndexSlash(elem) {
 
 // добавлние общего определителя времени
 function addTimeIndex(elem) {
-    node = $(elem).prevAll()[0].children[0];
+    node = $(elem).prevAll()[0].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateTimeIndex", { timeIndex: $(node).html() });
     updateIndex();
@@ -87,7 +87,7 @@ function addTimeIndex(elem) {
 
 // добавление нового общего определителя времени (+)
 function addTimeIndexPlus(elem) {
-    node = $(elem).prevAll()[1].children[0];
+    node = $(elem).prevAll()[1].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateTimeIndexPlus", { timeIndex: $(node).html() });
     updateIndex();
@@ -95,7 +95,7 @@ function addTimeIndexPlus(elem) {
 
 // добавление интервала общего определителя времени (/)
 function addTimeIndexSlash(elem) {
-    node = $(elem).prevAll()[2].children[0];
+    node = $(elem).prevAll()[2].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateTimeIndexSlash", { timeIndex: $(node).html() });
     updateIndex();
@@ -103,7 +103,7 @@ function addTimeIndexSlash(elem) {
 
 // добавлние общего определителя нации
 function addNationIndex(elem) {
-    node = $(elem).prevAll()[0].children[0];
+    node = $(elem).prevAll()[0].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateNationIndex", { nationIndex: $(node).html() });
     updateIndex();
@@ -111,7 +111,7 @@ function addNationIndex(elem) {
 
 // добавление нового общего определителя нации (+)
 function addNationIndexPlus(elem) {
-    node = $(elem).prevAll()[1].children[0];
+    node = $(elem).prevAll()[1].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateNationIndexPlus", { nationIndex: $(node).html() });
     updateIndex();
@@ -119,9 +119,16 @@ function addNationIndexPlus(elem) {
 
 // добавление общего определителя формы документа
 function addFormIndex(elem) {
-    node = $(elem).prevAll()[0].children[0];
+    node = $(elem).prevAll()[0].children[0].children[0];
     currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateFormIndex", { formIndex: $(node).html() });
+    updateIndex();
+}
+
+// парсинг индекса
+function parseUDC(elem) {
+    node = elem;
+    $.post("http://localhost:51128/Ajax/UDCCreate", { stringUDC: $(elem).html() });
     updateIndex();
 }
 
@@ -167,13 +174,13 @@ function curPartIndexDecrement(elem) {
 // показать узел дерева
 function show(elem) {
     if (window.location.href == "http://localhost:51128/CommonDeterminant/FormDocument")
-        node = $(elem).nextAll()[3];
+        node = $(elem).nextAll()[2];
     else if (window.location.href == "http://localhost:51128/CommonDeterminant/Nation")
-        node = $(elem).nextAll()[4];
-    else if (window.location.href == "http://localhost:51128/Home/SpecificDeterminants")
         node = $(elem).nextAll()[3];
+    else if (window.location.href == "http://localhost:51128/Home/SpecificDeterminants")
+        node = $(elem).nextAll()[2];
     else
-        node = $(elem).nextAll()[5];
+        node = $(elem).nextAll()[4];
     if ($(node).css("display") == "none")
         node.style.display = "block";
     else
