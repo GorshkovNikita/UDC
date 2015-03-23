@@ -11,11 +11,17 @@ namespace UDC.Controllers
 
     public class HomeController : Controller
     {
-        public CurrentIndexLtSDataContext _db = new CurrentIndexLtSDataContext();
+        private CurrentIndexDataContext _db = new CurrentIndexDataContext();
+        private IndexDataContext _index = new IndexDataContext();
 
         public ActionResult Index()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View(_index.Index.ToList());
+        }
+
+        public ActionResult Index1() 
+        {
+            return View(_index.Index.ToList());
         }
 
         public ActionResult Search()

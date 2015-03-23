@@ -13,7 +13,7 @@ namespace UDC.Controllers
         //
         // GET: /Ajax/
 
-        public CurrentIndexLtSDataContext _db = new CurrentIndexLtSDataContext();
+        public CurrentIndexDataContext _db = new CurrentIndexDataContext();
         public static Int32 currentPartIndex;
         public static UDCIndex UDC;
 

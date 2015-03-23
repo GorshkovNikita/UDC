@@ -9,7 +9,7 @@ namespace UDC.Controllers
 {
     public class CommonDeterminantController : Controller
     {
-        public CurrentIndexLtSDataContext _db = new CurrentIndexLtSDataContext();
+        public CurrentIndexDataContext _db = new CurrentIndexDataContext();
 
         //
         // GET: /CommonDeteriminant/

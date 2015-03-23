@@ -51,4 +51,3 @@ D:\Учеба\7 семестр\Библиотека\UDC\UDC\bin\ru\Microsoft.Web
 D:\Учеба\7 семестр\Библиотека\UDC\UDC\bin\ru\WebMatrix.WebData.resources.dll
 D:\Учеба\7 семестр\Библиотека\UDC\UDC\obj\Debug\UDC.dll
 D:\Учеба\7 семестр\Библиотека\UDC\UDC\obj\Debug\UDC.pdb
-D:\Учеба\7 семестр\Библиотека\UDC\UDC\obj\Debug\UDC.csprojResolveAssemblyReference.cache

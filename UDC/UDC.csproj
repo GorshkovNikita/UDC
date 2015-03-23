@@ -173,11 +173,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CurrentIndexLtS.designer.cs">
+    <Compile Include="Models\CurrentIndex.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CurrentIndexLtS.dbml</DependentUpon>
+      <DependentUpon>CurrentIndex.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Index.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelForView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,9 +244,14 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\CurrentIndexLtS.dbml">
+    <Content Include="Models\CurrentIndex.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>CurrentIndexLtS.designer.cs</LastGenOutput>
+      <LastGenOutput>CurrentIndex.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Models\Index.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Index.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -268,7 +279,9 @@
     <Content Include="Views\Home\MoreInfo.aspx" />
     <Content Include="Views\Home\Search.aspx" />
     <Content Include="Views\Home\SpecificDeterminants.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\IndexConstructor.ascx" />
+    <Content Include="Views\Shared\MainIndexNodePartial.ascx" />
     <Content Include="Views\Shared\UDCTree.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -292,7 +305,7 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\Index2.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\_LoginPartial.aspx" />
     <Content Include="Views\Shared\Site.Master" />
@@ -310,8 +323,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\CurrentIndexLtS.dbml.layout">
-      <DependentUpon>CurrentIndexLtS.dbml</DependentUpon>
+    <None Include="Models\CurrentIndex.dbml.layout">
+      <DependentUpon>CurrentIndex.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Index.dbml.layout">
+      <DependentUpon>Index.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <PropertyGroup>

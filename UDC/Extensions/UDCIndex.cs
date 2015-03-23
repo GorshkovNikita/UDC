@@ -71,7 +71,7 @@ namespace UDC.Extensions
             return _udcParts;
         }
 
-        private CurrentIndexLtSDataContext _db = new CurrentIndexLtSDataContext();
+        private CurrentIndexDataContext _db = new CurrentIndexDataContext();
         private List<UDCPart> _udcParts;
     }
 }

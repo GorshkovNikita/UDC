@@ -22,8 +22,8 @@ namespace UDC.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="UDC_DB")]
-	public partial class CurrentIndexLtSDataContext : System.Data.Linq.DataContext
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DBLibUDC_21_01")]
+	public partial class CurrentIndexDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -35,31 +35,31 @@ namespace UDC.Models
     partial void DeleteCurrentIndex(CurrentIndex instance);
     #endregion
 		
-		public CurrentIndexLtSDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["UDC_DBConnectionString"].ConnectionString, mappingSource)
+		public CurrentIndexDataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DBLibUDC_21_01ConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public CurrentIndexLtSDataContext(string connection) : 
+		public CurrentIndexDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public CurrentIndexLtSDataContext(System.Data.IDbConnection connection) : 
+		public CurrentIndexDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public CurrentIndexLtSDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public CurrentIndexDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public CurrentIndexLtSDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public CurrentIndexDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
