@@ -9,7 +9,7 @@
                 &nbsp;<%: Html.DisplayFor(modelItem => child.Name) %>
             </span>
             </a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить!!!</button>
+            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
             <% Html.RenderPartial("MainIndexNodePartial", new UDC.Models.ModelForView(Model.IndexList, child.Id)); %>

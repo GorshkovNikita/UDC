@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBLibUDC_21_01" Class="UDCDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=NIKITA-LENOVO;Initial Catalog=DBLibUDC_21_01;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBLibUDC_21_01ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ComositeIndexToIndex" Member="ComositeIndexToIndexes">
+    <Type Name="ComositeIndexToIndex">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdIndex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdCompIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CompositeIndex_ComositeIndexToIndex" Member="CompositeIndex" ThisKey="IdCompIndex" OtherKey="Id" Type="CompositeIndex" IsForeignKey="true" />
+      <Association Name="Index_ComositeIndexToIndex" Member="Index" ThisKey="IdIndex" OtherKey="Id" Type="Index" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CompositeIndex" Member="CompositeIndexes">
+    <Type Name="CompositeIndex">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="CompositeIndex_ComositeIndexToIndex" Member="ComositeIndexToIndexes" ThisKey="Id" OtherKey="IdCompIndex" Type="ComositeIndexToIndex" />
+      <Association Name="CompositeIndex_Reference" Member="References" ThisKey="Id" OtherKey="ToCompIndexId" Type="Reference" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CurrentIndex" Member="CurrentIndexes">
+    <Type Name="CurrentIndex">
+      <Column Name="id" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MainTableID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FormID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PlaceID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NationID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SignBetween" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="FirstBracket" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="SecondBracket" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Index]" Member="Indexes">
+    <Type Name="Index">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SubdivideWith" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SubdivideAs" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IndexType" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="TableType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Removed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isGroupIndex" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isDontKnowExact" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Index_ComositeIndexToIndex" Member="ComositeIndexToIndexes" ThisKey="Id" OtherKey="IdIndex" Type="ComositeIndexToIndex" />
+      <Association Name="Index_Index" Member="Indexes" ThisKey="Id" OtherKey="ParentId" Type="Index" />
+      <Association Name="Index_Reference" Member="References" ThisKey="Id" OtherKey="FromId" Type="Reference" />
+      <Association Name="Index_Reference1" Member="References1" ThisKey="Id" OtherKey="ToId" Type="Reference" />
+      <Association Name="Index_Index" Member="Index1" ThisKey="ParentId" OtherKey="Id" Type="Index" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reference" Member="References">
+    <Type Name="Reference">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RefType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FromId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ToId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToCompIndexId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Index_Reference" Member="Index" ThisKey="FromId" OtherKey="Id" Type="Index" IsForeignKey="true" />
+      <Association Name="CompositeIndex_Reference" Member="CompositeIndex" ThisKey="ToCompIndexId" OtherKey="Id" Type="CompositeIndex" IsForeignKey="true" />
+      <Association Name="Index_Reference1" Member="Index1" ThisKey="ToId" OtherKey="Id" Type="Index" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

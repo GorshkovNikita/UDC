@@ -11,32 +11,28 @@ namespace UDC.Controllers
 
     public class HomeController : Controller
     {
-        private CurrentIndexDataContext _db = new CurrentIndexDataContext();
-        private IndexDataContext _index = new IndexDataContext();
+        private UDCData data = new UDCData();
 
         public ActionResult Index()
         {
-            return View(_index.Index.ToList());
-        }
-
-        public ActionResult Index1() 
-        {
-            return View(_index.Index.ToList());
+            return View(data.AllMainTableIndexes);
         }
 
         public ActionResult Search()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
 
-        public ActionResult MoreInfo()
+        public ActionResult MoreInfo(string index)
         {
-            return View(_db.CurrentIndex.ToList());
+            //string index = this.Request.QueryString["index"];
+            string idx = index;
+            return View();
         }
 
         public ActionResult SpecificDeterminants()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
 
         public ActionResult CreatedIndex()
@@ -78,7 +74,7 @@ namespace UDC.Controllers
                 }
                 ViewData["signBetween" + i] = udc.GetUdcParts()[i].GetSignBetween();
             }
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
     }
 }

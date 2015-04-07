@@ -9,39 +9,39 @@ namespace UDC.Controllers
 {
     public class CommonDeterminantController : Controller
     {
-        public CurrentIndexDataContext _db = new CurrentIndexDataContext();
+        private UDCData data = new UDCData();
 
         //
         // GET: /CommonDeteriminant/
 
         public ActionResult Index()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
 
         public ActionResult Language()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
 
         public ActionResult Nation()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
 
         public ActionResult FormDocument()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
 
         public ActionResult Place()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
 
         public ActionResult Time()
         {
-            return View(_db.CurrentIndex.ToList());
+            return View();
         }
     }
 }
