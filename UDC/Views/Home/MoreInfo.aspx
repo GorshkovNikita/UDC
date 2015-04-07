@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<UDC.Models.IndexModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     MoreInfo
@@ -7,138 +7,40 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>Подробнее:</h2>
-    <h3><span class="more-info-index">612</span><span class="more-info-name"> ФИЗИОЛОГИЯ. ФИЗИОЛОГИЯ ЧЕЛОВЕКА. СРАВНИТЕЛЬНАЯ ФИЗИОЛОГИЯ</span></h3>
+    <h3><span class="more-info-index"><%= Model.Index.Value %></span><span class="more-info-name">&nbsp;<%= Model.Index.Name %></span></h3>
     <p style="padding-left: 15px">Основная таблица</p>
     <h5>Родительские индексы:</h5>
-    <ul style="padding-left: 15px" class="main-table-items">
-        <!--<img class="" src="../../Images/plus.gif" onclick="show(this)" />-->
-        <li>
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">61</span> Медицинские науки</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
-    </ul>
+    <% if (Model.Parent != null) { %>
+        <ul style="padding-left: 15px" class="main-table-items">
+            <li>
+                <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
+                <a href="../Home/MoreInfo?index=<%= Model.Parent.Id %>"><span class="main-table-items-item-text">
+                    <span class="main-table-id"><%= Model.Parent.Value %></span>
+                    &nbsp;<%= Model.Parent.Name %></span>
+                </a>
+                <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
+                <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
+                <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
+            </li>
+        </ul>
+    <% } else { %>
+        <span>&nbsp;&nbsp;Родительский индекс отсутствует</span>
+    <% } %>
     <h5>Дочерние индексы:</h5>
     <ul style="padding-left: 15px" class="main-table-items">
-        <li class="main-table-items-item">
+         <% foreach (var item in Model.Children) { %>
+        <li>
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.1</span> Кровообращение. Кровь</span></a>
+            <a href="../Home/MoreInfo?index=<%= item.Id %>"><span class="main-table-items-item-text">
+                <span class="main-table-id"><%= item.Value %></span>
+                &nbsp;<%= item.Name %></span>
+            </a>
             <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-            <ul class="main-table-items-subitems">
-                <li class="main-table-items-subitems-subitem">
-                    <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                    <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.11</span> Общие свойства крови</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                    <ul class="main-table-items-subitems">
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.111</span> Красные кровяные тельца. Эритроциты</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                            <ul class="main-table-items-subitems">
-                                <li class="main-table-items-subitems-subitem">
-                                    <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                                    <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.111.1</span> Химический состав</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                                </li>
-                                <li class="main-table-items-subitems-subitem">
-                                    <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                                    <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.111.2</span> Количество эритроцитов </span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.112</span> Лейкоциты и амебовидные клетки крови</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.113</span> Артериальная кровь</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                    </ul>
-                </li>
-                <li class="main-table-items-subitems-subitem">
-                    <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-                    <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.12</span> Химические свойства крови</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                </li>
-                <li class="main-table-items-subitems-subitem">
-                    <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-                    <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.13</span> Кровообращение (гемодинамика). Гидродинамика кровообращения</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                </li>
-            </ul>
+            <% Html.RenderPartial("MoreInfoChildrenNode", new UDC.Models.IndexModel(item.Id)); %>
         </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.2</span> Дыхание. Дыхательная система</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.3</span> Пищеварение. Питание</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.4</span> Физиология желез. Секреция. Экскреция</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.5</span> Животное тепло. Термальные процессы</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.6</span> Размножение. Рост. Развитие</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.7</span> Двигательные функции. Органы движения. Голосовой аппарат. Голос. Наружные покровы</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.8</span> Нервная система. Органы чувств </span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
+    <% } %>
     </ul>
     <h5>Примеры:</h5>
     <p style="padding-left: 15px">

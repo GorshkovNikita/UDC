@@ -14,7 +14,6 @@ namespace UDC.Controllers
         // GET: /Ajax/
 
         //public CurrentIndexDataContext _db = new CurrentIndexDataContext();
-        private UDCData data = new UDCData();
         public static Int32 currentPartIndex;
         public static UDCIndex UDC;
 
@@ -42,7 +41,7 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<Int32> count = data.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
+                List<Int32> count = UDCData.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
                 if ((currentPartIndex > 0) && (currentPartIndex < count[0]))
                 {
                     currentPartIndex++;
@@ -68,8 +67,8 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", mainIndex, currentPartIndex);
-                data.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", mainIndex, currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -78,21 +77,21 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT MainTableID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT MainTableID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
                 if ((lst[0] != "") && !(lst[0].Contains("[")))
                 {
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", "[" + lst[0] + "+" + mainIndex + "]", currentPartIndex);
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", "[" + lst[0] + "+" + mainIndex + "]", currentPartIndex);
                 }
                 else if (lst[0] == "")
                 {
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", mainIndex, currentPartIndex);
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", mainIndex, currentPartIndex);
                 }
                 else
                 {
                     String newLst = lst[0].Remove(lst[0].Length - 1);
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", newLst + "+" + mainIndex + "]", currentPartIndex);
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", newLst + "+" + mainIndex + "]", currentPartIndex);
                 }
-                data.DB.SubmitChanges();
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -101,12 +100,12 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT MainTableID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT MainTableID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
                 if ((lst[0] != "") && !(lst[0].Contains("[")) && !(lst[0].Contains("+")) && !(lst[0].Contains("/")) && (lst[0].Length == mainIndex.Length))
                 {
                     if (!(lst[0].Contains(".")))
                     {
-                        data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + "/" + mainIndex, currentPartIndex);
+                        UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + "/" + mainIndex, currentPartIndex);
                     }
                     else
                     {
@@ -114,9 +113,9 @@ namespace UDC.Controllers
                         String firstPartLst = lst[0].Remove(idx);
                         String lastPartLst = lst[0].Remove(0, idx + 1);
                         String lastPartMainIndex = mainIndex.Remove(0, idx + 1);
-                        data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", firstPartLst + "." + lastPartLst + "/." + lastPartMainIndex, currentPartIndex);
+                        UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", firstPartLst + "." + lastPartLst + "/." + lastPartMainIndex, currentPartIndex);
                     }
-                    data.DB.SubmitChanges();
+                    UDCData.DB.SubmitChanges();
                 }
                 else
                 {
@@ -124,7 +123,7 @@ namespace UDC.Controllers
                     if (!(partOfMainIndex[partOfMainIndex.Count - 1].Contains(".")))
                     {
                         lst[0] = lst[0].Remove(lst[0].LastIndexOf('+') + 1);
-                        data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + partOfMainIndex[partOfMainIndex.Count - 1] + "/" + mainIndex + "]", currentPartIndex);
+                        UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + partOfMainIndex[partOfMainIndex.Count - 1] + "/" + mainIndex + "]", currentPartIndex);
                     }
                     else
                     {
@@ -133,9 +132,9 @@ namespace UDC.Controllers
                         String firstPartLst = partOfMainIndex[partOfMainIndex.Count - 1].Remove(idx);
                         String lastPartLst = partOfMainIndex[partOfMainIndex.Count - 1].Remove(0, idx + 1);
                         String lastPartMainIndex = mainIndex.Remove(0, idx + 1);
-                        data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + firstPartLst + "." + lastPartLst + "/." + lastPartMainIndex + "]", currentPartIndex);
+                        UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + firstPartLst + "." + lastPartLst + "/." + lastPartMainIndex + "]", currentPartIndex);
                     }
-                    data.DB.SubmitChanges();
+                    UDCData.DB.SubmitChanges();
                 }
             }
         }
@@ -145,12 +144,12 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT MainTableID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT MainTableID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
                 if ((lst[0] != "") && !(lst[0].Contains("[")) && !(lst[0].Contains("+")) && !(lst[0].Contains("/")))
                 {
                     //if (!(lst[0].Contains(".")))
                     //{
-                        data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + specDetIndex, currentPartIndex);
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + specDetIndex, currentPartIndex);
                     /*}
                     else
                     {
@@ -160,14 +159,14 @@ namespace UDC.Controllers
                         String lastPartMainIndex = specDetIndex.Remove(0, idx + 1);
                         _db.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", firstPartLst + "." + lastPartLst + "/." + lastPartMainIndex, currentPartIndex);
                     }*/
-                    data.DB.SubmitChanges();
+                    UDCData.DB.SubmitChanges();
                 }
                 else if (lst[0] != "")
                 {
                     List<String> partOfMainIndex = ExtensionFunctions.MainIndexParse(lst[0]);
                     lst[0] = lst[0].Remove(lst[0].LastIndexOf('+') + 1);
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + partOfMainIndex[partOfMainIndex.Count - 1] + specDetIndex + ']', currentPartIndex);
-                    data.DB.SubmitChanges();
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", lst[0] + partOfMainIndex[partOfMainIndex.Count - 1] + specDetIndex + ']', currentPartIndex);
+                    UDCData.DB.SubmitChanges();
                 }
             }
         }
@@ -177,8 +176,8 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET LanguageID = {0} WHERE id = {1}", languageIndex, currentPartIndex);
-                data.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET LanguageID = {0} WHERE id = {1}", languageIndex, currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -187,9 +186,9 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT LanguageID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET LanguageID = {0} WHERE id = {1}", lst[0] + languageIndex, currentPartIndex);
-                data.DB.SubmitChanges();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT LanguageID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET LanguageID = {0} WHERE id = {1}", lst[0] + languageIndex, currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -198,9 +197,9 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT LanguageID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET LanguageID = {0} WHERE id = {1}", lst[0] + "=03." + languageIndex.Substring(1, languageIndex.Length - 1), currentPartIndex);
-                data.DB.SubmitChanges();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT LanguageID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET LanguageID = {0} WHERE id = {1}", lst[0] + "=03." + languageIndex.Substring(1, languageIndex.Length - 1), currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -209,8 +208,8 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", placeIndex, currentPartIndex);
-                data.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", placeIndex, currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -219,19 +218,19 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT PlaceID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT PlaceID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
                 if (lst[0] != "")
                 {
                     placeIndex = ExtensionFunctions.DeleteBrackets(placeIndex);
                     lst[0] = lst[0].Remove(lst[0].IndexOf(')'), 1);
                     lst[0] += '+' + placeIndex;
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + ')', currentPartIndex);
-                    data.DB.SubmitChanges();
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + ')', currentPartIndex);
+                    UDCData.DB.SubmitChanges();
                 }
                 else
                 {
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", placeIndex, currentPartIndex);
-                    data.DB.SubmitChanges();
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", placeIndex, currentPartIndex);
+                    UDCData.DB.SubmitChanges();
                 }
             }
         }
@@ -242,7 +241,7 @@ namespace UDC.Controllers
             if (Request.IsAjaxRequest())
             {
                 String lastPart;
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT PlaceID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT PlaceID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
                 if (lst[0].Length > 0)
                 {
                     placeIndex = ExtensionFunctions.DeleteBrackets(placeIndex);
@@ -262,7 +261,7 @@ namespace UDC.Controllers
                         if (!(lastPart.Contains(".")))
                         {
                             if ((lastPart.Length == placeIndex.Length) && (Convert.ToInt32(lastPart) < Convert.ToInt32(placeIndex)))
-                                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + lastPart + "/" + placeIndex + ')', currentPartIndex);
+                                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + lastPart + "/" + placeIndex + ')', currentPartIndex);
                         }
                         else
                         {
@@ -272,10 +271,10 @@ namespace UDC.Controllers
                             String lastPartPlaceIndex = placeIndex.Remove(0, idx + 1);
                             if ((secondPart.Length == lastPartPlaceIndex.Length) && (Convert.ToInt32(secondPart) < Convert.ToInt32(lastPartPlaceIndex)))
                             {
-                                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + firstPart + secondPart + "/." + lastPartPlaceIndex + ')', currentPartIndex);
+                                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + firstPart + secondPart + "/." + lastPartPlaceIndex + ')', currentPartIndex);
                             }
                         }
-                        data.DB.SubmitChanges();
+                        UDCData.DB.SubmitChanges();
                     }
                 }
             }
@@ -286,8 +285,8 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", timeIndex, currentPartIndex);
-                data.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", timeIndex, currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -296,19 +295,19 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT TimeID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT TimeID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
                 if (lst[0] != "")
                 {
                     timeIndex = ExtensionFunctions.DeleteBrackets(timeIndex);
                     lst[0] = lst[0].Remove(lst[0].LastIndexOf('"'), 1);
                     lst[0] += '+' + timeIndex;
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", lst[0] + '"', currentPartIndex);
-                    data.DB.SubmitChanges();
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", lst[0] + '"', currentPartIndex);
+                    UDCData.DB.SubmitChanges();
                 }
                 else
                 {
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", timeIndex, currentPartIndex);
-                    data.DB.SubmitChanges();
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", timeIndex, currentPartIndex);
+                    UDCData.DB.SubmitChanges();
                 }
             }
         }
@@ -319,7 +318,7 @@ namespace UDC.Controllers
             if (Request.IsAjaxRequest())
             {
                 String lastPart;
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT TimeID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT TimeID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
                 if (lst[0].Length > 0)
                 {
                     timeIndex = ExtensionFunctions.DeleteBrackets(timeIndex);
@@ -339,7 +338,7 @@ namespace UDC.Controllers
                         if (!(lastPart.Contains(".")))
                         {
                             if ((lastPart.Length == timeIndex.Length) && (Convert.ToInt32(lastPart) < Convert.ToInt32(timeIndex)))
-                                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", lst[0] + lastPart + "/" + timeIndex + '"', currentPartIndex);
+                                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET TimeID = {0} WHERE id = {1}", lst[0] + lastPart + "/" + timeIndex + '"', currentPartIndex);
                         }
                         else
                         {
@@ -349,10 +348,10 @@ namespace UDC.Controllers
                             String lastPartPlaceIndex = timeIndex.Remove(0, idx + 1);
                             if ((secondPart.Length == lastPartPlaceIndex.Length) && (Convert.ToInt32(secondPart) < Convert.ToInt32(lastPartPlaceIndex)))
                             {
-                                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + firstPart + secondPart + "/." + lastPartPlaceIndex + '"', currentPartIndex);
+                                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET PlaceID = {0} WHERE id = {1}", lst[0] + firstPart + secondPart + "/." + lastPartPlaceIndex + '"', currentPartIndex);
                             }
                         }
-                        data.DB.SubmitChanges();
+                        UDCData.DB.SubmitChanges();
                     }
                 }
             }
@@ -363,8 +362,8 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", nationIndex, currentPartIndex);
-                data.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", nationIndex, currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -373,19 +372,19 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<String> lst = data.DB.ExecuteQuery<String>("SELECT NationID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
+                List<String> lst = UDCData.DB.ExecuteQuery<String>("SELECT NationID FROM dbo.CurrentIndex WHERE id = {0}", currentPartIndex).ToList();
                 if (lst[0] != "")
                 {
                     nationIndex = ExtensionFunctions.DeleteBrackets(nationIndex);
                     lst[0] = lst[0].Remove(lst[0].LastIndexOf(')'), 1);
                     lst[0] += nationIndex;
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", lst[0] + ')', currentPartIndex);
-                    data.DB.SubmitChanges();
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", lst[0] + ')', currentPartIndex);
+                    UDCData.DB.SubmitChanges();
                 }
                 else
                 {
-                    data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", nationIndex, currentPartIndex);
-                    data.DB.SubmitChanges();
+                    UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET NationID = {0} WHERE id = {1}", nationIndex, currentPartIndex);
+                    UDCData.DB.SubmitChanges();
                 }
             }
         }
@@ -395,8 +394,8 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET FormID = {0} WHERE id = {1}", formIndex, currentPartIndex);
-                data.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET FormID = {0} WHERE id = {1}", formIndex, currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -405,14 +404,14 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                List<Int32> count = data.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
+                List<Int32> count = UDCData.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
                 currentPartIndex = count[0] + 1;
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET SignBetween = {0} WHERE id = {1}", between, count[0]);
-                data.DB.SubmitChanges();
-                data.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET FirstBracket = {0}, SecondBracket = {1} WHERE id = {2}", '[', ']', count[0]);
-                data.DB.SubmitChanges();
-                data.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex ([id], [MainTableID],[LanguageID],[FormID],[TimeID],[PlaceID],[NationID],[PropertyID],[SignBetween],[FirstBracket],[SecondBracket]) VALUES({0}, '', '', '', '', '', '', '', '', '[', ']')", currentPartIndex);
-                data.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET SignBetween = {0} WHERE id = {1}", between, count[0]);
+                UDCData.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("UPDATE dbo.CurrentIndex SET FirstBracket = {0}, SecondBracket = {1} WHERE id = {2}", '[', ']', count[0]);
+                UDCData.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex ([id], [MainTableID],[LanguageID],[FormID],[TimeID],[PlaceID],[NationID],[PropertyID],[SignBetween],[FirstBracket],[SecondBracket]) VALUES({0}, '', '', '', '', '', '', '', '', '[', ']')", currentPartIndex);
+                UDCData.DB.SubmitChanges();
             }
         }
 
@@ -422,8 +421,8 @@ namespace UDC.Controllers
             {
                 String fullIndex = "";
                 Int16 curPart = 0;
-                List<Int32> count = data.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
-                List<CurrentIndex> lst = data.DB.ExecuteQuery<CurrentIndex>("SELECT * FROM dbo.CurrentIndex").ToList();
+                List<Int32> count = UDCData.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
+                List<CurrentIndex> lst = UDCData.DB.ExecuteQuery<CurrentIndex>("SELECT * FROM dbo.CurrentIndex").ToList();
                 while ((curPart + 1) <= count[0])
                 {
                     fullIndex += lst[curPart].FirstBracket;
@@ -448,9 +447,9 @@ namespace UDC.Controllers
             if (Request.IsAjaxRequest())
             {
                 //_db.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", "", currentPartIndex);
-                data.DB.ExecuteCommand("DELETE FROM dbo.CurrentIndex");
-                data.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex ([id], [MainTableID],[LanguageID],[FormID],[TimeID],[PlaceID],[NationID],[PropertyID],[SignBetween]) VALUES(1, '', '', '', '', '', '', '', '')");
-                data.DB.SubmitChanges();
+                UDCData.DB.ExecuteCommand("DELETE FROM dbo.CurrentIndex");
+                UDCData.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex ([id], [MainTableID],[LanguageID],[FormID],[TimeID],[PlaceID],[NationID],[PropertyID],[SignBetween]) VALUES(1, '', '', '', '', '', '', '', '')");
+                UDCData.DB.SubmitChanges();
                 currentPartIndex = 1;
             }
         }
@@ -460,7 +459,7 @@ namespace UDC.Controllers
         {
             Boolean treeBool = Convert.ToBoolean(tree);
             Boolean dbBool = Convert.ToBoolean(db);
-            List<Int32> count = data.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
+            List<Int32> count = UDCData.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
             UDCIndex udc = new UDCIndex(count[0]);
             Char currentSymbol; // текущий символ строки УДК
             Int32 countOpenBrackets = 0, countCloseBrackets = 0; // количество скобок []

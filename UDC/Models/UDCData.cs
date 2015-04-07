@@ -9,46 +9,63 @@ namespace UDC.Models
 {
     public class UDCData
     {
-        public UDCData()
+        public static Index GetIndex(Int32 id)
         {
-            if (_db == null)
-            {
-                _db = new UDCDataClassesDataContext();
-            }
+            return UDCData.DB.ExecuteQuery<Index>("SELECT TOP 1 * FROM [dbo].[Index] WHERE id = {0}", id).First();
         }
 
-        public List<CurrentIndex> AllCurrentIndex
+        public static Index GetIndexParent(Int32 id)
         {
-            get
-            {
-                return _db.CurrentIndexes.ToList();
-            }
+            Index index = UDCData.GetIndex(id);
+            if (index.ParentId != null)
+                return UDCData.DB.ExecuteQuery<Index>("SELECT TOP 1 * FROM [dbo].[Index] WHERE id = {0}", index.ParentId).First();
+            else
+                return null;
         }
 
-        public List<Index> AllIndexes
+        public static List<Index> GetIndexChildren(Int32 id)
         {
-            get
-            {
-                return _db.Indexes.ToList();
-            }
+            return UDCData.DB.ExecuteQuery<Index>("SELECT * FROM [dbo].[Index] WHERE ParentID = {0}", id).ToList();
         }
 
-        public List<Index> AllMainTableIndexes
+        public static List<CurrentIndex> AllCurrentIndex
         {
             get
             {
-                return _db.Indexes.Where(index => index.TableType == "MainIndex").ToList();
+                return UDCData.DB.CurrentIndexes.ToList();
             }
         }
 
-        public UDCDataClassesDataContext DB
+        public static List<Index> AllIndexes
         {
             get
             {
-                return _db;
+                return UDCData.DB.Indexes.ToList();
             }
         }
 
-        private UDCDataClassesDataContext _db;
+        public static List<Index> AllMainTableIndexes
+        {
+            get
+            {
+                return UDCData.DB.Indexes.Where(index => index.TableType == "MainIndex").ToList();
+            }
+        }
+
+        public static UDCDataClassesDataContext DB
+        {
+            get
+            {
+                if (_db != null)
+                    return _db;
+                else
+                {
+                    _db = new UDCDataClassesDataContext();
+                    return _db;
+                }
+            }
+        }
+
+        private static UDCDataClassesDataContext _db;
     }
 }

@@ -174,6 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelForView.cs" />
+    <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\UDCData.cs" />
     <Compile Include="Models\UDCDataClasses.designer.cs">
       <AutoGen>True</AutoGen>
@@ -273,13 +274,16 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\IndexConstructor.ascx" />
     <Content Include="Views\Shared\MainIndexNodePartial.ascx" />
+    <Content Include="Views\Shared\MoreInfoChildrenNode.ascx" />
     <Content Include="Views\Shared\UDCTree.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />

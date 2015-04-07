@@ -20,13 +20,13 @@ namespace UDC.Extensions
 
         public void AddUDCInDataBase()
         {
-            data.DB.ExecuteCommand("DELETE FROM dbo.CurrentIndex");
-            data.DB.SubmitChanges();
+            UDCData.DB.ExecuteCommand("DELETE FROM dbo.CurrentIndex");
+            UDCData.DB.SubmitChanges();
             if (_udcParts.Count > 1)
             {
                 for (int i = 0; i < _udcParts.Count; i++)
                 {
-                    data.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, '', {7}, '[', ']')",
+                    UDCData.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, '', {7}, '[', ']')",
                         i + 1,
                         _udcParts[i].GetMainIndex(),
                         _udcParts[i].GetLanguageIndex(),
@@ -35,12 +35,12 @@ namespace UDC.Extensions
                         _udcParts[i].GetPlaceIndex(),
                         _udcParts[i].GetNationIndex(),
                         _udcParts[i].GetSignBetween());
-                    data.DB.SubmitChanges();
+                    UDCData.DB.SubmitChanges();
                 }
             }
             else
             {
-                data.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, '', {7},  '', '')",
+                UDCData.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, '', {7},  '', '')",
                         1,
                         _udcParts[0].GetMainIndex(),
                         _udcParts[0].GetLanguageIndex(),
@@ -49,7 +49,7 @@ namespace UDC.Extensions
                         _udcParts[0].GetPlaceIndex(),
                         _udcParts[0].GetNationIndex(),
                         _udcParts[0].GetSignBetween());
-                data.DB.SubmitChanges();
+                UDCData.DB.SubmitChanges();
             }
         }
 

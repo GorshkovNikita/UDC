@@ -11,11 +11,9 @@ namespace UDC.Controllers
 
     public class HomeController : Controller
     {
-        private UDCData data = new UDCData();
-
         public ActionResult Index()
         {
-            return View(data.AllMainTableIndexes);
+            return View(UDCData.AllMainTableIndexes);
         }
 
         public ActionResult Search()
@@ -25,9 +23,7 @@ namespace UDC.Controllers
 
         public ActionResult MoreInfo(string index)
         {
-            //string index = this.Request.QueryString["index"];
-            string idx = index;
-            return View();
+            return View(new IndexModel(Convert.ToInt32(index)));
         }
 
         public ActionResult SpecificDeterminants()
