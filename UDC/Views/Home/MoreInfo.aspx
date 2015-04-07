@@ -24,11 +24,13 @@
             </li>
         </ul>
     <% } else { %>
-        <span>&nbsp;&nbsp;Родительский индекс отсутствует</span>
+        <span style="padding-left: 15px">Родительский индекс отсутствует</span>
     <% } %>
     <h5>Дочерние индексы:</h5>
     <ul style="padding-left: 15px" class="main-table-items">
-         <% foreach (var item in Model.Children) { %>
+         <% if (Model.Children.Count > 0) {
+             foreach (var item in Model.Children) { %>
+    
         <li>
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
             <a href="../Home/MoreInfo?index=<%= item.Id %>"><span class="main-table-items-item-text">
@@ -40,18 +42,48 @@
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
             <% Html.RenderPartial("MoreInfoChildrenNode", new UDC.Models.IndexModel(item.Id)); %>
         </li>
-    <% } %>
+         
+        <% }
+       }
+       else { %>
+        <li style="padding-left: 15px">&nbsp;&nbsp;Дочерние индексы отсутствуют</li>
+        <% } %>
     </ul>
     <h5>Примеры:</h5>
-    <p style="padding-left: 15px">
-        612.187.35 Влияние сосудодвигательных нервов на печень<br />
-        612.4.067:612.8.062 Влияние желез внутренней секреции на нервную систему<br />
-        612.391:612.111 Питание эритроцитов 
-    </p>
+    <ul style="padding-left: 15px" class="main-table-items">
+        <% if (Model.Examples.Count > 0) {
+             foreach (var item in Model.Examples) { %>
+        <li>
+            <span class="main-table-items-item-text">
+                <span class="main-table-id"><%= item.Index %></span>
+                &nbsp;<%= item.Name %></span>
+            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
+            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
+            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
+        </li>
+         
+        <% }
+       } else { %>
+        <li style="padding-left: 15px">&nbsp;&nbsp;Примеры отсутствуют</li>
+        <% } %>
+        </ul>
     <h5>Ссылки:</h5>
-    <p style="padding-left: 15px">
-        -> 591.1 Физиология животных
-    </p>
+    <ul style="padding-left: 15px" class="main-table-items">
+        <% if (Model.Links.Count > 0) { 
+               foreach (var item in Model.Links) { %>
+        <li>
+            <span class="main-table-items-item-text">->&nbsp;
+                <span class="main-table-id"><%= item.Index %></span>
+                &nbsp;<%= item.Name %></span>
+            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
+            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
+            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
+        </li>
+        <% } 
+        } else { %>
+        <li style="padding-left: 15px">&nbsp;&nbsp;Ссылки отсутствуют</li>
+        <% } %>
+    </ul>
     <h5>Специальные определители</h5>
     <ul style="padding-left: 15px" class="main-table-items">
         <li class="main-table-items-item">
