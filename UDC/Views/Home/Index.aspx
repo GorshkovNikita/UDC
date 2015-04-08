@@ -23,7 +23,6 @@
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
             <div class="main-child"></div>
-                  <%  //Html.RenderPartial("../Shared/MainIndexNodePartial", (UDC.Models.IndexModel)null); %>
         </li>
     <% } %>
 </ul>
