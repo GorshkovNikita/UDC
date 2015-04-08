@@ -11,8 +11,13 @@ namespace UDC.Controllers
 
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("MoreInfoChildrenNode", new IndexModel(Convert.ToInt32(id)));
+            }
+
             return View(UDCData.AllMainTableIndexes);
         }
 

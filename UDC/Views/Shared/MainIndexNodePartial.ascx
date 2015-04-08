@@ -1,7 +1,8 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<UDC.Models.IndexModel>" %>
 
 <ul class="main-table-items-subitems">
-    <% foreach (var child in Model.Children) { %>
+    <% if (Model != null) {
+        foreach (var child in Model.Children) { %>
         <li class="main-table-items-subitems-subitem">
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
             <a href="../Home/MoreInfo?index=<%: Html.DisplayFor(modelItem => child.Id) %>"><span class="main-table-items-item-text" onclick="show(this)">
@@ -13,6 +14,10 @@
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
             <% Html.RenderPartial("MainIndexNodePartial", new UDC.Models.IndexModel(child.Id)); %>
+            <div class="main-child">
+                qwe
+            </div>
         </li>
-    <% } %>
+    <% }
+       } %>
 </ul>

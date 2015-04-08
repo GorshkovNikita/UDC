@@ -219,8 +219,12 @@ input[type="button"] {
     padding-left: 25px;
 }
 
-.main-table-items-subitems {
+.main-child {
     display: none;
+}
+
+.main-table-items-subitems {
+    /*display: none;*/
     padding-left: 30px;
     list-style: none;
 }

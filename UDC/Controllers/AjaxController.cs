@@ -454,6 +454,15 @@ namespace UDC.Controllers
             }
         }
 
+        public PartialViewResult GetPartialView(Int32 id)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("MainIndexNodePartial", new IndexModel(id));
+            }
+            return null;
+        }
+
         [HttpPost]
         public ActionResult UDCCreate(String stringUDC, String tree, String db)
         {

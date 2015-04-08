@@ -181,8 +181,14 @@ function show(elem) {
         node = $(elem).nextAll()[2];
     else
         node = $(elem).nextAll()[4];
-    if ($(node).css("display") == "none")
+    if ($(node).css("display") == "none") {
         node.style.display = "block";
+        $.get("http://localhost:51128/Ajax/GetPartialView?id=" + node.next().children().eq(0).children().eq(0).html(), function (data) {
+            $(node).html(data);
+            //console.log("qwe");
+        });
+        //node.load("<% Html.RenderPartial(\"../Shared/MainIndexNodePartial\", new UDC.Models.IndexModel(item.Id)); %>");
+    }
     else
         node.style.display = "none";
 }
