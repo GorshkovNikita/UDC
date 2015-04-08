@@ -15,12 +15,14 @@
             <li>
                 <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
                 <a href="../Home/MoreInfo?index=<%= Model.Parent.Id %>"><span class="main-table-items-item-text">
+                    <span class=""><%= Model.Parent.Id %></span>
                     <span class="main-table-id"><%= Model.Parent.Value %></span>
                     &nbsp;<%= Model.Parent.Name %></span>
                 </a>
                 <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
                 <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
                 <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
+                <div class="main-child"></div>
             </li>
         </ul>
     <% } else { %>
@@ -33,13 +35,14 @@
                 <li>
                     <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
                     <a href="../Home/MoreInfo?index=<%= item.Id %>"><span class="main-table-items-item-text">
+                        <span class=""><%= item.Id %></span>
                         <span class="main-table-id"><%= item.Value %></span>
                         &nbsp;<%= item.Name %></span>
                     </a>
                     <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
                     <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
                     <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                    <% Html.RenderPartial("MoreInfoChildrenNode", new UDC.Models.IndexModel(item.Id)); %>
+                    <div class="main-child"></div>
                 </li>
         <% }
        }
