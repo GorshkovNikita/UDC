@@ -11,14 +11,7 @@ namespace UDC.Models
     {
         public static Index GetIndex(Int32 id)
         {
-            try
-            {
-                return UDCData.DB.ExecuteQuery<Index>("SELECT TOP 1 * FROM [dbo].[Index] WHERE id = {0}", id).First();
-            }
-            catch
-            {
-                return null;
-            }
+            return UDCData.DB.ExecuteQuery<Index>("SELECT TOP 1 * FROM [dbo].[Index] WHERE id = {0}", id).First();
         }
 
         public static CompositeIndex GetCompositeIndex(Int32 id)
