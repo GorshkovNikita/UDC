@@ -15,7 +15,7 @@
             <li>
                 <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
                 <a href="../Home/MoreInfo?index=<%= Model.Parent.Id %>"><span class="main-table-items-item-text">
-                    <span class=""><%= Model.Parent.Id %></span>
+                    <span style="display: none" class=""><%= Model.Parent.Id %></span>
                     <span class="main-table-id"><%= Model.Parent.Value %></span>
                     &nbsp;<%= Model.Parent.Name %></span>
                 </a>
@@ -35,7 +35,7 @@
                 <li>
                     <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
                     <a href="../Home/MoreInfo?index=<%= item.Id %>"><span class="main-table-items-item-text">
-                        <span class=""><%= item.Id %></span>
+                        <span style="display: none" class=""><%= item.Id %></span>
                         <span class="main-table-id"><%= item.Value %></span>
                         &nbsp;<%= item.Name %></span>
                     </a>
