@@ -87,6 +87,42 @@ namespace UDC.Tests
             Assert.AreEqual(expectedIndex.TableType, actualIndex.TableType, "TableTypes are not equal");
         }
 
+        [TestMethod]
+        public void GetCompositeIndexIDTest()
+        {
+            Int32 inID = 12;
+            CompositeIndex expectedCompositeIndex = new CompositeIndex();
+            expectedCompositeIndex.Id = 12;
+
+            CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
+
+            Assert.AreEqual(expectedCompositeIndex.Id, actualCompositeIndex.Id, "IDs are not equal");
+        }
+
+        [TestMethod]
+        public void GetCompositeIndexNameTest()
+        {
+            Int32 inID = 12;
+            CompositeIndex expectedCompositeIndex = new CompositeIndex();
+            expectedCompositeIndex.Value = "Дети с повседневными проблемами";
+
+            CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
+
+            Assert.AreEqual(expectedCompositeIndex.Value, actualCompositeIndex.Value, "Values are not equal");
+        }
+
+        [TestMethod]
+        public void GetCompositeIndexValueTest()
+        {
+            Int32 inID = 12;
+            CompositeIndex expectedCompositeIndex = new CompositeIndex();
+            expectedCompositeIndex.Name = "159.922.76-056.49";
+
+            CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
+
+            Assert.AreEqual(expectedCompositeIndex.Name, actualCompositeIndex.Name, "Names are not equal");
+        }
+
         [TestCleanup]
         public void DeleteDataContext()
         {
