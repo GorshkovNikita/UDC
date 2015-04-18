@@ -23,7 +23,7 @@ namespace UDC.Models
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DBLibUDC_21_01")]
-	public partial class UDCDataClassesDataContext : System.Data.Linq.DataContext
+    public partial class UDCDataClassesDataContext : System.Data.Linq.DataContext, IUDCDataClassesDataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();

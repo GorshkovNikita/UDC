@@ -110,9 +110,12 @@ namespace UDC.Models
                 else
                 {
                     _db = new UDCDataClassesDataContext();
+                    //if (_db == null)
+                      //  return new UDCDataClassesDataContext("Data Source=NIKITA-LENOVO;Initial Catalog=DBLibUDC_21_01;Integrated Security=True");
                     return _db;
                 }
             }
+            set { _db = value; }
         }
 
         private static UDCDataClassesDataContext _db;
