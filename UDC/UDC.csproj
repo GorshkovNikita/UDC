@@ -174,7 +174,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IndexModel.cs" />
-    <Compile Include="Models\IUDCDataClassesDataContext.cs" />
     <Compile Include="Models\UDCData.cs" />
     <Compile Include="Models\UDCDataClasses.designer.cs">
       <AutoGen>True</AutoGen>
