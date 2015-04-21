@@ -153,6 +153,7 @@ namespace UDC.Models
                     return _db;
                 }
             }
+            set { _db = value; }
         }
 
         private static UDCDataClassesDataContext _db;
