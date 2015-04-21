@@ -173,13 +173,13 @@ function curPartIndexDecrement(elem) {
 
 // показать узел дерева
 function show(elem) {
-    if (window.location.href == "http://localhost:51128/CommonDeterminant/FormDocument")
+    /*if (window.location.href == "http://localhost:51128/CommonDeterminant/FormDocument")
         node = $(elem).nextAll()[2];
     else if (window.location.href == "http://localhost:51128/CommonDeterminant/Nation")
         node = $(elem).nextAll()[3];
     else if (window.location.href == "http://localhost:51128/Home/SpecificDeterminants")
         node = $(elem).nextAll()[2];
-    else
+    else*/
         node = $(elem).nextAll()[4];
     if ($(node).css("display") == "none") {
         node.style.display = "block";

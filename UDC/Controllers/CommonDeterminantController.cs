@@ -19,22 +19,22 @@ namespace UDC.Controllers
 
         public ActionResult Language()
         {
-            return View();
+            return View(UDCData.LanguageDeterminantIndexes);
         }
 
         public ActionResult Nation()
         {
-            return View();
+            return View(UDCData.NationDeterminantIndexes);
         }
 
         public ActionResult FormDocument()
         {
-            return View();
+            return View(UDCData.FormDeterminantIndexes);
         }
 
         public ActionResult Place()
         {
-            return View();
+            return View(UDCData.PlaceDeterminantIndexes);
         }
 
         public ActionResult Time()
