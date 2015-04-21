@@ -173,6 +173,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CurrentIndex.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\UDCData.cs" />
     <Compile Include="Models\UDCDataClasses.designer.cs">

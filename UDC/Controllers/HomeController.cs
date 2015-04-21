@@ -13,26 +13,32 @@ namespace UDC.Controllers
     {
         public ActionResult Index(string id)
         {
+            CurrentIndex.Index = "123.1";
+            ViewData["CurrentIndex"] = CurrentIndex.Index;
             return View(UDCData.AllMainTableIndexes);
         }
 
         public ActionResult Search()
         {
+            ViewData["CurrentIndex"] = CurrentIndex.Index;
             return View();
         }
 
         public ActionResult MoreInfo(string index)
         {
+            ViewData["CurrentIndex"] = CurrentIndex.Index;
             return View(new IndexModel(Convert.ToInt32(index)));
         }
 
         public ActionResult SpecificDeterminants()
         {
+            ViewData["CurrentIndex"] = CurrentIndex.Index;
             return View();
         }
 
         public ActionResult CreatedIndex()
         {
+            ViewData["CurrentIndex"] = CurrentIndex.Index;
             UDCIndex udc = AjaxController.UDC;
             Int32 countParts = udc.GetUdcParts().Count;
             ViewData["countParts"] = countParts;

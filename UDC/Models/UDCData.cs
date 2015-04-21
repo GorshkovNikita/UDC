@@ -77,14 +77,6 @@ namespace UDC.Models
             return links;
         }
 
-        public static List<CurrentIndex> AllCurrentIndex
-        {
-            get
-            {
-                return UDCData.DB.CurrentIndexes.ToList();
-            }
-        }
-
         public static List<Index> AllIndexes
         {
             get

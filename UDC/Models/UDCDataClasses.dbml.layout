@@ -14,26 +14,20 @@
         <elementListCompartment Id="41ed5f28-9233-49bc-bf1a-a9e080c3387a" absoluteBounds="5.015, 3.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.4375 : 3.375); (5.4375 : 1.8862939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.4375 : 3.375); (5.4375 : 1.8862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/UDCDataClassesDataContext/CompositeIndex/CompositeIndex_ComositeIndexToIndex" />
       <nodes>
         <classShapeMoniker Id="09792866-22bf-4913-9ed6-573c770f5c41" />
         <classShapeMoniker Id="2ad1a857-3ba2-4082-9367-b1e6d820f840" />
       </nodes>
     </associationConnector>
-    <classShape Id="0274c597-a834-4489-b200-8a2691b87ef4" absoluteBounds="6.5, 2.125, 2, 2.9247054036458331">
-      <DataClassMoniker Name="/UDCDataClassesDataContext/CurrentIndex" />
-      <nestedChildShapes>
-        <elementListCompartment Id="45c4a2bc-d896-4a3c-8f61-cd2cab1e365c" absoluteBounds="6.515, 2.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="c3a70f1c-e70e-45f9-bc0a-ea2a5d8d7404" absoluteBounds="3.5, 4.125, 2, 3.1170068359375">
       <DataClassMoniker Name="/UDCDataClassesDataContext/Index" />
       <nestedChildShapes>
         <elementListCompartment Id="ae7fb8f6-01a6-4598-84d0-253d1f52aa77" absoluteBounds="3.515, 4.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.40625 : 4.125); (4.40625 : 1.8862939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.40625 : 4.125); (4.40625 : 1.8862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/UDCDataClassesDataContext/Index/Index_ComositeIndexToIndex" />
       <nodes>
         <classShapeMoniker Id="c3a70f1c-e70e-45f9-bc0a-ea2a5d8d7404" />
@@ -53,21 +47,21 @@
         <elementListCompartment Id="fb6acb35-4340-463c-bbd8-da1a9004a2d9" absoluteBounds="0.51500000000000012, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.65625 : 4.125); (3.65625 : 2.29734537760417); (2.5 : 2.29734537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.65625 : 4.125); (3.65625 : 2.29734537760417); (2.5 : 2.29734537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/UDCDataClassesDataContext/Index/Index_Reference" />
       <nodes>
         <classShapeMoniker Id="c3a70f1c-e70e-45f9-bc0a-ea2a5d8d7404" />
         <classShapeMoniker Id="4618c8fc-bb98-4385-a6c9-ae38b4e41c52" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.1875 : 3.375); (6.1875 : 2.00564697265625); (5.52083333333333 : 2.00564697265625 : JumpStart); (5.35416666666667 : 2.00564697265625 : JumpEnd); (4.48958333333333 : 2.00564697265625 : JumpStart); (4.32291666666667 : 2.00564697265625 : JumpEnd); (2.5 : 2.00564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.46875 : 3.375); (6.46875 : 2.09181716145834); (5.52083333333333 : 2.09181716145834 : JumpStart); (5.35416666666667 : 2.09181716145834 : JumpEnd); (4.48958333333333 : 2.09181716145834 : JumpStart); (4.32291666666667 : 2.09181716145834 : JumpEnd); (2.5 : 2.09181716145834)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/UDCDataClassesDataContext/CompositeIndex/CompositeIndex_Reference" />
       <nodes>
         <classShapeMoniker Id="09792866-22bf-4913-9ed6-573c770f5c41" />
         <classShapeMoniker Id="4618c8fc-bb98-4385-a6c9-ae38b4e41c52" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.5468725 : 4.125); (3.5468725 : 2.50287359375); (2.5 : 2.50287359375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.5468725 : 4.125); (3.5468725 : 2.50287359375); (2.5 : 2.50287359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/UDCDataClassesDataContext/Index/Index_Reference1" />
       <nodes>
         <classShapeMoniker Id="c3a70f1c-e70e-45f9-bc0a-ea2a5d8d7404" />

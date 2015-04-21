@@ -197,10 +197,10 @@ function updateIndex() {
     });
 }
 
-$(function () {
+/*$(function () {
     $.post("http://localhost:51128/Ajax/SetCurrentPartIndex");
     $.get("http://localhost:51128/Ajax/GetCurrentPartIndex", function (data) {
         $('.current-part-index').html(data);
     });
     updateIndex();
-})
+})*/

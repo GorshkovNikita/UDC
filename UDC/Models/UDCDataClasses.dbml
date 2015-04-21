@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBLibUDC_21_01" Class="UDCDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=NIKITA-LENOVO;Initial Catalog=DBLibUDC_21_01;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBLibUDC_21_01ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=НИКИТА-ПК;Initial Catalog=DBLibUDC_21_01;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBLibUDC_21_01ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ComositeIndexToIndex" Member="ComositeIndexToIndexes">
     <Type Name="ComositeIndexToIndex">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -16,21 +16,6 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="CompositeIndex_ComositeIndexToIndex" Member="ComositeIndexToIndexes" ThisKey="Id" OtherKey="IdCompIndex" Type="ComositeIndexToIndex" />
       <Association Name="CompositeIndex_Reference" Member="References" ThisKey="Id" OtherKey="ToCompIndexId" Type="Reference" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CurrentIndex" Member="CurrentIndexes">
-    <Type Name="CurrentIndex">
-      <Column Name="id" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MainTableID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="LanguageID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="FormID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TimeID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PlaceID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="NationID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PropertyID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="SignBetween" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="FirstBracket" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
-      <Column Name="SecondBracket" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.[Index]" Member="Indexes">

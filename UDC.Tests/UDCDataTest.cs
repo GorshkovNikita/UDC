@@ -14,7 +14,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexIDTest()
         {
-            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.Id = 1805;
 
@@ -26,7 +25,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexValueTest()
         {
-           // Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.Id = 1805;
             expectedIndex.Value = "101.1";
@@ -39,7 +37,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexNameTest()
         {
-            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.Name = "Природа философии. Философия как наука. Философия как искусство";
 
@@ -51,7 +48,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexParenIDTest()
         {
-            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.ParentId = 1804;
 
@@ -63,7 +59,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexIndexTypeTest()
         {
-            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.IndexType = "Index";
 
@@ -75,7 +70,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexTabeTypeTest()
         {
-            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.TableType = "MainIndex";
 
@@ -87,7 +81,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetCompositeIndexIDTest()
         {
-            //Int32 inID = 101.1;
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
             expectedCompositeIndex.Id = 1805;
 
@@ -99,7 +92,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetCompositeIndexNameTest()
         {
-            //Int32 inID = 101.1;
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
             expectedCompositeIndex.Value = "Ртутные термометры для измерения и индикации малых температурных различий. Термометр бекмана";
 
@@ -111,7 +103,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetCompositeIndexValueTest()
         {
-            //Int32 inID = 101.1;
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
             expectedCompositeIndex.Name = "536.51.083.62";
 
@@ -123,7 +114,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexParentIDTest()
         {
-            //Int32 inID = 101.1;
             Index expectedParentIndex = new Index();
             expectedParentIndex.Id = 1804;
 
@@ -135,7 +125,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexParentValueTest()
         {
-            //Int32 inID = 101.1;
             Index expectedParentIndex = new Index();
             expectedParentIndex.Value = "101";
 
@@ -147,7 +136,6 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexParentNameTest()
         {
-            //Int32 inID = 101.1;
             Index expectedParentIndex = new Index();
             expectedParentIndex.Name = "Природа и роль философии";
 
