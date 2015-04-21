@@ -1,7 +1,8 @@
 UDC/bin/
 UDC/obj/
-UDC.v11.suo
+*.suo
 UDC/Web.config
+UDC.Tests/app.config
 UDC.Tests/bin/
 UDC.Tests/obj/
 TestResults/
