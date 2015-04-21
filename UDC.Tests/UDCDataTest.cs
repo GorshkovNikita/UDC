@@ -9,18 +9,14 @@ namespace UDC.Tests
     [TestClass]
     public class UDCDataTest
     {
-        [TestInitialize]
-        public void CreateDataContext()
-        {
-            UDCData.DB = new UDCDataClassesDataContext("Data Source=NIKITA-LENOVO;Initial Catalog=DBLibUDC_21_01;Integrated Security=True");
-        }
+        private int inID = 1805;
 
         [TestMethod]
         public void GetIndexIDTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
-            expectedIndex.Id = 12;
+            expectedIndex.Id = 1805;
 
             Index actualIndex = UDCData.GetIndex(inID);
 
@@ -30,9 +26,9 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexValueTest()
         {
-            Int32 inID = 12;
+           // Int32 inID = 101.1;
             Index expectedIndex = new Index();
-            expectedIndex.Id = 12;
+            expectedIndex.Id = 1805;
             expectedIndex.Value = "101.1";
 
             Index actualIndex = UDCData.GetIndex(inID);
@@ -43,7 +39,7 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexNameTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.Name = "Природа философии. Философия как наука. Философия как искусство";
 
@@ -55,9 +51,9 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexParenIDTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
-            expectedIndex.ParentId = 11;
+            expectedIndex.ParentId = 1804;
 
             Index actualIndex = UDCData.GetIndex(inID);
 
@@ -67,7 +63,7 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexIndexTypeTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.IndexType = "Index";
 
@@ -79,7 +75,7 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexTabeTypeTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             Index expectedIndex = new Index();
             expectedIndex.TableType = "MainIndex";
 
@@ -91,9 +87,9 @@ namespace UDC.Tests
         [TestMethod]
         public void GetCompositeIndexIDTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
-            expectedCompositeIndex.Id = 12;
+            expectedCompositeIndex.Id = 1805;
 
             CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
 
@@ -103,9 +99,9 @@ namespace UDC.Tests
         [TestMethod]
         public void GetCompositeIndexNameTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
-            expectedCompositeIndex.Value = "Дети с повседневными проблемами";
+            expectedCompositeIndex.Value = "Ртутные термометры для измерения и индикации малых температурных различий. Термометр бекмана";
 
             CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
 
@@ -115,9 +111,9 @@ namespace UDC.Tests
         [TestMethod]
         public void GetCompositeIndexValueTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
-            expectedCompositeIndex.Name = "159.922.76-056.49";
+            expectedCompositeIndex.Name = "536.51.083.62";
 
             CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
 
@@ -127,9 +123,9 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexParentIDTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             Index expectedParentIndex = new Index();
-            expectedParentIndex.Id = 11;
+            expectedParentIndex.Id = 1804;
 
             Index actualCompositeIndex = UDCData.GetIndexParent(inID);
 
@@ -139,7 +135,7 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexParentValueTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             Index expectedParentIndex = new Index();
             expectedParentIndex.Value = "101";
 
@@ -151,7 +147,7 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexParentNameTest()
         {
-            Int32 inID = 12;
+            //Int32 inID = 101.1;
             Index expectedParentIndex = new Index();
             expectedParentIndex.Name = "Природа и роль философии";
 
@@ -163,13 +159,17 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexChildrenCountTest()
         {
-            Int32 inID = 11;
+            Int32 inID = 1;
             List<Index> expectedIndexChildren = new List<Index>();
-            expectedIndexChildren.Add(new Index() { Id = 12} );
-            expectedIndexChildren.Add(new Index() { Id = 13 });
-            expectedIndexChildren.Add(new Index() { Id = 14 });
-            expectedIndexChildren.Add(new Index() { Id = 15 });
-            expectedIndexChildren.Add(new Index() { Id = 16 });
+            expectedIndexChildren.Add(new Index() { Id = 2 });
+            expectedIndexChildren.Add(new Index() { Id = 71 });
+            expectedIndexChildren.Add(new Index() { Id = 79 });
+            expectedIndexChildren.Add(new Index() { Id = 233 });
+            expectedIndexChildren.Add(new Index() { Id = 993 });
+            expectedIndexChildren.Add(new Index() { Id = 994 });
+            expectedIndexChildren.Add(new Index() { Id = 1099 });
+            expectedIndexChildren.Add(new Index() { Id = 1105 });
+            expectedIndexChildren.Add(new Index() { Id = 1107 });
 
             List<Index> actualIndexChildren = UDCData.GetIndexChildren(inID);
 
@@ -179,13 +179,17 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexChildrenIDTest()
         {
-            Int32 inID = 11;
+            Int32 inID = 1;
             List<Index> expectedIndexChildren = new List<Index>();
-            expectedIndexChildren.Add(new Index() { Id = 12 });
-            expectedIndexChildren.Add(new Index() { Id = 13 });
-            expectedIndexChildren.Add(new Index() { Id = 14 });
-            expectedIndexChildren.Add(new Index() { Id = 15 });
-            expectedIndexChildren.Add(new Index() { Id = 16 });
+            expectedIndexChildren.Add(new Index() { Id = 2 });
+            expectedIndexChildren.Add(new Index() { Id = 71 });
+            expectedIndexChildren.Add(new Index() { Id = 79 });
+            expectedIndexChildren.Add(new Index() { Id = 233 });
+            expectedIndexChildren.Add(new Index() { Id = 993 });
+            expectedIndexChildren.Add(new Index() { Id = 994 });
+            expectedIndexChildren.Add(new Index() { Id = 1099 });
+            expectedIndexChildren.Add(new Index() { Id = 1105 });
+            expectedIndexChildren.Add(new Index() { Id = 1107 });
 
             List<Index> actualIndexChildren = UDCData.GetIndexChildren(inID);
 
@@ -194,18 +198,26 @@ namespace UDC.Tests
             Assert.AreEqual(expectedIndexChildren[2].Id, actualIndexChildren[2].Id, "IDs are not equal");
             Assert.AreEqual(expectedIndexChildren[3].Id, actualIndexChildren[3].Id, "IDs are not equal");
             Assert.AreEqual(expectedIndexChildren[4].Id, actualIndexChildren[4].Id, "IDs are not equal");
+            Assert.AreEqual(expectedIndexChildren[5].Id, actualIndexChildren[5].Id, "IDs are not equal");
+            Assert.AreEqual(expectedIndexChildren[6].Id, actualIndexChildren[6].Id, "IDs are not equal");
+            Assert.AreEqual(expectedIndexChildren[7].Id, actualIndexChildren[7].Id, "IDs are not equal");
+            Assert.AreEqual(expectedIndexChildren[8].Id, actualIndexChildren[8].Id, "IDs are not equal");
         }
 
         [TestMethod]
         public void GetIndexChildrenValueTest()
         {
-            Int32 inID = 11;
+            Int32 inID = 1;
             List<Index> expectedIndexChildren = new List<Index>();
-            expectedIndexChildren.Add(new Index() { Value = "101.1" });
-            expectedIndexChildren.Add(new Index() { Value = "101.2" });
-            expectedIndexChildren.Add(new Index() { Value = "101.3" });
-            expectedIndexChildren.Add(new Index() { Value = "101.8" });
-            expectedIndexChildren.Add(new Index() { Value = "101.9" });
+            expectedIndexChildren.Add(new Index() { Value = "001" });
+            expectedIndexChildren.Add(new Index() { Value = "002" });
+            expectedIndexChildren.Add(new Index() { Value = "003" });
+            expectedIndexChildren.Add(new Index() { Value = "004" });
+            expectedIndexChildren.Add(new Index() { Value = "005" });
+            expectedIndexChildren.Add(new Index() { Value = "006" });
+            expectedIndexChildren.Add(new Index() { Value = "007" });
+            expectedIndexChildren.Add(new Index() { Value = "008" });
+            expectedIndexChildren.Add(new Index() { Value = "009" });
 
             List<Index> actualIndexChildren = UDCData.GetIndexChildren(inID);
 
@@ -214,18 +226,27 @@ namespace UDC.Tests
             Assert.AreEqual(expectedIndexChildren[2].Value, actualIndexChildren[2].Value, "Values are not equal");
             Assert.AreEqual(expectedIndexChildren[3].Value, actualIndexChildren[3].Value, "Values are not equal");
             Assert.AreEqual(expectedIndexChildren[4].Value, actualIndexChildren[4].Value, "Values are not equal");
+            Assert.AreEqual(expectedIndexChildren[5].Value, actualIndexChildren[5].Value, "Values are not equal");
+            Assert.AreEqual(expectedIndexChildren[6].Value, actualIndexChildren[6].Value, "Values are not equal");
+            Assert.AreEqual(expectedIndexChildren[7].Value, actualIndexChildren[7].Value, "Values are not equal");
+            Assert.AreEqual(expectedIndexChildren[8].Value, actualIndexChildren[8].Value, "Values are not equal");
         }
 
         [TestMethod]
         public void GetIndexChildrenNameTest()
         {
-            Int32 inID = 11;
+            Int32 inID = 1;
             List<Index> expectedIndexChildren = new List<Index>();
-            expectedIndexChildren.Add(new Index() { Name = "Природа философии. Философия как наука. Философия как искусство" });
-            expectedIndexChildren.Add(new Index() { Name = "Возможность философии. Возможна ли философия?" });
-            expectedIndexChildren.Add(new Index() { Name = "Предметный охват и границы философии" });
-            expectedIndexChildren.Add(new Index() { Name = "Философские методы. Методы философствования" });
-            expectedIndexChildren.Add(new Index() { Name = "Личность и призвание (назначение) философа" });
+            expectedIndexChildren.Add(new Index() { Name = "Наука и знание в целом. Организация умственного труда" });
+            expectedIndexChildren.Add(new Index() { Name = "Документация. Научно-техническая информация (нти). Печать в целом. Авторство" });
+            expectedIndexChildren.Add(new Index() { Name = "Системы письма и письменности. Знаки и символы. Семиотика в целом. Коды. Графическое представление мысли" });
+            expectedIndexChildren.Add(new Index() { Name = "Информационные технологии. Вычислительная техника. Теория, технология и применение вычислительных машин и систем." });
+            expectedIndexChildren.Add(new Index() { Name = "Изучение проблемы организации: методология, анализ, синтез, классификация и таксономия (теория, основы), систематизация в целом" });
+            expectedIndexChildren.Add(new Index() { Name = "Стандартизация  продукции , процессов, мер, весов и времени. Стандарты. Технические требования. Нормы и правила. Рекомендации" });
+            expectedIndexChildren.Add(new Index() { Name = "Деятельность и организация. Общая теория информации, связи и управления (кибернетика)" });
+            expectedIndexChildren.Add(new Index() { Name = "Цивилизация. Культура. Прогресс" });
+            expectedIndexChildren.Add(new Index() { Name = "Гуманитарные науки в целом" });
+
 
             List<Index> actualIndexChildren = UDCData.GetIndexChildren(inID);
 
@@ -234,14 +255,19 @@ namespace UDC.Tests
             Assert.AreEqual(expectedIndexChildren[2].Name, actualIndexChildren[2].Name, "Names are not equal");
             Assert.AreEqual(expectedIndexChildren[3].Name, actualIndexChildren[3].Name, "Names are not equal");
             Assert.AreEqual(expectedIndexChildren[4].Name, actualIndexChildren[4].Name, "Names are not equal");
+            Assert.AreEqual(expectedIndexChildren[5].Name, actualIndexChildren[5].Name, "Names are not equal");
+            Assert.AreEqual(expectedIndexChildren[6].Name, actualIndexChildren[6].Name, "Names are not equal");
+            Assert.AreEqual(expectedIndexChildren[7].Name, actualIndexChildren[7].Name, "Names are not equal");
+            Assert.AreEqual(expectedIndexChildren[8].Name, actualIndexChildren[8].Name, "Names are not equal");
         }
 
         [TestMethod]
         public void GetIndexExampleTest()
         {
-            Int32 inID = 194;
+            Int32 inID = 30;
             List<Example> expectedIndexExamples = new List<Example>();
-            expectedIndexExamples.Add(new Example("159.947", "Волевые процессы. Воля"));
+            expectedIndexExamples.Add(new Example("001.814.2:002", "Разыскание литературы"));
+            expectedIndexExamples.Add(new Example("001.814.2:347.771", "Разыскание патентов"));
 
             List<Example> actualIndexExamples = UDCData.GetIndexExamples(inID);
 
@@ -252,21 +278,15 @@ namespace UDC.Tests
         [TestMethod]
         public void GetIndexLinkTest()
         {
-            Int32 inID = 42;
+            Int32 inID = 284;
             List<Link> expectedIndexLinks = new List<Link>();
-            expectedIndexLinks.Add(new Link("141.33", "Философский мистицизм"));
-            expectedIndexLinks.Add(new Link("159.961", "Парапсихология. Психические явления и исследования. Галлюцинации. Иллюзии. Видения. Привидения"));
+            expectedIndexLinks.Add(new Link("004.056.3", "Резервирование и восстановление данных"));
+            expectedIndexLinks.Add(new Link("004.056.4", "Избыточность"));
 
             List<Link> actualIndexLinks = UDCData.GetIndexLinks(inID);
 
             Assert.AreEqual(expectedIndexLinks[0].Index, actualIndexLinks[0].Index, "Indexes are not equal");
             Assert.AreEqual(expectedIndexLinks[0].Name, actualIndexLinks[0].Name, "Names are not equal");
-        }
-
-        [TestCleanup]
-        public void DeleteDataContext()
-        {
-            UDCData.DB = null;
         }
     }
 }
