@@ -9,8 +9,6 @@ namespace UDC.Controllers
 {
     public class CommonDeterminantController : Controller
     {
-        private UDCData data = new UDCData();
-
         //
         // GET: /CommonDeteriminant/
 
@@ -41,7 +39,7 @@ namespace UDC.Controllers
 
         public ActionResult Time()
         {
-            return View();
+            return View(UDCData.TimeDeterminantIndexes);
         }
     }
 }

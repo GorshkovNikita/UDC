@@ -97,7 +97,47 @@ namespace UDC.Models
         {
             get
             {
-                return UDCData.DB.Indexes.Where(index => index.TableType == "MainIndex").ToList();
+                return UDCData.DB.Indexes.Where(index => index.TableType == "MainIndex").Where(index => index.IndexType == "Index").Where(index => index.Removed == false).ToList();
+            }
+        }
+
+        public static List<Index> TimeDeterminantIndexes
+        {
+            get
+            {
+                return UDCData.DB.Indexes.Where(index => index.TableType == "Ig.xml").ToList(); 
+            }
+        }
+
+        public static List<Index> LanguageDeterminantIndexes
+        {
+            get
+            {
+                return UDCData.DB.Indexes.Where(index => index.TableType == "Ic.xml").ToList();
+            }
+        }
+
+        public static List<Index> NationDeterminantIndexes
+        {
+            get
+            {
+                return UDCData.DB.Indexes.Where(index => index.TableType == "If.xml").ToList();
+            }
+        }
+
+        public static List<Index> PlaceDeterminantIndexes
+        {
+            get
+            {
+                return UDCData.DB.Indexes.Where(index => index.TableType == "Ie.xml").ToList();
+            }
+        }
+
+        public static List<Index> FormDeterminantIndexes
+        {
+            get
+            {
+                return UDCData.DB.Indexes.Where(index => index.TableType == "Id.xml").ToList();
             }
         }
 

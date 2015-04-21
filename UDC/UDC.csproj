@@ -275,7 +275,9 @@
     <Content Include="Views\Shared\MainIndexNodePartial.ascx" />
     <Content Include="Views\Shared\MoreInfoChildrenNode.ascx" />
     <Content Include="Views\Shared\UDCTree.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

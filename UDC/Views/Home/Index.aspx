@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Index</h2>
+<h2>Общие определители</h2>
 
 <ul class="main-table-items">
     <% foreach (var item in Model.Where(parent => parent.ParentId == null)) { %>

@@ -420,7 +420,7 @@ namespace UDC.Controllers
             if (Request.IsAjaxRequest())
             {
                 String fullIndex = "";
-                Int16 curPart = 0;
+                /*Int16 curPart = 0;
                 List<Int32> count = UDCData.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
                 List<CurrentIndex> lst = UDCData.DB.ExecuteQuery<CurrentIndex>("SELECT * FROM dbo.CurrentIndex").ToList();
                 while ((curPart + 1) <= count[0])
@@ -435,7 +435,7 @@ namespace UDC.Controllers
                     fullIndex += lst[curPart].SecondBracket;
                     fullIndex += lst[curPart].SignBetween;
                     curPart++;
-                }
+                }*/
                 return fullIndex;
             }
             return null;
