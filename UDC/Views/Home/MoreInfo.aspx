@@ -31,7 +31,9 @@
     <h5>Дочерние индексы:</h5>
     <ul style="padding-left: 15px" class="main-table-items">
          <% if (Model.Children.Count > 0) {
-             foreach (var item in Model.Children) { %>
+             foreach (var item in Model.Children) { 
+                 if (item.IndexType != "SpecialDeterminant") {
+               %>
                 <li>
                     <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
                     <a href="../Home/MoreInfo?index=<%= item.Id %>"><span class="main-table-items-item-text">
@@ -45,7 +47,7 @@
                     <div class="main-child"></div>
                 </li>
         <% }
-       }
+       } }
        else { %>
         <li style="padding-left: 15px">&nbsp;&nbsp;Дочерние индексы отсутствуют</li>
         <% } %>

@@ -9,113 +9,41 @@ namespace UDC.Models
     {
         public IndexModel(Int32 id)
         {
-            _index = UDCData.GetIndex(id);
-            _parent = UDCData.GetIndexParent(id);
-            _children = UDCData.GetIndexChildren(id);
-            _examples = UDCData.GetIndexExamples(id);
-            _links = UDCData.GetIndexLinks(id);
+            Index = UDCData.GetIndex(id);
+            Parent = UDCData.GetIndexParent(id);
+            Children = UDCData.GetIndexChildren(id);
+            Examples = UDCData.GetIndexExamples(id);
+            Links = UDCData.GetIndexLinks(id);
         }
 
-        public Index Index
-        {
-            get
-            {
-                return _index;
-            }
-        }
-
-        public Index Parent
-        {
-            get
-            {
-                return _parent;
-            }
-        }
-
-        public List<Index> Children
-        {
-            get
-            {
-                return _children;
-            }
-        }
-
-        public List<Link> Links
-        {
-            get
-            {
-                return _links;
-            }
-        }
-
-        public List<Example> Examples
-        {
-            get
-            {
-                return _examples;
-            }
-        }
-
-        private Index _index;
-        private Index _parent;
-        private List<Index> _children;
-        private List<Example> _examples;
-        private List<Link> _links;
+        public Index Index { get; private set; }
+        public Index Parent { get; private set; }
+        public List<Index> Children { get; private set; }
+        public List<Link> Links { get; private set; }
+        public List<Example> Examples { get; private set; }
     }
 
     public class Example
     {
         public Example(String index, String name)
         {
-            _index = index;
-            _name = name;
+            Index = index;
+            Name = name;
         }
 
-        public String Index
-        {
-            get
-            {
-                return _index;
-            }
-        }
-
-        public String Name
-        {
-            get
-            {
-                return _name;
-            }
-        }
-
-        private String _index;
-        private String _name;
+        public String Index { get; private set; }
+        public String Name { get; private set; }
     }
 
     public class Link
     {
         public Link(String index, String name)
         {
-            _index = index;
-            _name = name;
+            Index = index;
+            Name = name;
         }
 
-        public String Index
-        {
-            get
-            {
-                return _index;
-            }
-        }
-
-        public String Name
-        {
-            get
-            {
-                return _name;
-            }
-        }
-
-        private String _index;
-        private String _name;
+        public String Index { get; private set; }
+        public String Name { get; private set; }
     }
 }

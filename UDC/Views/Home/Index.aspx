@@ -10,7 +10,10 @@
 
 <ul class="main-table-items">
     <% foreach (var item in Model.Where(parent => parent.ParentId == null)) { %>
-        <li>
+        <li <% if (item.IndexType == "SpecialDeterminant") { %>
+                style="font-style: italic"
+            <% } %>>
+            >
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
             <a href="../Home/MoreInfo?index=<%: Html.DisplayFor(modelItem => item.Id) %>">
                 <span class="main-table-items-item-text">

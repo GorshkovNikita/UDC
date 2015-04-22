@@ -3,7 +3,10 @@
 <ul class="main-table-items-subitems">
     <% if (Model != null) {
         foreach (var child in Model.Children) { %>
-        <li class="main-table-items-subitems-subitem">
+        <li class="main-table-items-subitems-subitem"
+            <% if (child.IndexType == "SpecialDeterminant") { %>
+                style="font-style: italic "
+            <% } %>>
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
             <a href="../Home/MoreInfo?index=<%: Html.DisplayFor(modelItem => child.Id) %>">
                 <span class="main-table-items-item-text">
