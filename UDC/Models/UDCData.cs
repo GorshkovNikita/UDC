@@ -89,7 +89,10 @@ namespace UDC.Models
         {
             get
             {
-                return UDCData.DB.Indexes.Where(index => index.TableType == "MainIndex").Where(index => index.IndexType == "Index").Where(index => index.Removed == false).ToList();
+                return UDCData.DB.Indexes.Where(index => index.TableType == "MainIndex")
+                    .Where(index => index.IndexType == "Index")
+                    .Where(index => index.Removed == false)
+                    .Where(index => index.isGroupIndex == false).ToList();
             }
         }
 
