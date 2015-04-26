@@ -42,6 +42,10 @@
                     </ul>
                 </li>
             </ul>
+            <ul>
+                <li><input type="checkbox" name="removed" id="removed" onclick="checkRemoved(this)" /> Отображать удаленные</li>
+                <li><input type="checkbox" name="specialdet" id="specialdet" onclick="checkSpecialDet(this)"/> Отображать специальные определители</li>
+            </ul>
             <span class="label-constructor">Конструктор УДК:&nbsp;</span><br />
             <div class="constructor">
                 <div class="udc-constructor-textbox">

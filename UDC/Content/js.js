@@ -202,6 +202,14 @@ function updateIndex() {
     });
 }
 
+function checkRemoved(elem) {
+    $.get("http://localhost:51128?removed=true");
+}
+
+function checkSpecialDet(elem) {
+    $.get("http://localhost:51128?specaldet=true");
+}
+
 /*$(function () {
     $.post("http://localhost:51128/Ajax/SetCurrentPartIndex");
     $.get("http://localhost:51128/Ajax/GetCurrentPartIndex", function (data) {

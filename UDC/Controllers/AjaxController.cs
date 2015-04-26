@@ -17,6 +17,24 @@ namespace UDC.Controllers
         public static Int32 currentPartIndex;
         public static UDCIndex UDC;
 
+        public PartialViewResult GetPartialView(Int32 id)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("MainIndexNodePartial", new IndexModel(id));
+            }
+            return null;
+        }
+
+        public PartialViewResult GetPartialViewOfSpecialDeterminant(Int32 id)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("SpecialDeterminantNodePartial", new IndexModel(id));
+            }
+            return null;
+        }
+
         public Int32 GetCurrentPartIndex()
         {
             if (Request.IsAjaxRequest())
@@ -452,24 +470,6 @@ namespace UDC.Controllers
                 UDCData.DB.SubmitChanges();
                 currentPartIndex = 1;
             }
-        }
-
-        public PartialViewResult GetPartialView(Int32 id)
-        {
-            if (Request.IsAjaxRequest())
-            {
-                return PartialView("MainIndexNodePartial", new IndexModel(id));
-            }
-            return null;
-        }
-
-        public PartialViewResult GetPartialViewOfSpecialDeterminant(Int32 id)
-        {
-            if (Request.IsAjaxRequest())
-            {
-                return PartialView("SpecialDeterminantNodePartial", new IndexModel(id));
-            }
-            return null;
         }
 
         [HttpPost]
