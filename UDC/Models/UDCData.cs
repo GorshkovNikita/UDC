@@ -30,7 +30,9 @@ namespace UDC.Models
 
         public static List<Index> GetIndexChildren(Int32 id)
         {
-            return UDCData.DB.ExecuteQuery<Index>("SELECT * FROM [dbo].[Index] WHERE ParentID = {0}", id).ToList();
+            return UDCData.DB.Indexes.Where(index => index.ParentId == id)
+                .Where(index => index.IndexType == "Index")
+                .ToList();
         }
 
         public static List<Example> GetIndexExamples(Int32 id)
@@ -75,6 +77,13 @@ namespace UDC.Models
                 }
             }
             return links;
+        }
+
+        public static List<Index> GetSpecialDeterminants(int id)
+        {
+            return UDCData.DB.Indexes.Where(index => index.ParentId == id)
+                .Where(index => index.IndexType == "SpecialDeterminant")
+                .ToList();
         }
 
         public static List<Index> AllIndexes

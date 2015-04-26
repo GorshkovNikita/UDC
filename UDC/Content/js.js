@@ -180,12 +180,17 @@ function show(elem) {
     else if (window.location.href == "http://localhost:51128/Home/SpecificDeterminants")
         node = $(elem).nextAll()[2];
     else*/
-        node = $(elem).nextAll()[4];
+    node = $(elem).nextAll()[4];
     if ($(node).css("display") == "none") {
         node.style.display = "block";
-        $.get("http://localhost:51128/Ajax/GetPartialView?id=" + $(elem).next().children().eq(0).children().eq(0).html(), function (data) {
-            $(node).html(data);
-        });
+        if ($(elem).attr('class') == "special_determinant")
+            $.get("http://localhost:51128/Ajax/GetPartialViewOfSpecialDeterminant?id=" + $(elem).next().children().eq(0).children().eq(0).html(), function (data) {
+                $(node).html(data);
+            });
+        else 
+            $.get("http://localhost:51128/Ajax/GetPartialView?id=" + $(elem).next().children().eq(0).children().eq(0).html(), function (data) {
+                $(node).html(data);
+            });
     }
     else
         node.style.display = "none";

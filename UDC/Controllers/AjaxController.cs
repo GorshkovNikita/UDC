@@ -463,6 +463,15 @@ namespace UDC.Controllers
             return null;
         }
 
+        public PartialViewResult GetPartialViewOfSpecialDeterminant(Int32 id)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("SpecialDeterminantNodePartial", new IndexModel(id));
+            }
+            return null;
+        }
+
         [HttpPost]
         public ActionResult UDCCreate(String stringUDC, String tree, String db)
         {

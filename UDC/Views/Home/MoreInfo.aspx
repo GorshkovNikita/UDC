@@ -112,126 +112,26 @@
     </ul>
     <h5>Специальные определители</h5>
     <ul style="padding-left: 15px" class="main-table-items">
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.01</span> Общие вопросы физиологии </span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-            <ul class="main-table-items-subitems">
-                <li class="main-table-items-subitems-subitem">
-                    <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                    <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.013</span> Жизнь. Смерть</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                    <ul class="main-table-items-subitems">
-                        <li class="main-table-items-subitems-subitem">
-                        <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.013.1</span> Общие вопросы</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.013.4</span> Витализм </span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.013.5</span> Сравнительная физиология человека, животных и растений</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.013.6</span> Органический и неорганический мир (сравнение живых существ с неорганическими объектами) </span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.013.7</span> Энергия. Общие вопросы</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                    </ul>
+         <% if (Model.SpecialDeterminants.Count > 0) {
+             foreach (var item in Model.SpecialDeterminants) {
+               %>
+                <li>
+                    <img class="special_determinant" src="../../Images/plus.gif" onclick="show(this)"/>
+                    <a href="../Home/MoreInfo?index=<%= item.Id %>"><span class="main-table-items-item-text">
+                        <span style="display: none" class=""><%= item.Id %></span>
+                        <span class="main-table-id"><%= item.Value %></span>
+                        &nbsp;<%= item.Name %></span>
+                    </a>
+                    <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
+                    <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
+                    <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
+                    <div class="main-child"></div>
                 </li>
-                <li class="main-table-items-subitems-subitem">
-                    <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                    <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.014</span> Общая физиология клетки и организма </span></a>
-                    <span class="main-table-items-item-add add-index-button" onclick="addMainIndex(this)">Добавить в индекс</span>
-                    <span class="main-table-items-item-add add-index-button" onclick="addMainIndexPlus(this)">+</span>
-                    <span class="main-table-items-item-add add-index-button" onclick="addMainIndexSlash(this)">/</span>
-                    <ul class="main-table-items-subitems">
-                        <li class="main-table-items-subitems-subitem">
-                        <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.014.1</span> Физиологическая химия клетки</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.014.2</span> Гистоморфологические свойства клеток</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.014.3</span> Общая физиология клетки</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.06</span> Воздействие, действие, влияние систем, органов и функций. Взаимодействие. Взаимное влияние</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-            <ul class="main-table-items-subitems">
-                        <li class="main-table-items-subitems-subitem">
-                        <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.062</span> Влияние на систему, орган или функцию </span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.063</span> Стимулирующее положительное воздействие, влияние</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                        <li class="main-table-items-subitems-subitem">
-                            <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-                            <a href="../Home/MoreInfo"><span class="main-table-items-item-text"><span class="main-table-id">612.064</span> Отрицательное, замедляющее воздействие, влияние </span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-                        </li>
-                    </ul>
-        </li>
-        <li class="main-table-items-item">
-            <img class="" src="../../Images/plus.gif" onclick="show(this)" />
-            <a href="../Home/MoreInfo"><span class="main-table-items-item-text" onclick="show(this)"><span class="main-table-id">612.08</span> Методы исследований. Эксперимент. Наблюдения</span></a>
-            <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
-            <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
-        </li>
+        <% }
+       }
+       else { %>
+        <li style="padding-left: 15px">&nbsp;&nbsp;Специальные определители индексы отсутствуют</li>
+        <% } %>
     </ul>
     <h5>Книги с индексом 612</h5>
     <ol style="padding-left: 40px">

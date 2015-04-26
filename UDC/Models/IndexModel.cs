@@ -14,6 +14,7 @@ namespace UDC.Models
             Children = UDCData.GetIndexChildren(id);
             Examples = UDCData.GetIndexExamples(id);
             Links = UDCData.GetIndexLinks(id);
+            SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
         }
 
         public Index Index { get; private set; }
@@ -21,6 +22,7 @@ namespace UDC.Models
         public List<Index> Children { get; private set; }
         public List<Link> Links { get; private set; }
         public List<Example> Examples { get; private set; }
+        public List<Index> SpecialDeterminants { get; private set; }
     }
 
     public class Example
