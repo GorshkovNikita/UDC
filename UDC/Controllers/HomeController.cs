@@ -11,7 +11,7 @@ namespace UDC.Controllers
 
     public class HomeController : Controller
     {
-        public ActionResult Index(string id)
+        public ActionResult Index(string id, string removed, string specialdet)
         {
             CurrentIndex.Index = "123.1";
             ViewData["CurrentIndex"] = CurrentIndex.Index;
