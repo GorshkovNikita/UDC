@@ -10,8 +10,13 @@
 
 <ul class="main-table-items">
     <% foreach (var item in Model.Where(parent => parent.ParentId == null)) { %>
+    <% if (!(((item.IndexType == "SpecialDeterminant") && (String.Equals(ViewData["SpecialDet"], "on"))))
+           || ((item.Removed == true) && (String.Equals(ViewData["IsRemoved"], "on"))))
+       { %>
         <li <% if (item.IndexType == "SpecialDeterminant") { %>
                 style="font-style: italic"
+            <% } else if (item.Removed == true) { %>
+                style="opacity: 0.5"
             <% } %>>
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
             <a href="../Home/MoreInfo?index=<%: Html.DisplayFor(modelItem => item.Id) %>">
@@ -26,7 +31,8 @@
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
             <div class="main-child"></div>
         </li>
-    <% } %>
+    <% }
+       } %>
 </ul>
 
 </asp:Content>

@@ -2,17 +2,22 @@
 
 <ul class="main-table-items-subitems">
     <% if (Model != null) {
-        foreach (var child in Model.Children) { %>
+           foreach (var child in Model.Children)
+           { %>
+    <% if (!(((child.IndexType == "SpecialDeterminant") && (ViewData["SpecialDet"] == "on".ToString()))
+           || ((child.Removed == true) && (ViewData["IsRemoved"] == "on".ToString()))))
+       { %>
         <li class="main-table-items-subitems-subitem"
-            <% if (child.IndexType == "SpecialDeterminant") { %>
+            <% if (child.IndexType == "SpecialDeterminant")
+               { %>
                 style="font-style: italic "
             <% } %>>
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
-            <a href="../Home/MoreInfo?index=<%: Html.DisplayFor(modelItem => child.Id) %>">
+            <a href="../Home/MoreInfo?index=<%: Html.DisplayFor(modelItem => child.Id)%>">
                 <span class="main-table-items-item-text">
-                    <span style="display:none"><%= child.Id %></span>
-                    <span class="main-table-id"><%: Html.DisplayFor(modelItem => child.Value) %></span>
-                    &nbsp;<%: Html.DisplayFor(modelItem => child.Name) %>
+                    <span style="display:none"><%= child.Id%></span>
+                    <span class="main-table-id"><%: Html.DisplayFor(modelItem => child.Value)%></span>
+                    &nbsp;<%: Html.DisplayFor(modelItem => child.Name)%>
                 </span>
             </a>
             <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
@@ -21,5 +26,6 @@
             <div class="main-child"></div>
         </li>
     <% }
+           }
        } %>
 </ul>

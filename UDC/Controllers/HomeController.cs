@@ -15,6 +15,8 @@ namespace UDC.Controllers
         {
             CurrentIndex.Index = "123.1";
             ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["IsRemoved"] = removed;
+            ViewData["SpecialDet"] = specialdet;
             return View(UDCData.AllMainTableIndexes);
         }
 

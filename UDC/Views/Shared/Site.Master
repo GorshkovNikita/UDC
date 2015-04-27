@@ -42,10 +42,12 @@
                     </ul>
                 </li>
             </ul>
-            <ul>
-                <li><input type="checkbox" name="removed" id="removed" onclick="checkRemoved(this)" /> Отображать удаленные</li>
-                <li><input type="checkbox" name="specialdet" id="specialdet" onclick="checkSpecialDet(this)"/> Отображать специальные определители</li>
-            </ul>
+            
+                <form style="padding-left: 15px" method="get" action="http://localhost:51128">                  
+                    <input type="checkbox" name="removed" /> Не отображать удаленные<br />
+                    <input type="checkbox" name="specialdet" id="specialdet" /> Не отображать специальные определители<br />
+                    <input type="submit" value="Обновить" />
+                </form>
             <span class="label-constructor">Конструктор УДК:&nbsp;</span><br />
             <div class="constructor">
                 <div class="udc-constructor-textbox">
