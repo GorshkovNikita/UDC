@@ -41,6 +41,7 @@ namespace UDC.Controllers
         public ActionResult CreatedIndex()
         {
             string res = CurrentIndex.XmlResultString;
+            ViewData["CurrentIndex"] = CurrentIndex.Index;
             ViewData["XmlResultString"] = res;
             /*
             ViewData["CurrentIndex"] = CurrentIndex.Index;

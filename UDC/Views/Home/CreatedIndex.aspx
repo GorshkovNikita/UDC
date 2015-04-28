@@ -8,7 +8,11 @@
 
 <h2>Разбор индекса</h2>
 
-    <%= ViewData["XmlResultString"] %>
+    <% if (ViewData["XmlResultString"] != null) { %>
+        <%= ViewData["XmlResultString"] %>
+    <% } else { %>
+        <p>Не удалось разобрать индекс!</p>
+    <% } %>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsSection" runat="server">

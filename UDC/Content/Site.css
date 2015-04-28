@@ -291,4 +291,17 @@ input[type="button"] {
     padding-bottom: 7px;    
 }
 
+/* Разбор дерева. Оформление XML-разметки*/
+
+CommonAuxiliaryOfProperties, CommonAuxiliaryOfMaterials, CommonAuxiliaryOfRelations,
+CommonAuxiliaryOfPersons, SpecialAuxiliary1, SpecialAuxiliary2, SpecialAuxiliary3,
+Colon, DoubleColon, Plus, CommonAuxiliaryOfTime, Year, Decade, Century, Millenium, Year1,
+Year2, Year3, Decade1, Decade2, Century1, Century2, Millenium1, Millenium2, SimpleCommonAuxiliaryOfPlace,
+CommonAuxiliaryOfPlace, SimpleCommonAuxiliaryOfForm, CommonAuxiliaryOfForm, SimpleCommonAuxiliaryOfHuman,
+CommonAuxiliaryOfHuman, CommonAuxiliaryOfLanguage, SimpleIndex, From, To {
+    display: block;
+}
+
+/**/
+
 /**/
