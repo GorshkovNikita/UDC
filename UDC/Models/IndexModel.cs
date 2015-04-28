@@ -29,6 +29,7 @@ namespace UDC.Models
             SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
             Comment = UDCData.GetComment(id);
             SubDivideAs = UDCData.GetSubDivideAs(id);
+            SubDivideWith = UDCData.GetSubDivideWith(id);
         }
 
         public Index Index { get; private set; }
@@ -39,30 +40,39 @@ namespace UDC.Models
         public List<Index> SpecialDeterminants { get; private set; }
         public string Comment { get; private set; }
         public Index SubDivideAs { get; private set; }
+        public string SubDivideWith { get; private set; }
         public string Removed { get; private set; }
         public string SpecialDet { get; private set; }
     }
 
     public class Example
     {
-        public Example(String index, String name)
+        public Example(int id, string type, String index, String name)
         {
+            ID = id;
+            Type = type;
             Index = index;
             Name = name;
         }
 
+        public int ID { get; private set; }
+        public string Type { get; private set; }
         public String Index { get; private set; }
         public String Name { get; private set; }
     }
 
     public class Link
     {
-        public Link(String index, String name)
+        public Link(int id, string type, String index, String name)
         {
+            ID = id;
+            Type = type;
             Index = index;
             Name = name;
         }
 
+        public int ID { get; private set; }
+        public string Type { get; private set; }
         public String Index { get; private set; }
         public String Name { get; private set; }
     }

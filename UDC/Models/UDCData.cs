@@ -42,16 +42,16 @@ namespace UDC.Models
             foreach (var refer in refs)
             {
                 //if (refer.ToId != null)
-                if (refer.ToId < 3600 && refer.ToId != null)
+                if (refer.ToId != null)
                 {
                     Index tmpIndex = UDCData.GetIndex((int)refer.ToId);
-                    examples.Add(new Example(tmpIndex.Value, tmpIndex.Name));
+                    examples.Add(new Example(tmpIndex.Id, "Index", tmpIndex.Value, tmpIndex.Name));
                 }
                 else if (refer.ToCompIndexId != null)
                 {
                     CompositeIndex tempCompIndex = UDCData.GetCompositeIndex((int)refer.ToCompIndexId);
                     // в БД перепутаны названия столбцов, поэтому в конструктор Link передаем наоборот
-                    examples.Add(new Example(tempCompIndex.Name, tempCompIndex.Value));
+                    examples.Add(new Example(tempCompIndex.Id, "CompositeIndex", tempCompIndex.Name, tempCompIndex.Value));
                 }
             }
             return examples;
@@ -64,16 +64,16 @@ namespace UDC.Models
             foreach (var refer in refs)
             {
                 //if (refer.ToId != null)
-                if (refer.ToId < 3600 && refer.ToId != null)
+                if (refer.ToId != null)
                 {
                     Index tmpIndex = UDCData.GetIndex((int) refer.ToId);
-                    links.Add(new Link(tmpIndex.Value, tmpIndex.Name));
+                    links.Add(new Link(tmpIndex.Id, "Index", tmpIndex.Value, tmpIndex.Name));
                 }
                 else if (refer.ToCompIndexId != null)
                 {
                     CompositeIndex tempCompIndex = UDCData.GetCompositeIndex((int) refer.ToCompIndexId);
                     // в БД перепутаны названия столбцов, поэтому в конструктор Link передаем наоборот
-                    links.Add(new Link(tempCompIndex.Name, tempCompIndex.Value));
+                    links.Add(new Link(tempCompIndex.Id, "CompositeIndex", tempCompIndex.Name, tempCompIndex.Value));
                 }
             }
             return links;
@@ -90,6 +90,11 @@ namespace UDC.Models
                 return UDCData.GetIndex(Convert.ToInt32(UDCData.GetIndex(id).SubdivideAs));
             else
                 return null;
+        }
+
+        public static string GetSubDivideWith(int id)
+        {
+            return UDCData.GetIndex(id).SubdivideWith;
         }
 
         public static List<Index> GetSpecialDeterminants(int id)

@@ -85,9 +85,19 @@
         <% if (Model.Examples.Count > 0) {
              foreach (var item in Model.Examples) { %>
         <li>
-            <span class="main-table-items-item-text">
-                <span class="main-table-id"><%= item.Index %></span>
-                &nbsp;<%= item.Name %></span>
+            <% if (item.Type == "Index") { %>
+            <a href="http://localhost:51128/Home/MoreInfo?index=<%= item.ID %>">
+                <span class="main-table-items-item-text">
+                    <span class="main-table-id"><%= item.Index %></span>
+                    &nbsp;<%= item.Name %>
+                </span>
+            </a>
+            <% } else if (item.Type == "CompositeIndex") { %>
+                <span class="main-table-items-item-text">
+                    <span class="main-table-id"><%= item.Index %></span>
+                    &nbsp;<%= item.Name %>
+                </span>
+            <% } %>
             <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
@@ -103,9 +113,18 @@
         <% if (Model.Links.Count > 0) { 
                foreach (var item in Model.Links) { %>
         <li>
+            <% if (item.Type == "Index") { %>
+            <a href="http://localhost:51128/Home/MoreInfo?index=<%= item.ID %>">
             <span class="main-table-items-item-text">->&nbsp;
                 <span class="main-table-id"><%= item.Index %></span>
                 &nbsp;<%= item.Name %></span>
+                </a>
+                <% } else if (item.Type == "CompositeIndex") { %>
+                <span class="main-table-items-item-text">
+                    <span class="main-table-id"><%= item.Index %></span>
+                    &nbsp;<%= item.Name %>
+                </span>
+            <% } %>
             <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
@@ -145,6 +164,9 @@
             <span class="main-table-id"><%= Model.SubDivideAs.Value %></span>
             &nbsp;<%= Model.SubDivideAs.Name %></span>
         </a>
+    <% } %>
+    <% if (Model.SubDivideWith != "") { %>
+        <h5><%= Model.SubDivideWith %></h5>
     <% } %>
     <% if (Model.Comment != "") { %>
         <h5>Комментарий:</h5>
