@@ -10,10 +10,10 @@
 
 <ul class="main-table-items">
     <% foreach (var item in Model.Where(parent => parent.ParentId == null)) { %>
-    <% if (!(((item.IndexType == "SpecialDeterminant") && (String.Equals(ViewData["SpecialDet"], "on"))))
-           || ((item.Removed == true) && (String.Equals(ViewData["IsRemoved"], "on"))))
+    <% if (!(((item.IndexType == "SpecialDeterminant") && (String.Equals(ViewData["SpecialDet"], "on")))
+           || ((item.Removed == true) && (String.Equals(ViewData["IsRemoved"], "on")))))
        { %>
-        <li <% if (item.IndexType == "SpecialDeterminant") { %>
+        <li <% if (item.IndexType == "SpecialDeterminant" && item.Removed == false) { %>
                 style="font-style: italic"
             <% } else if (item.Removed == true) { %>
                 style="opacity: 0.5"

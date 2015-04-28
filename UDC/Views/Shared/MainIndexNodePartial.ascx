@@ -4,8 +4,8 @@
     <% if (Model != null) {
            foreach (var child in Model.Children)
            { %>
-    <% if (!(((child.IndexType == "SpecialDeterminant") && (ViewData["SpecialDet"] == "on".ToString()))
-           || ((child.Removed == true) && (ViewData["IsRemoved"] == "on".ToString()))))
+    <% if (!(((child.IndexType == "SpecialDeterminant") && (String.Equals(ViewData["SpecialDet"], "on")))
+           || ((child.Removed == true) && (String.Equals(ViewData["IsRemoved"], "on")))))
        { %>
         <li class="main-table-items-subitems-subitem"
             <% if (child.IndexType == "SpecialDeterminant")

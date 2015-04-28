@@ -31,7 +31,7 @@ namespace UDC.Models
         public static List<Index> GetIndexChildren(Int32 id)
         {
             return UDCData.DB.Indexes.Where(index => index.ParentId == id)
-                .Where(index => index.IndexType == "Index")
+                //.Where(index => index.IndexType == "Index")
                 .ToList();
         }
 
@@ -99,7 +99,7 @@ namespace UDC.Models
             get
             {
                 return UDCData.DB.Indexes.Where(index => index.TableType == "MainIndex")
-                    .Where(index => index.IndexType == "Index")
+                    //.Where(index => index.IndexType == "Index")
                     .Where(index => index.isGroupIndex == false).ToList();
             }
         }

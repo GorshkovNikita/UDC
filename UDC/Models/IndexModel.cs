@@ -23,6 +23,7 @@ namespace UDC.Models
         public List<Link> Links { get; private set; }
         public List<Example> Examples { get; private set; }
         public List<Index> SpecialDeterminants { get; private set; }
+
     }
 
     public class Example
