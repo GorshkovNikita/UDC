@@ -8,29 +8,34 @@
 
 <h2>Подробнее:</h2>
     <h3><span class="more-info-index"><%= Model.Index.Value %></span><span class="more-info-name">&nbsp;<%= Model.Index.Name %></span></h3>
+    <h5>Тип таблицы:
     <% if (Model.Index.IndexType == "Index" && Model.Index.TableType == "MainIndex")
        { %>
-        <h5>Основная таблица</h5>
+        Основная таблица</h5>
     <% }
        else if (Model.Index.IndexType == "SpecialDeterminant")
        { %>
-        <h5>Специальный определитель</h5>
+        Специальный определитель</h5>
     <% }
        else if (Model.Index.TableType == "Ig.xml")
        { %>
-        <h5>Общий определитель времени</h5>
+        Общий определитель времени</h5>
     <% } else if (Model.Index.TableType == "Ic.xml")
        { %>
-        <h5>Общий определитель языка</h5>
+        Общий определитель языка</h5>
     <% } else if (Model.Index.TableType == "If.xml")
        { %>
-        <h5>Общий определитель рас, народов, этнических групп и национальностей</h5>
+        Общий определитель рас, народов, этнических групп и национальностей</h5>
     <% } else if (Model.Index.TableType == "Ie.xml")
        { %>
-        <h5>Общий определитель места</h5>
+        Общий определитель места</h5>
     <% } else if (Model.Index.TableType == "Id.xml")
        { %>
-        <h5>Общий определитель формы документа</h5>
+        Общий определитель формы документа</h5>
+    <% } %>
+    <% if (Model.Index.Removed == true)
+           { %>
+        <h5>Удаленный индекс</h5>
     <% } %>
     <h5>Родительский индекс:</h5>
     <% if (Model.Parent != null) { %>
@@ -80,9 +85,19 @@
         <% if (Model.Examples.Count > 0) {
              foreach (var item in Model.Examples) { %>
         <li>
-            <span class="main-table-items-item-text">
-                <span class="main-table-id"><%= item.Index %></span>
-                &nbsp;<%= item.Name %></span>
+            <% if (item.Type == "Index") { %>
+            <a href="http://localhost:51128/Home/MoreInfo?index=<%= item.ID %>">
+                <span class="main-table-items-item-text">
+                    <span class="main-table-id"><%= item.Index %></span>
+                    &nbsp;<%= item.Name %>
+                </span>
+            </a>
+            <% } else if (item.Type == "CompositeIndex") { %>
+                <span class="main-table-items-item-text">
+                    <span class="main-table-id"><%= item.Index %></span>
+                    &nbsp;<%= item.Name %>
+                </span>
+            <% } %>
             <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
@@ -98,9 +113,18 @@
         <% if (Model.Links.Count > 0) { 
                foreach (var item in Model.Links) { %>
         <li>
+            <% if (item.Type == "Index") { %>
+            <a href="http://localhost:51128/Home/MoreInfo?index=<%= item.ID %>">
             <span class="main-table-items-item-text">->&nbsp;
                 <span class="main-table-id"><%= item.Index %></span>
                 &nbsp;<%= item.Name %></span>
+                </a>
+                <% } else if (item.Type == "CompositeIndex") { %>
+                <span class="main-table-items-item-text">
+                    <span class="main-table-id"><%= item.Index %></span>
+                    &nbsp;<%= item.Name %>
+                </span>
+            <% } %>
             <button style="width: 70px; height: 20px; margin-left: 10px" onclick="addMainIndex(this)">Добавить</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
@@ -133,6 +157,23 @@
         <li style="padding-left: 15px">&nbsp;&nbsp;Специальные определители индексы отсутствуют</li>
         <% } %>
     </ul>
+    <% if (Model.SubDivideAs != null) { %>
+        <h5>Подразделять как: </h5>
+        <a href="../Home/MoreInfo?index=<%= Model.SubDivideAs.Id %>" style="padding-left: 15px"><span class="main-table-items-item-text">
+            <span style="display: none" class=""><%= Model.SubDivideAs.Id %></span>
+            <span class="main-table-id"><%= Model.SubDivideAs.Value %></span>
+            &nbsp;<%= Model.SubDivideAs.Name %></span>
+        </a>
+    <% } %>
+    <% if (Model.SubDivideWith != "") { %>
+        <h5><%= Model.SubDivideWith %></h5>
+    <% } %>
+    <% if (Model.Comment != "") { %>
+        <h5>Комментарий:</h5>
+        <p style="padding-left: 15px">
+            <%= Model.Comment %>
+        </p>
+    <% } %>
     <h5>Книги с индексом 612</h5>
     <ol style="padding-left: 40px">
         <li>Мелькумянц A.M., Балашов С.А. Механочувствительность артериального эндотелия. УДК: 612.133

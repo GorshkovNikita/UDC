@@ -9,15 +9,17 @@ namespace UDC.Models
     {
         public IndexModel(Int32 id)
         {
-            Index = UDCData.GetIndex(id);
-            Parent = UDCData.GetIndexParent(id);
-            Children = UDCData.GetIndexChildren(id);
-            Examples = UDCData.GetIndexExamples(id);
-            Links = UDCData.GetIndexLinks(id);
-            SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
+            GetAllProperties(id);
         }
 
         public IndexModel(Int32 id, string removed, string specialdet)
+        {
+            GetAllProperties(id);
+            Removed = removed;
+            SpecialDet = specialdet;
+        }
+
+        private void GetAllProperties(int id)
         {
             Index = UDCData.GetIndex(id);
             Parent = UDCData.GetIndexParent(id);
@@ -25,8 +27,9 @@ namespace UDC.Models
             Examples = UDCData.GetIndexExamples(id);
             Links = UDCData.GetIndexLinks(id);
             SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
-            Removed = removed;
-            SpecialDet = specialdet;
+            Comment = UDCData.GetComment(id);
+            SubDivideAs = UDCData.GetSubDivideAs(id);
+            SubDivideWith = UDCData.GetSubDivideWith(id);
         }
 
         public Index Index { get; private set; }
@@ -35,30 +38,41 @@ namespace UDC.Models
         public List<Link> Links { get; private set; }
         public List<Example> Examples { get; private set; }
         public List<Index> SpecialDeterminants { get; private set; }
+        public string Comment { get; private set; }
+        public Index SubDivideAs { get; private set; }
+        public string SubDivideWith { get; private set; }
         public string Removed { get; private set; }
         public string SpecialDet { get; private set; }
     }
 
     public class Example
     {
-        public Example(String index, String name)
+        public Example(int id, string type, String index, String name)
         {
+            ID = id;
+            Type = type;
             Index = index;
             Name = name;
         }
 
+        public int ID { get; private set; }
+        public string Type { get; private set; }
         public String Index { get; private set; }
         public String Name { get; private set; }
     }
 
     public class Link
     {
-        public Link(String index, String name)
+        public Link(int id, string type, String index, String name)
         {
+            ID = id;
+            Type = type;
             Index = index;
             Name = name;
         }
 
+        public int ID { get; private set; }
+        public string Type { get; private set; }
         public String Index { get; private set; }
         public String Name { get; private set; }
     }

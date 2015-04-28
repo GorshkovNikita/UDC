@@ -254,8 +254,8 @@ namespace UDC.Tests
         {
             Int32 inID = 30;
             List<Example> expectedIndexExamples = new List<Example>();
-            expectedIndexExamples.Add(new Example("001.814.2:002", "Разыскание литературы"));
-            expectedIndexExamples.Add(new Example("001.814.2:347.771", "Разыскание патентов"));
+            expectedIndexExamples.Add(new Example(0, "CompositeIndex", "001.814.2:002", "Разыскание литературы"));
+            expectedIndexExamples.Add(new Example(1, "CompositeIndex", "001.814.2:347.771", "Разыскание патентов"));
 
             List<Example> actualIndexExamples = UDCData.GetIndexExamples(inID);
 
@@ -268,8 +268,8 @@ namespace UDC.Tests
         {
             Int32 inID = 284;
             List<Link> expectedIndexLinks = new List<Link>();
-            expectedIndexLinks.Add(new Link("004.056.3", "Резервирование и восстановление данных"));
-            expectedIndexLinks.Add(new Link("004.056.4", "Избыточность"));
+            expectedIndexLinks.Add(new Link(930, "Index", "004.056.3", "Резервирование и восстановление данных"));
+            expectedIndexLinks.Add(new Link(930, "Index", "004.056.4", "Избыточность"));
 
             List<Link> actualIndexLinks = UDCData.GetIndexLinks(inID);
 
