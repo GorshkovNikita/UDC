@@ -188,9 +188,11 @@ function show(elem) {
                 $(node).html(data);
             });
         else 
-            $.get("http://localhost:51128/Ajax/GetPartialView?id=" + $(elem).next().children().eq(0).children().eq(0).html(), function (data) {
-                $(node).html(data);
-            });
+            $.get("http://localhost:51128/Ajax/GetPartialView?id=" + $(elem).next().children().eq(0).children().eq(0).html() 
+                + "&removed=" + getParameterByName("removed") +
+                "&specialdet=" + getParameterByName("specialdet"),
+                function (data) { $(node).html(data); }
+            );
     }
     else
         node.style.display = "none";
@@ -208,6 +210,13 @@ function checkRemoved(elem) {
 
 function checkSpecialDet(elem) {
     $.get("http://localhost:51128?specaldet=true");
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 /*$(function () {

@@ -16,11 +16,11 @@ namespace UDC.Controllers
         public static Int32 currentPartIndex;
         public static UDCIndex UDC;
 
-        public PartialViewResult GetPartialView(Int32 id)
+        public PartialViewResult GetPartialView(Int32 id, string removed, string specialdet)
         {
             if (Request.IsAjaxRequest())
             {
-                return PartialView("MainIndexNodePartial", new IndexModel(id));
+                return PartialView("MainIndexNodePartial", new IndexModel(id, removed, specialdet));
             }
             return null;
         }
