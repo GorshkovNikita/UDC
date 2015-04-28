@@ -17,13 +17,26 @@ namespace UDC.Models
             SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
         }
 
+        public IndexModel(Int32 id, string removed, string specialdet)
+        {
+            Index = UDCData.GetIndex(id);
+            Parent = UDCData.GetIndexParent(id);
+            Children = UDCData.GetIndexChildren(id);
+            Examples = UDCData.GetIndexExamples(id);
+            Links = UDCData.GetIndexLinks(id);
+            SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
+            Removed = removed;
+            SpecialDet = specialdet;
+        }
+
         public Index Index { get; private set; }
         public Index Parent { get; private set; }
         public List<Index> Children { get; private set; }
         public List<Link> Links { get; private set; }
         public List<Example> Examples { get; private set; }
         public List<Index> SpecialDeterminants { get; private set; }
-
+        public string Removed { get; private set; }
+        public string SpecialDet { get; private set; }
     }
 
     public class Example
