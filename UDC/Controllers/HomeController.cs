@@ -41,6 +41,7 @@ namespace UDC.Controllers
         public ActionResult CreatedIndex()
         {
             string res = CurrentIndex.XmlResultString;
+            //if (CurrentIndex.Index.Contains("\""))
             ViewData["CurrentIndex"] = CurrentIndex.Index;
             ViewData["XmlResultString"] = res;
             /*
