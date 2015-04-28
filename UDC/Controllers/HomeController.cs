@@ -40,6 +40,9 @@ namespace UDC.Controllers
 
         public ActionResult CreatedIndex()
         {
+            string res = CurrentIndex.XmlResultString;
+            ViewData["XmlResultString"] = res;
+            /*
             ViewData["CurrentIndex"] = CurrentIndex.Index;
             UDCIndex udc = AjaxController.UDC;
             Int32 countParts = udc.GetUdcParts().Count;
@@ -77,7 +80,7 @@ namespace UDC.Controllers
                     ViewData["languageIndex" + i + "Part" + k] = udc.GetUdcParts()[i].GetPartsOfLanguageIndex()[k];
                 }
                 ViewData["signBetween" + i] = udc.GetUdcParts()[i].GetSignBetween();
-            }
+            }*/
             return View();
         }
     }

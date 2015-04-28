@@ -8,5 +8,6 @@ namespace UDC.Models
     public class CurrentIndex
     {
         public static string Index { get; set; }
+        public static string XmlResultString { get; set; }
     }
 }

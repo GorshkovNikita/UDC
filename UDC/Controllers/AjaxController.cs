@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UDC.Models;
 using UDC.Extensions;
+using UDC.Parser;
 
 namespace UDC.Controllers
 {
@@ -472,9 +473,23 @@ namespace UDC.Controllers
         }
 
         [HttpPost]
-        public ActionResult UDCCreate(String stringUDC, String tree, String db)
+        //public ActionResult UDCCreate(String stringUDC, String tree, String db)
+        public ActionResult UDCCreate(String stringUDC)
         {
-            Boolean treeBool = Convert.ToBoolean(tree);
+            CurrentIndex.Index = stringUDC;
+            try
+            {
+                CurrentIndex.XmlResultString = MyXmlClass.GetStringXml(stringUDC);
+                //textBox2.Text = resStr.ToString();
+            }
+            catch (Exception e2)
+            {
+                CurrentIndex.XmlResultString = null;
+                //textBox2.Text = "";
+                //MessageBox.Show("Не удалось распознать сложный индекс");
+            }
+            return RedirectToAction("CreatedIndex", "Home");
+            /*Boolean treeBool = Convert.ToBoolean(tree);
             Boolean dbBool = Convert.ToBoolean(db);
             List<Int32> count = UDCData.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
             UDCIndex udc = new UDCIndex(count[0]);
@@ -864,7 +879,7 @@ namespace UDC.Controllers
             if (treeBool)
                 return RedirectToAction("CreatedIndex", "Home");
             else
-                return RedirectToAction("MoreInfo", "Home");
+                return RedirectToAction("MoreInfo", "Home");*/
         }
     }
 }

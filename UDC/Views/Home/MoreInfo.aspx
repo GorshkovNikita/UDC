@@ -129,7 +129,7 @@
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexPlus(this)">+</button>
             <button style="width: 20px; height: 20px; margin-left: 10px" onclick="addMainIndexSlash(this)">/</button>
         </li>
-        <% } 
+        <% }
         } else { %>
         <li style="padding-left: 15px">&nbsp;&nbsp;Ссылки отсутствуют</li>
         <% } %>
