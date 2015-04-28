@@ -8,29 +8,34 @@
 
 <h2>Подробнее:</h2>
     <h3><span class="more-info-index"><%= Model.Index.Value %></span><span class="more-info-name">&nbsp;<%= Model.Index.Name %></span></h3>
+    <h5>Тип таблицы:
     <% if (Model.Index.IndexType == "Index" && Model.Index.TableType == "MainIndex")
        { %>
-        <h5>Основная таблица</h5>
+        Основная таблица</h5>
     <% }
        else if (Model.Index.IndexType == "SpecialDeterminant")
        { %>
-        <h5>Специальный определитель</h5>
+        Специальный определитель</h5>
     <% }
        else if (Model.Index.TableType == "Ig.xml")
        { %>
-        <h5>Общий определитель времени</h5>
+        Общий определитель времени</h5>
     <% } else if (Model.Index.TableType == "Ic.xml")
        { %>
-        <h5>Общий определитель языка</h5>
+        Общий определитель языка</h5>
     <% } else if (Model.Index.TableType == "If.xml")
        { %>
-        <h5>Общий определитель рас, народов, этнических групп и национальностей</h5>
+        Общий определитель рас, народов, этнических групп и национальностей</h5>
     <% } else if (Model.Index.TableType == "Ie.xml")
        { %>
-        <h5>Общий определитель места</h5>
+        Общий определитель места</h5>
     <% } else if (Model.Index.TableType == "Id.xml")
        { %>
-        <h5>Общий определитель формы документа</h5>
+        Общий определитель формы документа</h5>
+    <% } %>
+    <% if (Model.Index.Removed == true)
+           { %>
+        <h5>Удаленный индекс</h5>
     <% } %>
     <h5>Родительский индекс:</h5>
     <% if (Model.Parent != null) { %>
@@ -133,6 +138,12 @@
         <li style="padding-left: 15px">&nbsp;&nbsp;Специальные определители индексы отсутствуют</li>
         <% } %>
     </ul>
+    <% if (Model.Comment != "") { %>
+        <h5>Комментарий:</h5>
+        <p>
+            <%= Model.Comment %>
+        </p>
+    <% } %>
     <h5>Книги с индексом 612</h5>
     <ol style="padding-left: 40px">
         <li>Мелькумянц A.M., Балашов С.А. Механочувствительность артериального эндотелия. УДК: 612.133

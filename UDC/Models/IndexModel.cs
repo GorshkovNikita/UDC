@@ -15,6 +15,7 @@ namespace UDC.Models
             Examples = UDCData.GetIndexExamples(id);
             Links = UDCData.GetIndexLinks(id);
             SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
+            Comment = UDCData.GetComment(id);
         }
 
         public IndexModel(Int32 id, string removed, string specialdet)
@@ -25,6 +26,7 @@ namespace UDC.Models
             Examples = UDCData.GetIndexExamples(id);
             Links = UDCData.GetIndexLinks(id);
             SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
+            Comment = UDCData.GetComment(id);
             Removed = removed;
             SpecialDet = specialdet;
         }
@@ -35,6 +37,7 @@ namespace UDC.Models
         public List<Link> Links { get; private set; }
         public List<Example> Examples { get; private set; }
         public List<Index> SpecialDeterminants { get; private set; }
+        public string Comment { get; private set; }
         public string Removed { get; private set; }
         public string SpecialDet { get; private set; }
     }

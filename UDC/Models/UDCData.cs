@@ -79,6 +79,11 @@ namespace UDC.Models
             return links;
         }
 
+        public static string GetComment(int id)
+        {
+            return UDCData.DB.Indexes.Where(index => index.Id == id).First().Comment;
+        }
+
         public static List<Index> GetSpecialDeterminants(int id)
         {
             return UDCData.DB.Indexes.Where(index => index.ParentId == id)
