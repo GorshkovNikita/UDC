@@ -9,16 +9,17 @@ namespace UDC.Models
     {
         public IndexModel(Int32 id)
         {
-            Index = UDCData.GetIndex(id);
-            Parent = UDCData.GetIndexParent(id);
-            Children = UDCData.GetIndexChildren(id);
-            Examples = UDCData.GetIndexExamples(id);
-            Links = UDCData.GetIndexLinks(id);
-            SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
-            Comment = UDCData.GetComment(id);
+            GetAllProperties(id);
         }
 
         public IndexModel(Int32 id, string removed, string specialdet)
+        {
+            GetAllProperties(id);
+            Removed = removed;
+            SpecialDet = specialdet;
+        }
+
+        private void GetAllProperties(int id)
         {
             Index = UDCData.GetIndex(id);
             Parent = UDCData.GetIndexParent(id);
@@ -27,8 +28,7 @@ namespace UDC.Models
             Links = UDCData.GetIndexLinks(id);
             SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
             Comment = UDCData.GetComment(id);
-            Removed = removed;
-            SpecialDet = specialdet;
+            SubDivideAs = UDCData.GetSubDivideAs(id);
         }
 
         public Index Index { get; private set; }
@@ -38,6 +38,7 @@ namespace UDC.Models
         public List<Example> Examples { get; private set; }
         public List<Index> SpecialDeterminants { get; private set; }
         public string Comment { get; private set; }
+        public Index SubDivideAs { get; private set; }
         public string Removed { get; private set; }
         public string SpecialDet { get; private set; }
     }

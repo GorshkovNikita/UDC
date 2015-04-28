@@ -138,9 +138,17 @@
         <li style="padding-left: 15px">&nbsp;&nbsp;Специальные определители индексы отсутствуют</li>
         <% } %>
     </ul>
+    <% if (Model.SubDivideAs != null) { %>
+        <h5>Подразделять как: </h5>
+        <a href="../Home/MoreInfo?index=<%= Model.SubDivideAs.Id %>" style="padding-left: 15px"><span class="main-table-items-item-text">
+            <span style="display: none" class=""><%= Model.SubDivideAs.Id %></span>
+            <span class="main-table-id"><%= Model.SubDivideAs.Value %></span>
+            &nbsp;<%= Model.SubDivideAs.Name %></span>
+        </a>
+    <% } %>
     <% if (Model.Comment != "") { %>
         <h5>Комментарий:</h5>
-        <p>
+        <p style="padding-left: 15px">
             <%= Model.Comment %>
         </p>
     <% } %>

@@ -11,12 +11,12 @@ namespace UDC.Models
     {
         public static Index GetIndex(Int32 id)
         {
-            return UDCData.DB.ExecuteQuery<Index>("SELECT TOP 1 * FROM [dbo].[Index] WHERE id = {0}", id).First();
+            return UDCData.DB.Indexes.Where(index => index.Id == id).First();
         }
 
         public static CompositeIndex GetCompositeIndex(Int32 id)
         {
-            return UDCData.DB.ExecuteQuery<CompositeIndex>("SELECT TOP 1 * FROM [dbo].[CompositeIndex] WHERE id = {0}", id).First();
+            return UDCData.DB.CompositeIndexes.Where(index => index.Id == id).First();
         }
 
         public static Index GetIndexParent(Int32 id)
@@ -81,7 +81,15 @@ namespace UDC.Models
 
         public static string GetComment(int id)
         {
-            return UDCData.DB.Indexes.Where(index => index.Id == id).First().Comment;
+            return UDCData.GetIndex(id).Comment;
+        }
+
+        public static Index GetSubDivideAs(int id)
+        {
+            if (UDCData.GetIndex(id).SubdivideAs != null)
+                return UDCData.GetIndex(Convert.ToInt32(UDCData.GetIndex(id).SubdivideAs));
+            else
+                return null;
         }
 
         public static List<Index> GetSpecialDeterminants(int id)
