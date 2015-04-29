@@ -19,7 +19,14 @@
             <h3 class="left-menu-title">УДК:</h3>
             <ul class="left-menu-items">
                 <li class="left-menu-items-item">
-                    <%: Html.ActionLink("Основные таблицы", "Index", "Home") %>
+                    <%: Html.ActionLink("Основные таблицы",
+                                        "Index",
+                                        "Home", 
+                                        new {  
+                                            removed = UDC.Models.CurrentConfig.Removed,
+                                            specialdet = UDC.Models.CurrentConfig.SpecialDet
+                                        },
+                                        null)%>
                 </li>
                 <li class="left-menu-items-item">
                     <%: Html.ActionLink("Общие определители", "Index", "CommonDeterminant") %>
@@ -44,8 +51,8 @@
             </ul>
             
                 <form style="padding-left: 15px" method="get" action="http://localhost:51128">                  
-                    <input type="checkbox" name="removed" /> Не отображать удаленные<br />
-                    <input type="checkbox" name="specialdet" id="specialdet" /> Не отображать специальные определители<br />
+                    <input type="checkbox" name="removed" <% if (UDC.Models.CurrentConfig.Removed != null) { %> checked <% } %> /> Не отображать удаленные<br />
+                    <input type="checkbox" name="specialdet" <% if (UDC.Models.CurrentConfig.SpecialDet != null) { %> checked <% } %> /> Не отображать специальные определители<br />
                     <input type="submit" value="Обновить" />
                 </form>
             <span class="label-constructor">Конструктор УДК:&nbsp;</span><br />

@@ -14,7 +14,7 @@ namespace UDC.Controllers
 
         public ActionResult Index()
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View();
         }
 

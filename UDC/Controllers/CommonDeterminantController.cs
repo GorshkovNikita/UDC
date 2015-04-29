@@ -14,37 +14,37 @@ namespace UDC.Controllers
 
         public ActionResult Index()
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View();
         }
 
         public ActionResult Language()
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(UDCData.LanguageDeterminantIndexes);
         }
 
         public ActionResult Nation()
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(UDCData.NationDeterminantIndexes);
         }
 
         public ActionResult FormDocument()
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(UDCData.FormDeterminantIndexes);
         }
 
         public ActionResult Place()
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(UDCData.PlaceDeterminantIndexes);
         }
 
         public ActionResult Time()
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(UDCData.TimeDeterminantIndexes);
         }
     }
