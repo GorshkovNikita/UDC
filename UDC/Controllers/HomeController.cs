@@ -20,6 +20,7 @@ namespace UDC.Controllers
             return View(UDCData.AllMainTableIndexes);
         }
 
+        [HttpPost]
         public ActionResult Search()
         {
             ViewData["CurrentIndex"] = CurrentIndex.Index;
