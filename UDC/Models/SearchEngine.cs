@@ -23,7 +23,7 @@ namespace UDC.Models
                 // center part
                 case 2:
                     if ((index != "") && (name != ""))
-                        return UDCData.DB.ExecuteQuery<Index>("SELECT * FROM [dbo].[Index] WHERE ((Value LIKE '%" + index + "%') AND (Name LIKE '" + name + "'))").ToList();
+                        return UDCData.DB.ExecuteQuery<Index>("SELECT * FROM [dbo].[Index] WHERE ((Value LIKE '%" + index + "%') AND (Name LIKE '%" + name + "%'))").ToList();
                     else if (index == "")
                         return UDCData.DB.ExecuteQuery<Index>("SELECT * FROM [dbo].[Index] WHERE (Name LIKE '%" + name + "%')").ToList();
                     else
@@ -31,7 +31,7 @@ namespace UDC.Models
                 // left part   
                 case 3:
                     if ((index != "") && (name != ""))
-                        return UDCData.DB.ExecuteQuery<Index>("SELECT * FROM [dbo].[Index] WHERE ((Value LIKE '" + index + "%') AND (Name LIKE '" + name + "'))").ToList();
+                        return UDCData.DB.ExecuteQuery<Index>("SELECT * FROM [dbo].[Index] WHERE ((Value LIKE '" + index + "%') AND (Name LIKE '" + name + "%'))").ToList();
                     else if (index == "")
                         return UDCData.DB.ExecuteQuery<Index>("SELECT * FROM [dbo].[Index] WHERE (Name LIKE '" + name + "%')").ToList();
                     else

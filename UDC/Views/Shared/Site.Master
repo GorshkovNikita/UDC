@@ -73,15 +73,13 @@
                 <button style="margin-left: 15px" onclick="ClearConstructor()">Очистить конструктор</button>
             </div>
             <div class="search-form">
-                <form id="Form1" method="get" action="../Home/Search" runat="server">
-                    <asp:RadioButtonList ID="searchType" runat="server">  
-                        <asp:ListItem Value="1" Selected>Полное совпадение</asp:ListItem>  
-                        <asp:ListItem Value="2">В середине</asp:ListItem>  
-                        <asp:ListItem Value="3">В начале</asp:ListItem>  
-                    </asp:RadioButtonList>
+                <form id="Form1" method="get" action="../Home/Search">
+                    Тип поиска:<br />
+                    <input type="radio" name="search_type" value="1" checked />Полное совпадение<br />
+                    <input type="radio" name="search_type" value="2" />По подстроке<br />
+                    <input type="radio" name="search_type" value="3" />По началу<br />
                     Поиск по индексу:
                     <input id="index-search-text" name="index" type="text" /><br />
-                    <input id="Text1" name="sortBy" type="hidden" value ="2" /><br />
                     Поиск по названию:
                     <input id="name-search-text" name="name" type="text" /><br />
                     <input id="search" type="submit" value="Поиск" />
