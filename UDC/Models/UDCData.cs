@@ -118,7 +118,9 @@ namespace UDC.Models
             {
                 return UDCData.DB.Indexes.Where(index => index.TableType == "MainIndex")
                     //.Where(index => index.IndexType == "Index")
-                    .Where(index => index.isGroupIndex == false).ToList();
+                    //.Where(index => index.isGroupIndex == false)
+                    .ToList()
+                    .Sort();
             }
         }
 
