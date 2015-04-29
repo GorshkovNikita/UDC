@@ -41,11 +41,9 @@ namespace UDC.Controllers
         public ActionResult CreatedIndex()
         {
             string res = CurrentIndex.XmlResultString;
-            //if (CurrentIndex.Index.Contains("\""))
             ViewData["CurrentIndex"] = CurrentIndex.Index;
             ViewData["XmlResultString"] = res;
-            /*
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            /*ViewData["CurrentIndex"] = CurrentIndex.Index;
             UDCIndex udc = AjaxController.UDC;
             Int32 countParts = udc.GetUdcParts().Count;
             ViewData["countParts"] = countParts;
