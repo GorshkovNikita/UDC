@@ -11,37 +11,37 @@ namespace UDC.Controllers
 
     public class HomeController : Controller
     {
-        public ActionResult Index(string id, string removed, string specialdet)
+        public ActionResult Index(string removed, string specialdet)
         {
-            CurrentIndex.Index = "123.1";
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
-            ViewData["IsRemoved"] = removed;
-            ViewData["SpecialDet"] = specialdet;
+            CurrentConfig.Index = "123.1";
+            CurrentConfig.Removed = removed;
+            CurrentConfig.SpecialDet = specialdet;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(UDCData.AllMainTableIndexes);
         }
 
         public ActionResult Search(string index, string name, string search_type)
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(SearchEngine.SearchBy(Convert.ToInt32(search_type), index, name));
         }
 
         public ActionResult MoreInfo(string index)
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(new IndexModel(Convert.ToInt32(index)));
         }
 
         public ActionResult SpecificDeterminants()
         {
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View();
         }
 
         public ActionResult CreatedIndex()
         {
-            string res = CurrentIndex.XmlResultString;
-            ViewData["CurrentIndex"] = CurrentIndex.Index;
+            string res = CurrentConfig.XmlResultString;
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
             ViewData["XmlResultString"] = res;
             /*ViewData["CurrentIndex"] = CurrentIndex.Index;
             UDCIndex udc = AjaxController.UDC;

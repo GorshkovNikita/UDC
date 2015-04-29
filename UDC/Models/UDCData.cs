@@ -168,6 +168,14 @@ namespace UDC.Models
             }
         }
 
+        public static List<Index> PropertyDeterminantIndexes
+        {
+            get
+            {
+                return UDCData.DB.Indexes.Where(index => index.TableType == "Ik.xml").ToList();
+            }
+        }
+
         public static UDCDataClassesDataContext DB
         {
             get

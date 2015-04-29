@@ -6,12 +6,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Общие определители</h2>
+<h2>Основные таблицы</h2>
 
 <ul class="main-table-items">
     <% foreach (var item in Model.Where(parent => parent.ParentId == null)) { %>
-    <% if (!(((item.IndexType == "SpecialDeterminant") && (String.Equals(ViewData["SpecialDet"], "on")))
-           || ((item.Removed == true) && (String.Equals(ViewData["IsRemoved"], "on")))))
+    <% if (!(((item.IndexType == "SpecialDeterminant") && (String.Equals(UDC.Models.CurrentConfig.SpecialDet, "on")))
+           || ((item.Removed == true) && (String.Equals(UDC.Models.CurrentConfig.Removed, "on")))))
        { %>
         <li <% if (item.IndexType == "SpecialDeterminant" && item.Removed == false) { %>
                 style="font-style: italic"

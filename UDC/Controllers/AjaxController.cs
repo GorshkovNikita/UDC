@@ -476,15 +476,15 @@ namespace UDC.Controllers
         //public ActionResult UDCCreate(String stringUDC, String tree, String db)
         public ActionResult UDCCreate(String stringUDC)
         {
-            CurrentIndex.Index = stringUDC;
+            CurrentConfig.Index = stringUDC;
             try
             {
-                CurrentIndex.XmlResultString = MyXmlClass.GetStringXml(stringUDC);
+                CurrentConfig.XmlResultString = MyXmlClass.GetStringXml(stringUDC);
                 //textBox2.Text = resStr.ToString();
             }
             catch (Exception e2)
             {
-                CurrentIndex.XmlResultString = null;
+                CurrentConfig.XmlResultString = null;
                 //textBox2.Text = "";
                 //MessageBox.Show("Не удалось распознать сложный индекс");
             }
