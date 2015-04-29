@@ -120,7 +120,7 @@ namespace UDC.Models
                     //.Where(index => index.IndexType == "Index")
                     //.Where(index => index.isGroupIndex == false)
                     .ToList()
-                    .Sort();
+                    ;
             }
         }
 
