@@ -273,6 +273,7 @@
     <Content Include="Views\CommonDeterminant\Nation.aspx" />
     <Content Include="Views\CommonDeterminant\Place.aspx" />
     <Content Include="Views\CommonDeterminant\Time.aspx" />
+    <Content Include="Views\CommonDeterminant\Property.aspx" />
     <Content Include="Views\Home\CreatedIndex.aspx" />
     <Content Include="Views\Home\MoreInfo.aspx" />
     <Content Include="Views\Home\Search.aspx" />

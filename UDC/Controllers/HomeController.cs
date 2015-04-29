@@ -17,8 +17,6 @@ namespace UDC.Controllers
             CurrentConfig.Removed = removed;
             CurrentConfig.SpecialDet = specialdet;
             ViewData["CurrentIndex"] = CurrentConfig.Index;
-            //ViewData["IsRemoved"] = removed;
-            //ViewData["SpecialDet"] = specialdet;
             return View(UDCData.AllMainTableIndexes);
         }
 

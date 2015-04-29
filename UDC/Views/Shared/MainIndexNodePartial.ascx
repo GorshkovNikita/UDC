@@ -11,6 +11,8 @@
             <% if (child.IndexType == "SpecialDeterminant")
                { %>
                 style="font-style: italic "
+            <% }  else if (child.Removed == true) { %>
+                style="opacity: 0.5"
             <% } %>>
             <img class="" src="../../Images/plus.gif" onclick="show(this)"/>
             <a href="../Home/MoreInfo?index=<%: Html.DisplayFor(modelItem => child.Id)%>">

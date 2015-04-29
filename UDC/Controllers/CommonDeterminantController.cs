@@ -47,5 +47,11 @@ namespace UDC.Controllers
             ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(UDCData.TimeDeterminantIndexes);
         }
+
+        public ActionResult Property()
+        {
+            ViewData["CurrentIndex"] = CurrentConfig.Index;
+            return View(UDCData.PropertyDeterminantIndexes);
+        }
     }
 }

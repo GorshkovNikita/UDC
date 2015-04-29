@@ -43,8 +43,11 @@
                         <li class="left-menu-items-item-subitems-subitem">
                             <%: Html.ActionLink("рас, народов, этнических групп и национальностей", "Nation", "CommonDeterminant") %>
                         </li>
-                        <li class="left-menu-items-item-subitems-subitem left-menu-items-item-subitems-subitem-last">
+                        <li class="left-menu-items-item-subitems-subitem">
                             <%: Html.ActionLink("времени", "Time", "CommonDeterminant") %>
+                        </li>
+                        <li class="left-menu-items-item-subitems-subitem left-menu-items-item-subitems-subitem-last">
+                            <%: Html.ActionLink("свойств, лиц, материалов", "Property", "CommonDeterminant") %>
                         </li>
                     </ul>
                 </li>
