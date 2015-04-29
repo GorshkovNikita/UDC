@@ -124,8 +124,7 @@ namespace UDC.Models
                     .OrderBy(index => index.isGroupIndex)
                     //.Where(index => index.IndexType == "Index")
                     //.Where(index => index.isGroupIndex == false)
-                    .ToList()
-                    ;
+                    .ToList();
             }
         }
 

@@ -20,11 +20,10 @@ namespace UDC.Controllers
             return View(UDCData.AllMainTableIndexes);
         }
 
-        [HttpPost]
-        public ActionResult Search()
+        public ActionResult Search(string index, string name, string search_type)
         {
             ViewData["CurrentIndex"] = CurrentIndex.Index;
-            return View();
+            return View(SearchEngine.SearchBy(Convert.ToInt32(search_type), index, name));
         }
 
         public ActionResult MoreInfo(string index)

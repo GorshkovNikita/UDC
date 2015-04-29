@@ -73,11 +73,15 @@
                 <button style="margin-left: 15px" onclick="ClearConstructor()">Очистить конструктор</button>
             </div>
             <div class="search-form">
-                <form method="get" action="../Home/Search">
+                <form id="Form1" method="get" action="../Home/Search">
+                    Тип поиска:<br />
+                    <input type="radio" name="search_type" value="1" checked />Полное совпадение<br />
+                    <input type="radio" name="search_type" value="2" />По подстроке<br />
+                    <input type="radio" name="search_type" value="3" />По началу<br />
                     Поиск по индексу:
-                    <input id="index-search-text" type="text" /><br />
+                    <input id="index-search-text" name="index" type="text" /><br />
                     Поиск по названию:
-                    <input id="name-search-text" type="text" /><br />
+                    <input id="name-search-text" name="name" type="text" /><br />
                     <input id="search" type="submit" value="Поиск" />
                 </form>
             </div>

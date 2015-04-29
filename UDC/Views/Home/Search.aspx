@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<UDC.Models.Index>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Search
@@ -17,20 +17,12 @@
             <th style="background-color: #6D75B8; padding: 2px;">Название</th>
             <th style="background-color: #6D75B8; padding: 2px;">Тип</th>
         </tr>
+        <% foreach (var item in Model) { %>
         <tr>
-            <td style="padding: 2px;">01</td>
-            <td style="padding: 2px;"><a href="../Home/MoreInfo" target="_blank">Библиография. Каталоги. Указатели литературы</a></td>
-            <td style="padding: 2px;">Основные таблицы</td>
+            <td style="padding: 2px;"><%= item.Value %></td>
+            <td style="padding: 2px;"><a href="../Home/MoreInfo" target="_blank"><%= item.Name %></a></td>
+            <td style="padding: 2px;"><%= item.TableType %></td>
         </tr>
-        <tr>
-            <td style="padding: 2px;">1</td>
-            <td style="padding: 2px;"><a href="../Home/MoreInfo" target="_blank">Философия. Психология</a></td>
-            <td style="padding: 2px;">Основные таблицы</td>
-        </tr>
-        <tr>
-            <td style="padding: 2px;">(038)</td>
-            <td style="padding: 2px;"><a href="../Home/MoreInfo" target="_blank">Словари. Языковые словари. Специальные и технические словари</a></td>
-            <td style="padding: 2px;">Общий определитель формы документа</td>
-        </tr>
+        <% } %>
     </table>
 </asp:Content>
