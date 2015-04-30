@@ -1,9 +1,12 @@
 ﻿// добавление основного индекса
 function addMainIndex(elem) {
     node = $(elem).prevAll()[0].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
+    /*currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateMainIndex", { mainIndex: $(node).html() });
-    updateIndex();
+    updateIndex();*/
+    $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + $(node).html(), function (data) {
+        $('#udc').attr('value', data);
+    });
 }
 
 // + к основному индексу
@@ -225,8 +228,16 @@ function getPositionOnTextBox() {
     var ctl = document.getElementById('udc');
     var startPos = ctl.selectionStart;
     var endPos = ctl.selectionEnd;
-    $.get();
+    $.get("http://localhost:51128/Ajax/SetCursorPosition?pos=" + startPos);
 }
+
+function cursorPositionLast() {
+    $.get("http://localhost:51128/Ajax/SetCursorPosition");
+}
+
+$(function() {
+    //cursorPositionLast();
+})
 
 /*$(function () {
     $.post("http://localhost:51128/Ajax/SetCurrentPartIndex");

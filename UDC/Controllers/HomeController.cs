@@ -14,7 +14,7 @@ namespace UDC.Controllers
     {
         public ActionResult Index(string removed, string specialdet)
         {
-            CurrentConfig.Index = "123.1=10=13\"1234\"(=34)\"12\"(=45)";
+            CurrentConfig.Index = "";
             CurrentConfig.Removed = removed;
             CurrentConfig.SpecialDet = specialdet;
             ViewData["CurrentIndex"] = CurrentConfig.Index;

@@ -37,7 +37,16 @@ namespace UDC.Controllers
 
         public void SetCursorPosition(string pos)
         {
-            CurrentConfig.CursorPosition = Convert.ToInt32(pos);
+            if (pos != null)
+                CurrentConfig.CursorPosition = Convert.ToInt32(pos);
+            else
+                CurrentConfig.CursorPosition = CurrentConfig.Index.Length;
+        }
+
+        public string SetStringUDC(string partUDC)
+        {
+            CurrentConfig.Index = CurrentConfig.Index.Insert(CurrentConfig.CursorPosition, partUDC);
+            return CurrentConfig.Index;
         }
 
         public Int32 GetCurrentPartIndex()
