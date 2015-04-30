@@ -300,6 +300,7 @@ Year2, Year3, Decade1, Decade2, Century1, Century2, Millenium1, Millenium2, Simp
 CommonAuxiliaryOfPlace, SimpleCommonAuxiliaryOfForm, CommonAuxiliaryOfForm, SimpleCommonAuxiliaryOfHuman,
 CommonAuxiliaryOfHuman, CommonAuxiliaryOfLanguage, SimpleIndex, From, To, Index {
     display: block;
+    clear: right;
 }
 
 /**/

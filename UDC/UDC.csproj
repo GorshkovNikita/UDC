@@ -181,6 +181,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UDCDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\XmlHelper.cs" />
     <Compile Include="Parser\MyXmlClass.cs" />
     <Compile Include="Parser\Number.cs" />
     <Compile Include="Parser\pars2Lexer.cs" />
