@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UDC.Models;
 using UDC.Extensions;
+using UDC.Parser;
 
 namespace UDC.Controllers
 {
@@ -13,7 +14,7 @@ namespace UDC.Controllers
     {
         public ActionResult Index(string removed, string specialdet)
         {
-            CurrentConfig.Index = "123.1";
+            CurrentConfig.Index = "123.1=10=13\"1234\"(=34)\"12\"(=45)";
             CurrentConfig.Removed = removed;
             CurrentConfig.SpecialDet = specialdet;
             ViewData["CurrentIndex"] = CurrentConfig.Index;
@@ -38,11 +39,21 @@ namespace UDC.Controllers
             return View();
         }
 
-        public ActionResult CreatedIndex()
+        public ActionResult CreatedIndex(string stringUDC)
         {
-            string res = CurrentConfig.XmlResultString;
+            CurrentConfig.Index = stringUDC;
+            //try
+            //{
+                string xmlString = MyXmlClass.GetStringXml(stringUDC);
+
+                CurrentConfig.XmlResultString = XmlHelper.ProcessXml(xmlString);
+            //}
+            /*catch (Exception e2)
+            {
+                CurrentConfig.XmlResultString = null;
+            }*/
             ViewData["CurrentIndex"] = CurrentConfig.Index;
-            ViewData["XmlResultString"] = res;
+            ViewData["XmlResultString"] = CurrentConfig.XmlResultString;
             /*ViewData["CurrentIndex"] = CurrentIndex.Index;
             UDCIndex udc = AjaxController.UDC;
             Int32 countParts = udc.GetUdcParts().Count;
