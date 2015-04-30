@@ -35,6 +35,11 @@ namespace UDC.Controllers
             return null;
         }
 
+        public void SetCursorPosition(string pos)
+        {
+            CurrentConfig.CursorPosition = Convert.ToInt32(pos);
+        }
+
         public Int32 GetCurrentPartIndex()
         {
             if (Request.IsAjaxRequest())

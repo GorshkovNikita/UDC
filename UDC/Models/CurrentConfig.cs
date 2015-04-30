@@ -11,5 +11,6 @@ namespace UDC.Models
         public static string XmlResultString { get; set; }
         public static string Removed { get; set; }
         public static string SpecialDet { get; set; }
+        public static int CursorPosition { get; set; }
     }
 }

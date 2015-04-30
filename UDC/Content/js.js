@@ -212,11 +212,20 @@ function checkSpecialDet(elem) {
     $.get("http://localhost:51128?specaldet=true");
 }
 
+// получение Get параметров из ссылки
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+// определение позиции курсора в textbox
+function getPositionOnTextBox() {
+    var ctl = document.getElementById('udc');
+    var startPos = ctl.selectionStart;
+    var endPos = ctl.selectionEnd;
+    $.get();
 }
 
 /*$(function () {
