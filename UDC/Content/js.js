@@ -1,6 +1,6 @@
 ﻿// добавление основного индекса
 function addMainIndex(elem) {
-    node = $(elem).prevAll()[0].children[0].children[0];
+    node = $(elem).prevAll()[0].children[0].children[1];
     /*currentPartIndex = $('.current-part-index')[0];
     $.post("http://localhost:51128/Ajax/UpdateMainIndex", { mainIndex: $(node).html() });
     updateIndex();*/
@@ -236,7 +236,7 @@ function cursorPositionLast() {
 }
 
 $(function() {
-    //cursorPositionLast();
+    cursorPositionLast();
 })
 
 /*$(function () {
