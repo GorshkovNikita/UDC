@@ -26,19 +26,26 @@ namespace UDC.Models
                 for (Int32 i = 0; i < children.Count; i++)
                 {
                     XElement el = children[i];
-                    if (el.HasAttributes && (el.Name.ToString().Substring(0, 3) != "Sim"))
-                        el.Attribute("style").Value = "padding-left:" + (level * 5).ToString() + "px";
-                    else if ((el.Name.ToString().Substring(0, 3) != "Sim") || (el.Name.ToString() == "SimpleIndex"))
-                        el.Add(new XAttribute("style", "padding-left:" + (level * 5).ToString() + "px"));
                     if (i != 0)
                     {
-                        if ((el.Name != children[i - 1].Name) && ((el.Name.ToString().Substring(0, 3) != "Sim") || (el.Name.ToString() == "SimpleIndex")))
+                        if ((el.Name != children[i - 1].Name) && CheckTag(el))
                             el.AddBeforeSelf(new XElement("name", GetValurOfNameTag(el.Name)));
                     }
                     else
-                        if ((el.Name.ToString().Substring(0, 3) != "Sim") || (el.Name.ToString() == "SimpleIndex"))
+                        if (CheckTag(el))
                             el.AddBeforeSelf(new XElement("name", GetValurOfNameTag(el.Name)));
                     ChangeXmlSubtree(el, level);
+                }
+                List<XElement> indexElements = new List<XElement>();
+                for (int i = 0; i < children.Count; i++)
+                {
+                    XElement el = children[i];
+                    if (el.Name == "Index" || el.Name == "Plus" || el.Name == "Colon" || el.Name == "DoubleColon")
+                    {
+                        indexElements.Add(el);
+                        if (indexElements.Count > 1)
+                            el.AddBeforeSelf(new XElement("name", GetValurOfNameTag(el.Parent.Name)));
+                    }
                 }
             }
             return subtree;
@@ -90,6 +97,15 @@ namespace UDC.Models
                 return "Общие определители языка:";
             else
                 return "Какое-то другое название!!";
+        }
+
+        public static bool CheckTag(XElement el)
+        {
+            return (((el.Name.ToString().Substring(0, 2) != "Si") || (el.Name.ToString() == "SimpleIndex"))
+                && (el.Name.ToString() != "Index")
+                && (el.Name.ToString() != "Plus")
+                && (el.Name.ToString() != "Colon")
+                && (el.Name.ToString() != "DoubleColon"));
         }
 
         public static XDocument GetXml(string xmlString)
