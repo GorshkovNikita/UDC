@@ -14,7 +14,7 @@ namespace UDC.Controllers
     {
         public ActionResult Index(string removed, string specialdet)
         {
-            CurrentConfig.Index = "123.1=10=13\"12\"";
+            CurrentConfig.Index = "123.1=10=13\"1234\"(=34)\"12\"(=45)";
             CurrentConfig.Removed = removed;
             CurrentConfig.SpecialDet = specialdet;
             ViewData["CurrentIndex"] = CurrentConfig.Index;
@@ -42,16 +42,16 @@ namespace UDC.Controllers
         public ActionResult CreatedIndex(string stringUDC)
         {
             CurrentConfig.Index = stringUDC;
-            try
-            {
+            //try
+            //{
                 string xmlString = MyXmlClass.GetStringXml(stringUDC);
 
                 CurrentConfig.XmlResultString = XmlHelper.ProcessXml(xmlString);
-            }
-            catch (Exception e2)
+            //}
+            /*catch (Exception e2)
             {
                 CurrentConfig.XmlResultString = null;
-            }
+            }*/
             ViewData["CurrentIndex"] = CurrentConfig.Index;
             ViewData["XmlResultString"] = CurrentConfig.XmlResultString;
             /*ViewData["CurrentIndex"] = CurrentIndex.Index;
