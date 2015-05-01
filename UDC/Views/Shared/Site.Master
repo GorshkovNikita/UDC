@@ -63,13 +63,14 @@
                 <div class="udc-constructor-textbox">
                     <form class="udc-check" method="post" action="http://localhost:51128/Home/CreatedIndex">
                         <div style="display: none" id="udc-text"></div>
-                        <input id="udc" name="stringUDC" type="text" onclick="getPositionOnTextBox()" value="<%= ViewData["CurrentIndex"]%>" /><br />
+                        <input id="udc" name="stringUDC" type="text" onclick="getPositionOnTextBox()" onkeypress="keyPressUpdate(event)" value="<%= ViewData["CurrentIndex"]%>" /><br />
                         <!--<input name="tree" type="hidden" value="true" />
                         <input name="db" type="hidden" value="true" />-->
                         <div class="buttons">
                             <input type="button" class="plus-button" value="+" onclick="compositeIndexPlus(this)" />
                             <input type="button" class="colon-button" value=":" onclick="compositeIndexColon(this)" />
                             <input type="button" class="double-colon-button" value="::" onclick="compositeIndexDoubleColon(this)" />
+                            <input type="button" class="slash-button" value="/" onclick="compositeIndexSlash(this)" />
                         </div>
                         <input id="udc-check-submit" type="submit" value="Разобрать индекс УДК" />
                     </form>

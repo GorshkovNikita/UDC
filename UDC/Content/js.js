@@ -1,11 +1,8 @@
 ﻿// добавление основного индекса
 function addMainIndex(elem) {
     node = $(elem).prevAll()[0].children[0].children[1];
-    /*currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateMainIndex", { mainIndex: $(node).html() });
-    updateIndex();*/
-    $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + $(node).html(), function (data) {
-        $('#udc').attr('value', data);
+    $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + $(node).html(), function () {
+        updateIndex();
     });
 }
 
@@ -25,109 +22,6 @@ function addMainIndexSlash(elem) {
     updateIndex();
 }
 
-// добавление специального определителя
-function addMainIndexSpecDet(elem) {
-    node = $(elem).prevAll()[0].children[0].children[0];
-    $.post("http://localhost:51128/Ajax/UpdateMainIndexSpecDet", { specDetIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление языкового определителя
-function addLanguageIndex(elem) {
-    node = $(elem).prevAll()[0].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateLanguage", { languageIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление еще одного языкового индекса
-function addNewLanguageIndex(elem) {
-    node = $(elem).prevAll()[1].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateLanguagePlus", { languageIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление языка перевода
-function addLanguageTranslate(elem) {
-    node = $(elem).prevAll()[2].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateLanguageTranslate", { languageIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавлние общего определителя места
-function addPlaceIndex(elem) {
-    node = $(elem).prevAll()[0].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdatePlaceIndex", { placeIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление нового общего определителя места (+)
-function addPlaceIndexPlus(elem) {
-    node = $(elem).prevAll()[1].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdatePlaceIndexPlus", { placeIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление интервала общего определителя места (/)
-function addPlaceIndexSlash(elem) {
-    node = $(elem).prevAll()[2].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdatePlaceIndexSlash", { placeIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавлние общего определителя времени
-function addTimeIndex(elem) {
-    node = $(elem).prevAll()[0].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateTimeIndex", { timeIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление нового общего определителя времени (+)
-function addTimeIndexPlus(elem) {
-    node = $(elem).prevAll()[1].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateTimeIndexPlus", { timeIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление интервала общего определителя времени (/)
-function addTimeIndexSlash(elem) {
-    node = $(elem).prevAll()[2].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateTimeIndexSlash", { timeIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавлние общего определителя нации
-function addNationIndex(elem) {
-    node = $(elem).prevAll()[0].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateNationIndex", { nationIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление нового общего определителя нации (+)
-function addNationIndexPlus(elem) {
-    node = $(elem).prevAll()[1].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateNationIndexPlus", { nationIndex: $(node).html() });
-    updateIndex();
-}
-
-// добавление общего определителя формы документа
-function addFormIndex(elem) {
-    node = $(elem).prevAll()[0].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateFormIndex", { formIndex: $(node).html() });
-    updateIndex();
-}
-
 // парсинг индекса
 function parseUDC(elem) {
     node = elem;
@@ -137,7 +31,7 @@ function parseUDC(elem) {
 
 // очистка индеса
 function ClearConstructor() {
-    $.post("http://localhost:51128/Ajax/ClearConstructor");
+    $.get("http://localhost:51128/Ajax/ClearConstructor");
     updateIndex();
 }
 
@@ -155,6 +49,18 @@ function compositeIndexColon(elem) {
 function compositeIndexDoubleColon(elem) {
     $.post("http://localhost:51128/Ajax/UpdateSign", { between: '::' });
     updateIndex();
+}
+
+function compositeIndexSlash(elem) {
+
+}
+
+function keyPressUpdate(e) {
+    var unicode = e.keyCode ? e.keyCode : e.charCode;
+    var actualkey = String.fromCharCode(unicode);
+    $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + actualkey, function () {
+        updateIndex();
+    });
 }
 
 // изменение значения текущей части индекса
@@ -176,14 +82,7 @@ function curPartIndexDecrement(elem) {
 
 // показать узел дерева
 function show(elem) {
-    /*if (window.location.href == "http://localhost:51128/CommonDeterminant/FormDocument")
-        node = $(elem).nextAll()[2];
-    else if (window.location.href == "http://localhost:51128/CommonDeterminant/Nation")
-        node = $(elem).nextAll()[3];
-    else if (window.location.href == "http://localhost:51128/Home/SpecificDeterminants")
-        node = $(elem).nextAll()[2];
-    else*/
-    node = $(elem).nextAll()[4];
+    node = $(elem).nextAll()[2];
     if ($(node).css("display") == "none") {
         node.style.display = "block";
         if ($(elem).attr('class') == "special_determinant")

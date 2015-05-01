@@ -278,7 +278,6 @@
     <Content Include="Views\Home\CreatedIndex.aspx" />
     <Content Include="Views\Home\MoreInfo.aspx" />
     <Content Include="Views\Home\Search.aspx" />
-    <Content Include="Views\Home\SpecificDeterminants.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\SpecialDeterminantNodePartial.ascx" />
     <Content Include="Views\Shared\IndexConstructor.ascx" />

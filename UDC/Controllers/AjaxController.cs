@@ -51,11 +51,33 @@ namespace UDC.Controllers
                 }
         }
 
-        public string SetStringUDC(string partUDC)
+        public String GetFullIndex()
         {
-            CurrentConfig.Index = CurrentConfig.Index.Insert(CurrentConfig.CursorPosition, partUDC);
-            //ViewData["CurrentIndex"] = CurrentConfig.Index;
-            return CurrentConfig.Index;
+            if (Request.IsAjaxRequest())
+            {
+                CurrentConfig.CursorPosition = CurrentConfig.Index.Length;
+                return CurrentConfig.Index;
+            }
+            return null;
+        }
+
+        public void SetStringUDC(string partUDC)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                CurrentConfig.Index = CurrentConfig.Index.Insert(CurrentConfig.CursorPosition, partUDC);
+                CurrentConfig.CursorPosition += partUDC.Length;
+                //return CurrentConfig.Index;
+            }
+        }
+
+        public void ClearConstructor()
+        {
+            if (Request.IsAjaxRequest())
+            {
+                CurrentConfig.Index = "";
+                CurrentConfig.CursorPosition = 0;
+            }
         }
 
         public Int32 GetCurrentPartIndex()
@@ -453,45 +475,6 @@ namespace UDC.Controllers
                 UDCData.DB.SubmitChanges();
                 UDCData.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex ([id], [MainTableID],[LanguageID],[FormID],[TimeID],[PlaceID],[NationID],[PropertyID],[SignBetween],[FirstBracket],[SecondBracket]) VALUES({0}, '', '', '', '', '', '', '', '', '[', ']')", currentPartIndex);
                 UDCData.DB.SubmitChanges();
-            }
-        }
-
-        public String GetFullIndex()
-        {
-            if (Request.IsAjaxRequest())
-            {
-                String fullIndex = "";
-                /*Int16 curPart = 0;
-                List<Int32> count = UDCData.DB.ExecuteQuery<Int32>("SELECT TOP 1 COUNT(*) FROM dbo.CurrentIndex").ToList();
-                List<CurrentIndex> lst = UDCData.DB.ExecuteQuery<CurrentIndex>("SELECT * FROM dbo.CurrentIndex").ToList();
-                while ((curPart + 1) <= count[0])
-                {
-                    fullIndex += lst[curPart].FirstBracket;
-                    fullIndex += lst[curPart].MainTableID;
-                    fullIndex += lst[curPart].PlaceID;
-                    fullIndex += lst[curPart].TimeID;
-                    fullIndex += lst[curPart].NationID;
-                    fullIndex += lst[curPart].FormID;
-                    fullIndex += lst[curPart].LanguageID;
-                    fullIndex += lst[curPart].SecondBracket;
-                    fullIndex += lst[curPart].SignBetween;
-                    curPart++;
-                }*/
-                return fullIndex;
-            }
-            return null;
-        }
-
-        [HttpPost]
-        public void ClearConstructor()
-        {
-            if (Request.IsAjaxRequest())
-            {
-                //_db.ExecuteCommand("UPDATE dbo.CurrentIndex SET MainTableID = {0} WHERE id = {1}", "", currentPartIndex);
-                UDCData.DB.ExecuteCommand("DELETE FROM dbo.CurrentIndex");
-                UDCData.DB.ExecuteCommand("INSERT INTO dbo.CurrentIndex ([id], [MainTableID],[LanguageID],[FormID],[TimeID],[PlaceID],[NationID],[PropertyID],[SignBetween]) VALUES(1, '', '', '', '', '', '', '', '')");
-                UDCData.DB.SubmitChanges();
-                currentPartIndex = 1;
             }
         }
 
