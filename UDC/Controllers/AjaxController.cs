@@ -65,8 +65,21 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                CurrentConfig.Index = CurrentConfig.Index.Insert(CurrentConfig.CursorPosition, partUDC);
-                CurrentConfig.CursorPosition += partUDC.Length;
+                if (partUDC == "8")
+                {
+                    CurrentConfig.Index = CurrentConfig.Index.Remove(CurrentConfig.CursorPosition, 1);
+                    CurrentConfig.CursorPosition -= 1;
+                }
+                else if (partUDC == "43")
+                {
+                    CurrentConfig.Index = CurrentConfig.Index.Insert(CurrentConfig.CursorPosition, "+");
+                    CurrentConfig.CursorPosition += partUDC.Length;
+                }
+                else
+                {
+                    CurrentConfig.Index = CurrentConfig.Index.Insert(CurrentConfig.CursorPosition, partUDC);
+                    CurrentConfig.CursorPosition += partUDC.Length;
+                }
                 //return CurrentConfig.Index;
             }
         }

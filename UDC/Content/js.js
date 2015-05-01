@@ -56,11 +56,44 @@ function compositeIndexSlash(elem) {
 }
 
 function keyPressUpdate(e) {
-    var unicode = e.keyCode ? e.keyCode : e.charCode;
+    /*var unicode = e.keyCode ? e.keyCode : e.charCode;
+    if (e.shiftKey)
+        alert(String.fromCharCode(unicode));
     var actualkey = String.fromCharCode(unicode);
     $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + actualkey, function () {
         updateIndex();
-    });
+    });*/
+    var key;
+    var isShift;
+    var isBackspace;
+    if (window.event) {
+        key = window.event.keyCode;
+        isShift = !!window.event.shiftKey; // typecast to boolean
+    } else {
+        key = e.which;
+        isShift = !!e.shiftKey;
+    }
+    if (isShift) {
+        switch (key) {
+            case 16: // ignore shift key
+                break;
+            case 43:
+                $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + key, function () {
+                    updateIndex();
+                });
+                break;
+            default:
+                $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + String.fromCharCode(key), function () {
+                    updateIndex();
+                });
+                break;
+        }
+    }
+    else {
+        $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + key, function () {
+            updateIndex();
+        });
+    }
 }
 
 // изменение значения текущей части индекса
