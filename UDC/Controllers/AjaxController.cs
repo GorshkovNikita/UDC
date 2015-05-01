@@ -55,10 +55,18 @@ namespace UDC.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                CurrentConfig.CursorPosition = CurrentConfig.Index.Length;
                 return CurrentConfig.Index;
             }
             return null;
+        }
+
+        public int GetCursorPosition()
+        {
+            if (Request.IsAjaxRequest())
+            {
+                return CurrentConfig.CursorPosition;
+            }
+            return 0;
         }
 
         public void SetStringUDC(string partUDC)
@@ -67,20 +75,17 @@ namespace UDC.Controllers
             {
                 if (partUDC == "8")
                 {
-                    CurrentConfig.Index = CurrentConfig.Index.Remove(CurrentConfig.CursorPosition, 1);
-                    CurrentConfig.CursorPosition -= 1;
-                }
-                else if (partUDC == "43")
-                {
-                    CurrentConfig.Index = CurrentConfig.Index.Insert(CurrentConfig.CursorPosition, "+");
-                    CurrentConfig.CursorPosition += partUDC.Length;
+                    if (CurrentConfig.Index.Length > 0)
+                    {
+                        CurrentConfig.Index = CurrentConfig.Index.Remove(CurrentConfig.CursorPosition - 1, 1);
+                        CurrentConfig.CursorPosition -= 1;
+                    }
                 }
                 else
                 {
                     CurrentConfig.Index = CurrentConfig.Index.Insert(CurrentConfig.CursorPosition, partUDC);
                     CurrentConfig.CursorPosition += partUDC.Length;
                 }
-                //return CurrentConfig.Index;
             }
         }
 

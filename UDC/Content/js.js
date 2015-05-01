@@ -55,42 +55,36 @@ function compositeIndexSlash(elem) {
 
 }
 
-function keyPressUpdate(e) {
-    /*var unicode = e.keyCode ? e.keyCode : e.charCode;
-    if (e.shiftKey)
-        alert(String.fromCharCode(unicode));
-    var actualkey = String.fromCharCode(unicode);
-    $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + actualkey, function () {
-        updateIndex();
-    });*/
-    var key;
-    var isShift;
-    var isBackspace;
-    if (window.event) {
-        key = window.event.keyCode;
-        isShift = !!window.event.shiftKey; // typecast to boolean
-    } else {
-        key = e.which;
-        isShift = !!e.shiftKey;
-    }
-    if (isShift) {
+function keyDownUpdate(e) {
+    var key = (e.keyCode ? e.keyCode : e.which);
+    if (e.shiftKey == 1) {
         switch (key) {
             case 16: // ignore shift key
                 break;
-            case 43:
-                $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + key, function () {
+            case 187:
+                $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + "%2B", function () {
                     updateIndex();
                 });
-                break;
             default:
-                $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + String.fromCharCode(key), function () {
-                    updateIndex();
-                });
                 break;
         }
     }
-    else {
+    else if (key == 8) {
         $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + key, function () {
+            updateIndex();
+        });
+    }
+    else if (key == 187) {
+        $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + "%3D", function () {
+            updateIndex();
+        });
+    }
+}
+
+function keyPressUpdate(e) {
+    var key = (e.keyCode ? e.keyCode : e.which);
+    if ((key != 8) && (key != 16) && (key != 187) && (key != 43) && (key != 61)) {
+        $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + String.fromCharCode(key), function () {
             updateIndex();
         });
     }
@@ -136,6 +130,14 @@ function show(elem) {
 function updateIndex() {
     $.get("http://localhost:51128/Ajax/GetFullIndex", function (data) {
         $('#udc').attr('value', data);
+        /*var textBox = document.getElementById("udc");
+        textBox.onfocus = function () { textBox.selectionStart = textBox.selectionEnd = 0; }*/
+    });
+
+    $.get("http://localhost:51128/Ajax/GetCursorPosition", function (data) {
+        var ctl = document.getElementById('udc');
+        ctl.selectionStart = data;
+        ctl.selectionEnd = data;
     });
 }
 
