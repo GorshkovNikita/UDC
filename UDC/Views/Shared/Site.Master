@@ -13,7 +13,7 @@
         <%: Scripts.Render("~/bundles/jquery") %>
         <%: Scripts.Render("~/Content/js.js") %>
     </head>
-    <body>
+    <body onload="cursorPositionLast()">
         <header></header>
         <div class="left-menu">
             <h3 class="left-menu-title">УДК:</h3>
@@ -69,8 +69,8 @@
                         <div class="buttons">
                             <input type="button" class="plus-button" value="+" onclick="compositeIndexPlus(this)" />
                             <input type="button" class="colon-button" value=":" onclick="compositeIndexColon(this)" />
-                            <input type="button" class="double-colon-button" value="::" onclick="compositeIndexDoubleColon(this)" />
-                            <input type="button" class="slash-button" value="/" onclick="compositeIndexSlash(this)" />
+                            <input type="button" class="double-colon-button" value="::" onclick="compositeIndexColon(this)" />
+                            <input type="button" class="slash-button" value="/" onclick="compositeIndexColon(this)" />
                         </div>
                         <input id="udc-check-submit" type="submit" value="Разобрать индекс УДК" />
                     </form>

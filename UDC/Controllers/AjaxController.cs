@@ -42,7 +42,7 @@ namespace UDC.Controllers
             else
                 try
                 {
-                    CurrentConfig.CursorPosition = CurrentConfig.Index.Length;
+                    CurrentConfig.CursorPosition = CurrentConfig.Index.Length - 1;
                 }
                 catch
                 {
@@ -75,7 +75,7 @@ namespace UDC.Controllers
             {
                 if (partUDC == "8")
                 {
-                    if (CurrentConfig.Index.Length > 0)
+                    if ((CurrentConfig.Index.Length > 0) && (CurrentConfig.CursorPosition > 0))
                     {
                         CurrentConfig.Index = CurrentConfig.Index.Remove(CurrentConfig.CursorPosition - 1, 1);
                         CurrentConfig.CursorPosition -= 1;

@@ -31,19 +31,22 @@ function parseUDC(elem) {
 
 // очистка индеса
 function ClearConstructor() {
-    $.get("http://localhost:51128/Ajax/ClearConstructor");
-    updateIndex();
+    $.get("http://localhost:51128/Ajax/ClearConstructor", function () {
+        updateIndex();
+    });
 }
 
 // создание составного индекса
 function compositeIndexPlus(elem) {
-    $.post("http://localhost:51128/Ajax/UpdateSign", { between: '+' });
-    updateIndex();
+    $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + "%2B", function () {
+        updateIndex();
+    });
 }
 
 function compositeIndexColon(elem) {
-    $.post("http://localhost:51128/Ajax/UpdateSign", { between: ':' });
-    updateIndex();
+    $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + $(elem).attr("value"), function () {
+        updateIndex();
+    });
 }
 
 function compositeIndexDoubleColon(elem) {
@@ -130,15 +133,14 @@ function show(elem) {
 function updateIndex() {
     $.get("http://localhost:51128/Ajax/GetFullIndex", function (data) {
         $('#udc').attr('value', data);
-        /*var textBox = document.getElementById("udc");
-        textBox.onfocus = function () { textBox.selectionStart = textBox.selectionEnd = 0; }*/
+        $.get("http://localhost:51128/Ajax/GetCursorPosition", function (data2) {
+            var ctl = document.getElementById('udc');
+            ctl.selectionStart = data2;
+            ctl.selectionEnd = data2;
+        });
     });
-
-    $.get("http://localhost:51128/Ajax/GetCursorPosition", function (data) {
-        var ctl = document.getElementById('udc');
-        ctl.selectionStart = data;
-        ctl.selectionEnd = data;
-    });
+    //sleep(10);
+    
 }
 
 function checkRemoved(elem) {
@@ -147,6 +149,11 @@ function checkRemoved(elem) {
 
 function checkSpecialDet(elem) {
     $.get("http://localhost:51128?specaldet=true");
+}
+
+function sleep(ms) {
+    ms += new Date().getTime();
+    while (new Date() < ms) { }
 }
 
 // получение Get параметров из ссылки
@@ -167,11 +174,8 @@ function getPositionOnTextBox() {
 
 function cursorPositionLast() {
     $.get("http://localhost:51128/Ajax/SetCursorPosition");
+    console.log("position last");
 }
-
-$(function() {
-    cursorPositionLast();
-})
 
 /*$(function () {
     $.post("http://localhost:51128/Ajax/SetCurrentPartIndex");
