@@ -33,7 +33,6 @@ namespace UDC.Models
             return UDCData.DB.Indexes.Where(index => index.ParentId == id)
                 .OrderBy(index => index.Value)
                 .OrderBy(index => index.IndexType)
-                //.Where(index => index.IndexType == "Index")
                 .ToList();
         }
 
@@ -43,7 +42,6 @@ namespace UDC.Models
             List<Reference> refs = UDCData.DB.ExecuteQuery<Reference>("SELECT * FROM [dbo].[Reference] WHERE FromId = {0} AND RefType = {1}", id, "Example").ToList();
             foreach (var refer in refs)
             {
-                //if (refer.ToId != null)
                 if (refer.ToId != null)
                 {
                     Index tmpIndex = UDCData.GetIndex((int)refer.ToId);
@@ -65,7 +63,6 @@ namespace UDC.Models
             List<Reference> refs = UDCData.DB.ExecuteQuery<Reference>("SELECT * FROM [dbo].[Reference] WHERE FromId = {0} AND RefType = {1}", id, "Link").ToList();
             foreach (var refer in refs)
             {
-                //if (refer.ToId != null)
                 if (refer.ToId != null)
                 {
                     Index tmpIndex = UDCData.GetIndex((int) refer.ToId);
@@ -135,8 +132,6 @@ namespace UDC.Models
                     .OrderBy(index => index.Value)
                     .OrderBy(index => index.IndexType)
                     .OrderBy(index => index.isGroupIndex)
-                    //.Where(index => index.IndexType == "Index")
-                    //.Where(index => index.isGroupIndex == false)
                     .ToList();
             }
         }

@@ -6,29 +6,6 @@ function addMainIndex(elem) {
     });
 }
 
-// + к основному индексу
-function addMainIndexPlus(elem) {
-    node = $(elem).prevAll()[1].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateMainIndexPlus", { mainIndex: $(node).html() });
-    updateIndex();
-}
-
-// / к основному индексу
-function addMainIndexSlash(elem) {
-    node = $(elem).prevAll()[2].children[0].children[0];
-    currentPartIndex = $('.current-part-index')[0];
-    $.post("http://localhost:51128/Ajax/UpdateMainIndexSlash", { mainIndex: $(node).html() });
-    updateIndex();
-}
-
-// парсинг индекса
-function parseUDC(elem) {
-    node = elem;
-    $.post("http://localhost:51128/Ajax/UDCCreate", { stringUDC: $(elem).html() });
-    updateIndex();
-}
-
 // очистка индеса
 function ClearConstructor() {
     $.get("http://localhost:51128/Ajax/ClearConstructor", function () {
@@ -47,15 +24,6 @@ function compositeIndexColon(elem) {
     $.get("http://localhost:51128/Ajax/SetStringUDC?partudc=" + $(elem).attr("value"), function () {
         updateIndex();
     });
-}
-
-function compositeIndexDoubleColon(elem) {
-    $.post("http://localhost:51128/Ajax/UpdateSign", { between: '::' });
-    updateIndex();
-}
-
-function compositeIndexSlash(elem) {
-
 }
 
 function keyDownUpdate(e) {
@@ -93,23 +61,6 @@ function keyPressUpdate(e) {
     }
 }
 
-// изменение значения текущей части индекса
-function curPartIndexIncrement(elem) {
-    $.post("http://localhost:51128/Ajax/CurrentPartIndexIncrement");
-    $.get("http://localhost:51128/Ajax/GetCurrentPartIndex", function (data) {
-        $('.current-part-index').html(data);
-    });
-    updateIndex();
-}
-
-function curPartIndexDecrement(elem) {
-    $.post("http://localhost:51128/Ajax/CurrentPartIndexDecrement");
-    $.get("http://localhost:51128/Ajax/GetCurrentPartIndex", function (data) {
-        $('.current-part-index').html(data);
-    });
-    updateIndex();
-}
-
 // показать узел дерева
 function show(elem) {
     node = $(elem).nextAll()[2];
@@ -139,8 +90,6 @@ function updateIndex() {
             ctl.selectionEnd = data2;
         });
     });
-    //sleep(10);
-    
 }
 
 function checkRemoved(elem) {
@@ -149,11 +98,6 @@ function checkRemoved(elem) {
 
 function checkSpecialDet(elem) {
     $.get("http://localhost:51128?specaldet=true");
-}
-
-function sleep(ms) {
-    ms += new Date().getTime();
-    while (new Date() < ms) { }
 }
 
 // получение Get параметров из ссылки
@@ -174,13 +118,4 @@ function getPositionOnTextBox() {
 
 function cursorPositionLast() {
     $.get("http://localhost:51128/Ajax/SetCursorPosition");
-    console.log("position last");
 }
-
-/*$(function () {
-    $.post("http://localhost:51128/Ajax/SetCurrentPartIndex");
-    $.get("http://localhost:51128/Ajax/GetCurrentPartIndex", function (data) {
-        $('.current-part-index').html(data);
-    });
-    updateIndex();
-})*/
