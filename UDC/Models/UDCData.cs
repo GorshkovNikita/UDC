@@ -120,10 +120,13 @@ namespace UDC.Models
             List<Index> allSpecDets = new List<Index>();
             allSpecDets.AddRange(GetSpecialDeterminants(id));
             Index parent = GetIndexParent(id);
-            while (parent != null)
+            if (allSpecDets.Count == 0)
             {
-                allSpecDets.AddRange(GetSpecialDeterminants(parent.Id));
-                parent = GetIndexParent(parent.Id);
+                while (parent != null)
+                {
+                    allSpecDets.AddRange(GetSpecialDeterminants(parent.Id));
+                    parent = GetIndexParent(parent.Id);
+                }
             }
             return allSpecDets;
         }
