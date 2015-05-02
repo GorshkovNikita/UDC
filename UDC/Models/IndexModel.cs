@@ -10,6 +10,7 @@ namespace UDC.Models
         public IndexModel(Int32 id)
         {
             GetAllProperties(id);
+            SpecialDeterminants = UDCData.GetAllSpecificDeterminants(id);
         }
 
         public IndexModel(Int32 id, string removed, string specialdet)
@@ -17,6 +18,7 @@ namespace UDC.Models
             GetAllProperties(id);
             Removed = removed;
             SpecialDet = specialdet;
+            SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
         }
 
         private void GetAllProperties(int id)
@@ -26,7 +28,8 @@ namespace UDC.Models
             Children = UDCData.GetIndexChildren(id);
             Examples = UDCData.GetIndexExamples(id);
             Links = UDCData.GetIndexLinks(id);
-            SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
+            //SpecialDeterminants = UDCData.GetSpecialDeterminants(id);
+            //SpecialDeterminants = UDCData.GetAllSpecificDeterminants(id);
             Comment = UDCData.GetComment(id);
             SubDivideAs = UDCData.GetSubDivideAs(id);
             SubDivideWith = UDCData.GetSubDivideWith(id);

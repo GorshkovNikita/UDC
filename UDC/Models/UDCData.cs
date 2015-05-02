@@ -106,6 +106,19 @@ namespace UDC.Models
                 .ToList();
         }
 
+        public static List<Index> GetAllSpecificDeterminants(int id)
+        {
+            List<Index> allSpecDets = new List<Index>();
+            allSpecDets.AddRange(GetSpecialDeterminants(id));
+            Index parent = GetIndexParent(id);
+            while (parent != null)
+            {
+                allSpecDets.AddRange(GetSpecialDeterminants(parent.Id));
+                parent = GetIndexParent(parent.Id);
+            }
+            return allSpecDets;
+        }
+
         public static List<Index> AllIndexes
         {
             get
