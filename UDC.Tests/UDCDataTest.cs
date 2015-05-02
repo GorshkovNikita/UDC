@@ -9,13 +9,13 @@ namespace UDC.Tests
     [TestClass]
     public class UDCDataTest
     {
-        private int inID = 1805;
+        private int inID = 1800;
 
         [TestMethod]
         public void GetIndexIDTest()
         {
             Index expectedIndex = new Index();
-            expectedIndex.Id = 1805;
+            expectedIndex.Id = 1800;
 
             Index actualIndex = UDCData.GetIndex(inID);
 
@@ -26,7 +26,7 @@ namespace UDC.Tests
         public void GetIndexValueTest()
         {
             Index expectedIndex = new Index();
-            expectedIndex.Id = 1805;
+            expectedIndex.Id = 1800;
             expectedIndex.Value = "101.1";
 
             Index actualIndex = UDCData.GetIndex(inID);
@@ -43,17 +43,6 @@ namespace UDC.Tests
             Index actualIndex = UDCData.GetIndex(inID);
 
             Assert.AreEqual(expectedIndex.Name, actualIndex.Name, "Names are not equal");
-        }
-
-        [TestMethod]
-        public void GetIndexParenIDTest()
-        {
-            Index expectedIndex = new Index();
-            expectedIndex.ParentId = 1804;
-
-            Index actualIndex = UDCData.GetIndex(inID);
-
-            Assert.AreEqual(expectedIndex.ParentId, actualIndex.ParentId, "ParentIDs are not equal");
         }
 
         [TestMethod]
@@ -82,7 +71,7 @@ namespace UDC.Tests
         public void GetCompositeIndexIDTest()
         {
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
-            expectedCompositeIndex.Id = 1805;
+            expectedCompositeIndex.Id = 1800;
 
             CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
 
@@ -93,7 +82,7 @@ namespace UDC.Tests
         public void GetCompositeIndexNameTest()
         {
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
-            expectedCompositeIndex.Value = "Ртутные термометры для измерения и индикации малых температурных различий. Термометр бекмана";
+            expectedCompositeIndex.Value = "Центр тяжести линий";
 
             CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
 
@@ -104,7 +93,7 @@ namespace UDC.Tests
         public void GetCompositeIndexValueTest()
         {
             CompositeIndex expectedCompositeIndex = new CompositeIndex();
-            expectedCompositeIndex.Name = "536.51.083.62";
+            expectedCompositeIndex.Name = "531.24-1";
 
             CompositeIndex actualCompositeIndex = UDCData.GetCompositeIndex(inID);
 
@@ -115,7 +104,7 @@ namespace UDC.Tests
         public void GetIndexParentIDTest()
         {
             Index expectedParentIndex = new Index();
-            expectedParentIndex.Id = 1804;
+            expectedParentIndex.Id = 1799;
 
             Index actualCompositeIndex = UDCData.GetIndexParent(inID);
 
@@ -268,8 +257,9 @@ namespace UDC.Tests
         {
             Int32 inID = 284;
             List<Link> expectedIndexLinks = new List<Link>();
-            expectedIndexLinks.Add(new Link(930, "Index", "004.056.3", "Резервирование и восстановление данных"));
-            expectedIndexLinks.Add(new Link(930, "Index", "004.056.4", "Избыточность"));
+            expectedIndexLinks.Add(new Link(918, "SpecialDeterminant", "004.052.3", "Отказоустойчивость"));
+            expectedIndexLinks.Add(new Link(929, "SpecialDeterminant", "004.056.3", "Резервирование и восстановление данных"));
+            expectedIndexLinks.Add(new Link(930, "SpecialDeterminant", "004.056.4", "Избыточность"));
 
             List<Link> actualIndexLinks = UDCData.GetIndexLinks(inID);
 
