@@ -14,7 +14,12 @@ namespace UDC.Controllers
 
         public ActionResult Index()
         {
-            ViewData["CurrentIndex"] = CurrentConfig.Index;
+            if (CurrentConfig.Index == null)
+                CurrentConfig.Index = "";
+            if (CurrentConfig.Index.Contains('"'))
+                ViewData["CurrentIndex"] = CurrentConfig.Index.Replace("\"", "&quot;");
+            else
+                ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View();
         }
 

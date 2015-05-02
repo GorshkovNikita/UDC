@@ -48,6 +48,36 @@ namespace UDC.Models
                     }
                 }
             }
+            else
+            {
+                Index index;
+                if (subtree.Parent.Name != "CommonAuxiliaryOfTime")
+                {
+                    index = UDCData.GetIndex(subtree.Value);
+                }
+                else
+                {
+                    index = UDCData.GetIndex('"' + subtree.Value + '"');
+                }
+                if (index != null)
+                {
+                    subtree.Value = "";
+                    XElement el;
+                    if (index.TableType != "Ig.xml")
+                    {
+                        el = new XElement("a", index.Value);
+                    }
+                    else
+                    {
+                        string val = index.Value.Remove(0, 1);
+                        val = val.Remove(val.Length - 1, 1);
+                        el = new XElement("a", val);
+                    }
+                    el.SetAttributeValue("href", "http://localhost:51128/Home/MoreInfo?index=" + index.Id);
+                    el.SetAttributeValue("target", "_blank");
+                    subtree.Add(el);
+                }
+            }
             return subtree;
         }
 

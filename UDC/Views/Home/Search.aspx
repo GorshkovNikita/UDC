@@ -20,7 +20,7 @@
         <% foreach (var item in Model) { %>
         <tr>
             <td style="padding: 2px;"><%= item.Value %></td>
-            <td style="padding: 2px;"><a href="../Home/MoreInfo" target="_blank"><%= item.Name %></a></td>
+            <td style="padding: 2px;"><a href="../Home/MoreInfo?index=<%= item.Id %>" target="_blank"><%= item.Name %></a></td>
             <td style="padding: 2px;"><%= item.TableType %></td>
         </tr>
         <% } %>

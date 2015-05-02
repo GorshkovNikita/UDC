@@ -14,6 +14,18 @@ namespace UDC.Models
             return UDCData.DB.Indexes.Where(index => index.Id == id).First();
         }
 
+        public static Index GetIndex(string value)
+        {
+            try
+            {
+                return UDCData.DB.Indexes.Where(index => index.Value == value).First();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static CompositeIndex GetCompositeIndex(Int32 id)
         {
             return UDCData.DB.CompositeIndexes.Where(index => index.Id == id).First();
@@ -103,7 +115,7 @@ namespace UDC.Models
                 .ToList();
         }
 
-        public static List<Index> GetAllSpecificDeterminants(int id)
+        public static List<Index> GetAllSpecialDeterminants(int id)
         {
             List<Index> allSpecDets = new List<Index>();
             allSpecDets.AddRange(GetSpecialDeterminants(id));

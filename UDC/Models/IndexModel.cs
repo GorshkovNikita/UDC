@@ -10,7 +10,7 @@ namespace UDC.Models
         public IndexModel(Int32 id)
         {
             GetAllProperties(id);
-            SpecialDeterminants = UDCData.GetAllSpecificDeterminants(id);
+            SpecialDeterminants = UDCData.GetAllSpecialDeterminants(id);
         }
 
         public IndexModel(Int32 id, string removed, string specialdet)

@@ -16,25 +16,45 @@ namespace UDC.Controllers
         {
             CurrentConfig.Removed = removed;
             CurrentConfig.SpecialDet = specialdet;
-            ViewData["CurrentIndex"] = CurrentConfig.Index;
+            if (CurrentConfig.Index == null)
+                CurrentConfig.Index = "";
+            if (CurrentConfig.Index.Contains('"'))
+                ViewData["CurrentIndex"] = CurrentConfig.Index.Replace("\"", "&quot;");
+            else
+                ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(UDCData.AllMainTableIndexes);
         }
 
         public ActionResult Search(string index, string name, string search_type)
         {
-            ViewData["CurrentIndex"] = CurrentConfig.Index;
+            if (CurrentConfig.Index == null)
+                CurrentConfig.Index = "";
+            if (CurrentConfig.Index.Contains('"'))
+                ViewData["CurrentIndex"] = CurrentConfig.Index.Replace("\"", "&quot;");
+            else
+                ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(SearchEngine.SearchBy(Convert.ToInt32(search_type), index, name));
         }
 
         public ActionResult MoreInfo(string index)
         {
-            ViewData["CurrentIndex"] = CurrentConfig.Index;
+            if (CurrentConfig.Index == null)
+                CurrentConfig.Index = "";
+            if (CurrentConfig.Index.Contains('"'))
+                ViewData["CurrentIndex"] = CurrentConfig.Index.Replace("\"", "&quot;");
+            else
+                ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View(new IndexModel(Convert.ToInt32(index)));
         }
 
         public ActionResult SpecificDeterminants()
         {
-            ViewData["CurrentIndex"] = CurrentConfig.Index;
+            if (CurrentConfig.Index == null)
+                CurrentConfig.Index = "";
+            if (CurrentConfig.Index.Contains('"'))
+                ViewData["CurrentIndex"] = CurrentConfig.Index.Replace("\"", "&quot;");
+            else
+                ViewData["CurrentIndex"] = CurrentConfig.Index;
             return View();
         }
 
@@ -50,7 +70,12 @@ namespace UDC.Controllers
             {
                 CurrentConfig.XmlResultString = null;
             }
-            ViewData["CurrentIndex"] = CurrentConfig.Index;
+            if (CurrentConfig.Index == null)
+                CurrentConfig.Index = "";
+            if (CurrentConfig.Index.Contains('"'))
+                ViewData["CurrentIndex"] = CurrentConfig.Index.Replace("\"", "&quot;");
+            else
+                ViewData["CurrentIndex"] = CurrentConfig.Index;
             ViewData["XmlResultString"] = CurrentConfig.XmlResultString;
             return View();
         }
