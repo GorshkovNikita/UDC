@@ -164,51 +164,6 @@
             <%= Model.Comment %>
         </p>
     <% } %>
-    <h5>Книги с индексом 612</h5>
-    <ol style="padding-left: 40px">
-        <li>Мелькумянц A.M., Балашов С.А. Механочувствительность артериального эндотелия. УДК: 612.133
-            <form style="display: inline-block" class="udc-check" method="post" action="http://localhost:51128/Ajax/UDCCreate">
-                <input id="udc1" name="stringUDC" type="hidden" value="612.133" />
-                <input name="tree" type="hidden" value="false" />
-                <input name="db" type="hidden" value="true" />
-                <input id="udc-check-submit1" type="submit" value="Добавить" />
-            </form>
-            <form style="display: inline-block" class="udc-check" method="post" action="http://localhost:51128/Ajax/UDCCreate">
-                <input id="udcParse1" name="stringUDC" type="hidden" value="612.133" />
-                <input name="tree" type="hidden" value="true" />
-                <input name="db" type="hidden" value="false" />
-                <input id="udcParse1Submit" type="submit" value="Разобрать индекс" />
-            </form>
-        </li>
-        <li>Ашмарин И.П. Нейрохимия УДК: 612
-            <form style="display: inline-block" class="udc-check" method="post" action="http://localhost:51128/Ajax/UDCCreate">
-                <input id="udc2" name="stringUDC" type="hidden" value="612" />
-                <input name="tree" type="hidden" value="false" />
-                <input name="db" type="hidden" value="true" />
-                <input id="udc-check-submit2" type="submit" value="Добавить" />
-            </form>
-            <form style="display: inline-block" class="udc-check" method="post" action="http://localhost:51128/Ajax/UDCCreate">
-                <input id="udcParse2" name="stringUDC" type="hidden" value="612" />
-                <input name="tree" type="hidden" value="true" />
-                <input name="db" type="hidden" value="false" />
-                <input id="udcParse2Submit" type="submit" value="Разобрать индекс" />
-            </form>
-        </li>
-        <li>Блум Ф., Лейзерсон., Хофстедтер Л. Б70 Мозг, разум и поведение УДК: 612+577.3
-            <form style="display: inline-block" class="udc-check" method="post" action="http://localhost:51128/Ajax/UDCCreate">
-                <input id="udc3" name="stringUDC" type="hidden" value="612+577.3" />
-                <input name="tree" type="hidden" value="false" />
-                <input name="db" type="hidden" value="true" />
-                <input id="udc-check-submit3" type="submit" value="Добавить" />
-            </form>
-            <form style="display: inline-block" class="udc-check" method="post" action="http://localhost:51128/Ajax/UDCCreate">
-                <input id="udcParse3" name="stringUDC" type="hidden" value="612+577.3" />
-                <input name="tree" type="hidden" value="true" />
-                <input name="db" type="hidden" value="false" />
-                <input id="udcParse3Submit" type="submit" value="Разобрать индекс" />
-            </form>
-        </li>
-    </ol>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsSection" runat="server">

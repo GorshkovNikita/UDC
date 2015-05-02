@@ -51,7 +51,7 @@ namespace UDC.Models
             else
             {
                 Index index;
-                if (subtree.Parent.Name != "CommonAuxiliaryOfTime")
+                if ((subtree.Parent.Name != "CommonAuxiliaryOfTime") && (subtree.Name != "CommonAuxiliaryOfTime"))
                 {
                     index = UDCData.GetIndex(subtree.Value);
                 }
@@ -63,7 +63,7 @@ namespace UDC.Models
                 {
                     subtree.Value = "";
                     XElement el;
-                    if (index.TableType != "Ig.xml")
+                    if ((index.TableType != "Ig.xml") || (subtree.Name == "CommonAuxiliaryOfTime"))
                     {
                         el = new XElement("a", index.Value);
                     }

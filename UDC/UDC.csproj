@@ -164,7 +164,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\CommonDeterminantController.cs" />
-    <Compile Include="Controllers\CurrentIndexController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -277,10 +276,8 @@
     <Content Include="Views\Home\Search.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\SpecialDeterminantNodePartial.ascx" />
-    <Content Include="Views\Shared\IndexConstructor.ascx" />
     <Content Include="Views\Shared\MainIndexNodePartial.ascx" />
     <Content Include="Views\Shared\MoreInfoChildrenNode.ascx" />
-    <Content Include="Views\Shared\UDCTree.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -308,7 +305,6 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\Shared\Error.aspx" />
-    <Content Include="Views\Shared\_LoginPartial.aspx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>

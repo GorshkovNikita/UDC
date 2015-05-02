@@ -13,8 +13,6 @@ namespace UDC.Controllers
         //
         // GET: /Ajax/
 
-        public static Int32 currentPartIndex;
-
         public PartialViewResult GetPartialView(Int32 id, string removed, string specialdet)
         {
             if (Request.IsAjaxRequest())
